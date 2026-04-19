@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Soutenir — Lehahiah musique</title>
+  <meta name="description" content="Contactez Lehahiah pour programmer un concert ou soutenir le projet. Email, réseaux sociaux, HelloAsso — tous les liens utiles réunis ici.">
+  <link rel="canonical" href="https://lehahiahmusique.fr/contact.html">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav nav-solid" id="nav" role="navigation" aria-label="Navigation principale">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Lehahiah</a>
+      <div class="nav__links" id="navLinks" role="menubar">
+        <a href="index.html" class="nav__link" role="menuitem">Accueil</a>
+        <a href="a-propos.html" class="nav__link" role="menuitem">À propos</a>
+        <a href="concerts.html" class="nav__link" role="menuitem">Concerts</a>
+        <a href="musique.html" class="nav__link" role="menuitem">Musique</a>
+        <a href="videos.html" class="nav__link" role="menuitem">Vidéos</a>
+        <a href="contact.html" class="nav__link" role="menuitem">Contact</a>
+        <a href="concerts.html#demande" class="nav__cta">Programmer une date</a>
+      </div>
+      <button class="nav__hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero" role="banner">
+    <div class="page-hero__bg" aria-hidden="true"></div>
+    <div class="page-hero__inner">
+      <span class="eyebrow page-hero__label">Contact & Soutenir</span>
+      <h1>Entrons<br>en contact</h1>
+      <p class="lead">Pour programmer un concert, poser une question ou soutenir le projet — tous les liens sont ici.</p>
+    </div>
+  </header>
+
+  <!-- CONTACT PRINCIPAL -->
+  <section class="bg-white">
+    <div class="container">
+      <div class="two-col">
+
+        <!-- FORMULAIRE -->
+        <div class="fade-up">
+          <span class="eyebrow">Écrire à Lehahiah</span>
+          <h2 style="margin-bottom: 1.75rem;">Envoyez un message</h2>
+          <form
+            class="contact-form"
+            action="https://formsubmit.co/contact.lehahiah@gmail.com"
+            method="POST"
+            name="contact"
+            aria-label="Formulaire de contact"
+          >
+            <input type="hidden" name="_subject" value="Message depuis le site — Lehahiah">
+            <input type="hidden" name="_next" value="merci.html">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="prenom">Prénom <span aria-hidden="true" style="color:var(--accent)">*</span></label>
+                <input type="text" id="prenom" name="prenom" required autocomplete="given-name" placeholder="Votre prénom">
+              </div>
+              <div class="form-group">
+                <label for="nom">Nom <span aria-hidden="true" style="color:var(--accent)">*</span></label>
+                <input type="text" id="nom" name="nom" required autocomplete="family-name" placeholder="Votre nom">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email <span aria-hidden="true" style="color:var(--accent)">*</span></label>
+              <input type="email" id="email" name="email" required autocomplete="email" placeholder="votre@email.fr">
+            </div>
+
+            <div class="form-group">
+              <label for="sujet">Sujet</label>
+              <select id="sujet" name="sujet">
+                <option value="" disabled selected>Choisissez un sujet…</option>
+                <option value="programmation">Demande de date / programmation</option>
+                <option value="presse">Presse / médias</option>
+                <option value="partenariat">Partenariat</option>
+                <option value="soutien">Soutenir le projet</option>
+                <option value="autre">Autre question</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message <span aria-hidden="true" style="color:var(--accent)">*</span></label>
+              <textarea id="message" name="message" required placeholder="Votre message…"></textarea>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <input type="checkbox" id="rgpd" name="rgpd" required style="width:auto; margin-top:3px; flex-shrink:0;">
+              <label for="rgpd" class="form-note" style="font-size: 0.82rem;">J'accepte que mes données soient utilisées pour traiter mon message, conformément à la <a href="mentions-legales.html#confidentialite" style="color:var(--accent)">politique de confidentialité</a>.</label>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--lg" style="width:100%; justify-content: center;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Envoyer le message
+            </button>
+            <p class="form-note" style="text-align:center;">Réponse sous 48h</p>
+          </form>
+        </div>
+
+        <!-- INFOS DE CONTACT -->
+        <div class="fade-up" style="display: flex; flex-direction: column; gap: 1.75rem;">
+
+          <div>
+            <span class="eyebrow">Contact direct</span>
+            <h2 style="margin-bottom: 1.25rem; font-size: 1.5rem;">Lehahiah musique</h2>
+            <a href="mailto:contact.lehahiah@gmail.com" style="display: inline-flex; align-items: center; gap: 0.6rem; font-size: 1.05rem; font-weight: 600; color: var(--accent);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              contact.lehahiah@gmail.com
+            </a>
+            <p style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--text-muted);">Pour toute demande de programmation, venez plutôt sur la <a href="concerts.html#demande" style="color: var(--accent);">page Concerts</a> pour un formulaire adapté.</p>
+          </div>
+
+          <hr class="hr">
+
+          <div>
+            <h3 style="font-size: 1rem; margin-bottom: 1rem; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-muted); font-family: var(--font-body); font-weight: 700;">Réseaux sociaux</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+              <a href="https://www.instagram.com/lehahiah_musique/" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.9rem; color: var(--text); font-weight: 500; transition: color 0.3s;">
+                <span style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--accent-pale); border-radius: 50%; flex-shrink: 0;">
+                  <svg viewBox="0 0 24 24" fill="var(--accent)" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </span>
+                @lehahiah_musique
+              </a>
+              <a href="https://www.facebook.com/Lehahiahmusique/" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.9rem; color: var(--text); font-weight: 500;">
+                <span style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--accent-pale); border-radius: 50%; flex-shrink: 0;">
+                  <svg viewBox="0 0 24 24" fill="var(--accent)" width="18" height="18"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </span>
+                Lehahiah musique
+              </a>
+              <a href="https://www.youtube.com/@lehahiahmusique" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.9rem; color: var(--text); font-weight: 500;">
+                <span style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--accent-pale); border-radius: 50%; flex-shrink: 0;">
+                  <svg viewBox="0 0 24 24" fill="var(--accent)" width="18" height="18"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+                </span>
+                @lehahiahmusique
+              </a>
+            </div>
+          </div>
+
+          <hr class="hr">
+
+          <div class="info-card">
+            <h3>Infos association</h3>
+            <ul class="detail-list">
+              <li><strong>Association</strong> LEHAHIAH EN MUSIQUE</li>
+              <li><strong>SIRET</strong> 923 820 625 00013</li>
+              <li><strong>Siège</strong> Apprieu (38140), Isère</li>
+              <li><strong>Email</strong> <a href="mailto:contact.lehahiah@gmail.com">contact.lehahiah@gmail.com</a></li>
+            </ul>
+            <a href="https://annuaire-entreprises.data.gouv.fr/entreprise/lehahiah-en-musique-923820625" target="_blank" rel="noopener" style="display: inline-block; margin-top: 1rem; font-size: 0.82rem; color: var(--accent);">Annuaire des entreprises ↗</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOUTENIR -->
+  <section class="bg-alt" id="soutenir">
+    <div class="container--sm">
+      <div class="section-header centered fade-up">
+        <span class="eyebrow">Soutenir le projet</span>
+        <h2>Rejoindre l'aventure</h2>
+        <p class="desc">Lehahiah est porté par une association loi 1901. Votre soutien permet de continuer à produire de la musique, à organiser des concerts et à développer le projet.</p>
+      </div>
+      <div class="support-block fade-up">
+        <h3>Soutenir sur HelloAsso</h3>
+        <p>HelloAsso est la plateforme officielle de l'association LEHAHIAH EN MUSIQUE. Dons libres, adhésions, billetterie — tout y est centralisé.</p>
+        <a href="https://www.helloasso.com/associations/lehahiah-en-musique" class="btn btn--primary btn--lg" target="_blank" rel="noopener">
+          Soutenir Lehahiah sur HelloAsso ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">Lehahiah</a>
+          <p>Projet musical pop bohème basé en Isère. Concerts chez l'habitant, petites scènes et événements de proximité.</p>
+          <span class="geo-tag geo-tag--light" style="display: flex; margin-bottom: 1.5rem;">Isère · Apprieu (38140)</span>
+          <div class="social-links social-links--dark">
+            <a href="https://www.instagram.com/lehahiah_musique/" class="social-link" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/Lehahiahmusique/" class="social-link" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@lehahiahmusique" class="social-link" target="_blank" rel="noopener" aria-label="YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <nav class="footer__links">
+            <a href="index.html">Accueil</a>
+            <a href="a-propos.html">À propos</a>
+            <a href="concerts.html">Concerts</a>
+            <a href="musique.html">Musique</a>
+            <a href="videos.html">Vidéos</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+        </div>
+        <div>
+          <h4>Écouter</h4>
+          <nav class="footer__links">
+            <a href="https://open.spotify.com/intl-fr/artist/2yqDEEHPHumesI5pdQhoCF" target="_blank" rel="noopener">Spotify</a>
+            <a href="https://www.deezer.com/fr/artist/169032937" target="_blank" rel="noopener">Deezer</a>
+            <a href="https://music.apple.com/fr/artist/lehahiah/1622890861" target="_blank" rel="noopener">Apple Music</a>
+            <a href="https://www.youtube.com/@lehahiahmusique" target="_blank" rel="noopener">YouTube</a>
+          </nav>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="mailto:contact.lehahiah@gmail.com" class="footer__contact-email">contact.lehahiah@gmail.com</a>
+          <a href="https://www.helloasso.com/associations/lehahiah-en-musique" target="_blank" rel="noopener" style="font-size:0.875rem; color: rgba(253,250,246,0.6);">Soutenir le projet ↗</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 Lehahiah musique · Association LEHAHIAH EN MUSIQUE · SIRET 923 820 625 00013</p>
+        <div class="footer__legal">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="mentions-legales.html#confidentialite">Confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
