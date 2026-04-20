@@ -13,12 +13,13 @@
   <meta property="og:image" content="https://lehahiah.fr/images/portrait-groupe.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
+
   <!-- Favicons -->
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png" />
-  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 </head>
 <body>
 
@@ -50,14 +51,23 @@
       <div style="font-size: 4rem; margin-bottom: 1.5rem;" aria-hidden="true">✉️</div>
       <span class="eyebrow" style="margin-bottom: 1rem; display: block;">Message reçu</span>
       <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.25rem;">Merci pour votre message !</h1>
-      <p class="lead" style="max-width: 44ch; margin-inline: auto; margin-bottom: 2.5rem;">Nous avons bien reçu votre demande et vous répondrons dans les meilleurs délais, sous 48h en général.</p>
-    <div class="btn-group" style="justify-content: center;">
-  <a href="index.html" class="btn btn--primary btn--lg">Retour à l'accueil</a>
-  <a href="musique.html" class="btn btn--outline">Écouter la musique</a>
-  <a href="https://g.page/r/CZLfyg-4Ta7PEBM/review" target="_blank" rel="noopener" class="btn btn--outline">Laisser un avis Google</a>
-</div>
+      <p class="lead" style="max-width: 44ch; margin-inline: auto; margin-bottom: 2.5rem;">
+        Nous avons bien reçu votre demande et vous répondrons dans les meilleurs délais, sous 48h en général.
+      </p>
+
+      <div class="btn-group" style="justify-content: center;">
+        <a href="index.html" class="btn btn--primary btn--lg">Retour à l'accueil</a>
+        <a href="musique.html" class="btn btn--outline">Écouter la musique</a>
+        <a href="https://g.page/r/CZLfyg-4Ta7PEBM/review" target="_blank" rel="noopener" class="btn btn--outline">Laisser un avis Google</a>
+      </div>
+
+      <p style="margin-top: 2rem; max-width: 44ch; margin-inline: auto; color: var(--text-muted);">
+        Si vous avez déjà assisté à un concert de Lehahiah, vous pouvez aussi soutenir le projet en laissant un avis Google.
+      </p>
+
       <p style="margin-top: 2.5rem; font-size: 0.9rem; color: var(--text-muted);">
-        Contact direct : <a href="mailto:contact.lehahiah@gmail.com" style="color: var(--accent); font-weight: 600;">contact.lehahiah@gmail.com</a>
+        Contact direct :
+        <a href="mailto:contact.lehahiah@gmail.com" style="color: var(--accent); font-weight: 600;">contact.lehahiah@gmail.com</a>
       </p>
     </div>
   </section>
@@ -67,21 +77,24 @@
     <div class="container">
       <div class="footer__bottom" style="border-top: 1px solid rgba(253,250,246,0.08); padding-top: 2rem;">
         <p>© 2025 Lehahiah musique · Association LEHAHIAH EN MUSIQUE · SIRET 923 820 625 00013</p>
+
         <div class="footer__legal">
           <a href="mentions-legales.html">Mentions légales</a>
+          <a href="https://g.page/r/CZLfyg-4Ta7PEBM/review" target="_blank" rel="noopener">Laisser un avis Google</a>
         </div>
-        <div class="footer__intranet"><button class="footer__intranet-btn" onclick="openIntranet()">Espace musiciens</button></div>
+
+        <div class="footer__intranet">
+          <button class="footer__intranet-btn" onclick="openIntranet()">Espace musiciens</button>
+        </div>
       </div>
     </div>
   </footer>
-
 
   <!-- Intranet modal -->
   <div id="intranet-overlay" class="intranet-overlay" role="dialog" aria-modal="true" aria-labelledby="intranet-title">
     <div class="intranet-modal">
       <h3 id="intranet-title">Lehahiah App</h3>
       <p>Accès réservé aux musiciens du groupe.</p>
-      <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0;">Indice : <em>Franceretrouvée</em></p>
       <input type="password" id="intranet-pwd" placeholder="Mot de passe" autocomplete="current-password">
       <div id="intranet-error" class="intranet-modal__error"></div>
       <div class="intranet-modal__actions">
@@ -90,6 +103,7 @@
       </div>
     </div>
   </div>
+
   <script src="js/main.js"></script>
 </body>
 </html>
