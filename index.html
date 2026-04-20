@@ -1,89 +1,392 @@
-/* ===== LECTEUR AUDIO FLOTTANT ===== */
-.sc-float-bar {
-  position: fixed;
-  right: 1rem;
-  bottom: 1rem;
-  z-index: 1200;
-}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lehahiah – Concert & Animation Musicale en Isère | Voiron, Grenoble, Chambéry</title>
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Lehahiah, artiste pop bohème basé à Apprieu (Isère). Concerts chez l'habitant, mariages, comités des fêtes, mairies et associations. Disponible à Voiron, Grenoble, Bourgoin-Jallieu, Vienne, Chambéry, La Tour-du-Pin.">
+  <meta name="keywords" content="concert chez l'habitant Isère, animation musicale mariage Isère, groupe mariage Grenoble, artiste Voiron, concert comité des fêtes Isère, musicien mariage Chambéry, animation soirée Isère, concert intimiste Grenoble, artiste Bourgoin-Jallieu, animation mairie Isère, Lehahiah musique, pop bohème Isère">
+  <meta property="og:title" content="Lehahiah – Concert & Animation Musicale en Isère | Voiron, Grenoble, Chambéry">
+  <meta property="og:description" content="Lehahiah, artiste pop bohème basé à Apprieu (Isère). Concerts chez l'habitant, mariages, comités des fêtes, mairies et associations. Disponible à Voiron, Grenoble, Bourgoin-Jallieu, Vienne, Chambéry, La Tour-du-Pin.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://lehahiah.fr/">
 
-.sc-float-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  background: rgba(28, 24, 22, 0.94);
-  color: rgba(253,250,246,0.96);
-  border: 1px solid rgba(253,250,246,0.18);
-  border-radius: 999px;
-  padding: 0.72rem 1.1rem 0.72rem 0.85rem;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  cursor: pointer;
-  box-shadow: 0 10px 28px rgba(0,0,0,0.34);
-  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-  white-space: nowrap;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
+  <link rel="stylesheet" href="css/style.css">
 
-.sc-float-btn:hover {
-  background: #2e2825;
-  color: var(--white);
-  border-color: rgba(253,250,246,0.3);
-  transform: translateY(-1px);
-  box-shadow: 0 14px 34px rgba(0,0,0,0.4);
-}
-
-.sc-float-btn.playing {
-  background: var(--accent);
-  border-color: transparent;
-  color: var(--white);
-}
-
-.sc-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: rgba(253,250,246,0.12);
-  color: currentColor;
-  flex-shrink: 0;
-}
-
-.sc-float-btn.playing .sc-icon {
-  background: rgba(255,255,255,0.18);
-}
-
-.sc-label {
-  display: inline-flex;
-  align-items: center;
-  line-height: 1;
-}
-
-.sc-icon--pause {
-  display: none;
-}
-
-@media (max-width: 540px) {
-  .sc-float-bar {
-    right: 0.75rem;
-    left: 0.75rem;
-    bottom: 0.75rem;
-    transform: none;
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "Lehahiah",
+    "description": "Projet musical pop bohème basé en Isère. Concerts chez l'habitant, scènes locales et événements de proximité.",
+    "genre": ["Pop", "Rock", "Reggae"],
+    "url": "https://lehahiah.fr",
+    "email": "contact.lehahiah@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Apprieu",
+      "postalCode": "38140",
+      "addressRegion": "Isère",
+      "addressCountry": "FR"
+    },
+    "sameAs": [
+      "https://www.facebook.com/Lehahiahmusique/",
+      "https://www.instagram.com/lehahiah_musique/",
+      "https://www.youtube.com/@lehahiahmusique",
+      "https://open.spotify.com/intl-fr/artist/2yqDEEHPHumesI5pdQhoCF"
+    ]
   }
+  </script>
 
-  .sc-float-btn {
-    width: 100%;
-    justify-content: center;
-    font-size: 0.88rem;
-    padding: 0.75rem 1rem;
-  }
+  <meta property="og:url" content="https://lehahiah.fr/">
+  <meta property="og:image" content="https://lehahiah.fr/images/portrait-groupe.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="geo.region" content="FR-38">
+  <meta name="geo.placename" content="Apprieu, Isère, Auvergne-Rhône-Alpes">
+  <meta name="geo.position" content="45.4167;5.5167">
+  <meta name="ICBM" content="45.4167, 5.5167">
 
-  .sc-label {
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav hero-nav" id="nav" role="navigation" aria-label="Navigation principale">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Lehahiah – Accueil">
+        <img src="images/lehahiah-logo.png" alt="Lehahiah" class="nav__logo-img nav__logo-img--color" loading="eager">
+        <img src="images/lehahiah-logo-blanc.png" alt="Lehahiah" class="nav__logo-img nav__logo-img--blanc" loading="eager">
+      </a>
+      <div class="nav__links" id="navLinks" role="menubar">
+        <a href="index.html" class="nav__link" role="menuitem">Accueil</a>
+        <a href="a-propos.html" class="nav__link" role="menuitem">À propos</a>
+        <a href="concerts.html" class="nav__link" role="menuitem">Concerts</a>
+        <a href="musique.html" class="nav__link" role="menuitem">Musique</a>
+        <a href="videos.html" class="nav__link" role="menuitem">Vidéos</a>
+        <a href="contact.html" class="nav__link" role="menuitem">Contact</a>
+        <a href="concerts.html#demande" class="nav__cta" role="menuitem">Programmer une date</a>
+      </div>
+      <button class="nav__hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Présentation Lehahiah">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__content">
+      <span class="eyebrow" style="color: var(--accent-light);">Pop bohème · Isère</span>
+      <h1 class="hero__title">Leha<em>hiah</em></h1>
+      <p class="hero__tagline">Là où la chanson commence par le texte.</p>
+      <p class="hero__desc">Des concerts qui vous ressemblent - chez l'habitant, sur petites scènes, dans vos lieux de vie. Basé en Isère, programmable partout.</p>
+      <div class="hero__actions">
+        <a href="concerts.html#demande" class="btn btn--primary btn--lg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          Programmer une date
+        </a>
+        <a href="musique.html" class="btn btn--outline-light btn--lg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+          Écouter la musique
+        </a>
+      </div>
+
+      <!-- Social links -->
+      <div class="social-links social-links--dark" aria-label="Réseaux sociaux">
+        <a href="https://www.instagram.com/lehahiah_musique/" class="social-link" target="_blank" rel="noopener" aria-label="Instagram Lehahiah">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+        </a>
+        <a href="https://www.facebook.com/Lehahiahmusique/" class="social-link" target="_blank" rel="noopener" aria-label="Facebook Lehahiah">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+        </a>
+        <a href="https://www.youtube.com/@lehahiahmusique" class="social-link" target="_blank" rel="noopener" aria-label="YouTube Lehahiah">
+          <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"></path></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero__scroll" aria-hidden="true">
+      <span>Découvrir</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="bg-white">
+    <div class="container">
+      <div class="two-col two-col--60-40">
+        <div class="two-col__text fade-up">
+          <span class="eyebrow">Le projet</span>
+          <h2>Une musique qui part du texte, une scène qui part de vous</h2>
+          <p class="lead" style="margin-top: 1.25rem;">Lehahiah, c'est une pop bohème ancrée dans les mots - entre influences folk, rock et reggae. Des chansons qui parlent de l'intime, du quotidien, du vivant.</p>
+          <p style="color: var(--text-muted); margin-top: 1rem;">Basé en Isère, le projet se construit autour de formats de concert humains et accessibles : chez l'habitant, dans les cafés, sur les petites scènes locales, dans les associations et les lieux de vie.</p>
+          <div class="btn-group" style="margin-top: 2rem;">
+            <a href="a-propos.html" class="btn btn--outline">Découvrir le projet</a>
+            <a href="concerts.html" class="btn btn--primary">Programmer une date</a>
+          </div>
+        </div>
+        <div class="two-col__img fade-up">
+          <div class="photo-frame photo-frame--portrait">
+            <img src="images/portrait-groupe.jpg" alt="Lehahiah – portrait du groupe" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMATS -->
+  <section class="bg-alt">
+    <div class="container">
+      <div class="section-header centered fade-up">
+        <span class="eyebrow">Formats de concert</span>
+        <h2>La scène s'adapte à votre lieu</h2>
+        <p class="desc">Du salon au bar, de la médiathèque à la salle associative - Lehahiah propose des concerts sur mesure, adaptés à chaque espace et chaque public.</p>
+      </div>
+      <div class="formats-grid">
+        <div class="format-card fade-up">
+          <div class="format-card__icon" aria-hidden="true">🏠</div>
+          <h3>Chez l'habitant</h3>
+          <p>Un concert dans votre salon, jardin ou espace de vie. Intime, convivial, unique. Vous invitez, Lehahiah joue.</p>
+        </div>
+        <div class="format-card fade-up">
+          <div class="format-card__icon" aria-hidden="true">🎵</div>
+          <h3>Scènes locales</h3>
+          <p>Bars, cafés, restaurants, salles de village - Lehahiah s'adapte aux contraintes techniques et à l'ambiance du lieu.</p>
+        </div>
+        <div class="format-card fade-up">
+          <div class="format-card__icon" aria-hidden="true">🌿</div>
+          <h3>Événements associatifs</h3>
+          <p>Fêtes de quartier, soirées culturelles, événements d'association. Une présence artistique chaleureuse et accessible.</p>
+        </div>
+        <div class="format-card fade-up">
+          <div class="format-card__icon" aria-hidden="true">🏢</div>
+          <h3>Entreprises & collectivités</h3>
+          <p>Animations culturelles pour vos équipes, inaugurations, événements d'entreprise ou collectivités locales.</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="concerts.html" class="btn btn--primary">Voir tous les formats</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <div class="quote-band">
+    <div class="quote-band__glow" aria-hidden="true"></div>
+    <div class="container--sm">
+      <blockquote>
+        La chanson commence par le texte.
+        <cite>Lehahiah – Pop bohème</cite>
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- MUSIQUE -->
+  <section class="bg-white">
+    <div class="container">
+      <div class="two-col">
+        <div class="two-col__text fade-up">
+          <span class="eyebrow">La musique</span>
+          <h2>Entre pop, rock et reggae</h2>
+          <p class="lead" style="margin-top: 1.25rem;">Une pop bohème aux couleurs chaudes, portée par des textes qui racontent l'essentiel. À écouter sur toutes les plateformes.</p>
+          <div class="platform-links">
+            <a href="https://open.spotify.com/intl-fr/artist/2yqDEEHPHumesI5pdQhoCF" class="platform-link" target="_blank" rel="noopener" aria-label="Écouter sur Spotify">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>
+              Spotify
+            </a>
+            <a href="https://www.deezer.com/fr/artist/169032937" class="platform-link" target="_blank" rel="noopener" aria-label="Écouter sur Deezer">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.5 17.76h4.58v1.56H.5zm0-2.75h4.58v1.56H.5zm0-2.75h4.58v1.56H.5zm5.166 5.5h4.58v1.56H5.666zm0-2.75h4.58v1.56H5.666zm0-2.75h4.58v1.56H5.666zm0-2.75h4.58v1.56H5.666zM10.83 17.76h4.58v1.56H10.83zm0-2.75h4.58v1.56H10.83zm0-2.75h4.58v1.56H10.83zm0-2.75h4.58v1.56H10.83zm0-2.75h4.58v1.56H10.83zM16 17.76h4.58v1.56H16zm0-2.75h4.58v1.56H16zm0-2.75h4.58v1.56H16zm0-2.75h4.58v1.56H16zm0-2.75h4.58v1.56H16zm0-2.75h4.58v1.56H16z"></path></svg>
+              Deezer
+            </a>
+            <a href="https://music.apple.com/fr/artist/lehahiah/1622890861" class="platform-link" target="_blank" rel="noopener" aria-label="Écouter sur Apple Music">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.064-2.31-2.22-3.09a5.33 5.33 0 00-1.64-.91 7.93 7.93 0 00-1.67-.35c-.04 0-.12-.01-.2-.02H.026v18.59h.024v.022H24V6.124zm-1.53 15.026H1.56V2.386h20.91v18.764zM8.51 8.15v7.52h1.56V8.15h2.94V6.6H5.57v1.55zm8.98 0h-3.14V6.6h-1.56v9.07h1.56v-6.02h3.14z"></path></svg>
+              Apple Music
+            </a>
+          </div>
+          <div style="margin-top: 2rem;">
+            <a href="musique.html" class="btn btn--outline">Voir toute la discographie</a>
+          </div>
+        </div>
+        <div class="two-col__img fade-up">
+          <div class="spotify-wrap">
+            <iframe
+              style="border-radius: var(--radius-lg);"
+              src="https://open.spotify.com/embed/artist/2yqDEEHPHumesI5pdQhoCF?utm_source=generator&theme=0"
+              width="100%"
+              height="352"
+              frameborder="0"
+              allowfullscreen=""
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              title="Écouter Lehahiah sur Spotify">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDÉO -->
+  <section class="bg-alt">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="eyebrow">En scène</span>
+        <h2>La présence, ça se vit</h2>
+        <p class="desc">Aperçus live, captations et teasers - pour sentir l'énergie d'un concert Lehahiah avant d'en organiser un.</p>
+      </div>
+      <div class="fade-up">
+        <a href="https://www.youtube.com/@lehahiahmusique" class="video-placeholder" target="_blank" rel="noopener" aria-label="Voir les vidéos Lehahiah sur YouTube">
+          <div class="play-btn" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          </div>
+          <span>Voir les vidéos sur YouTube</span>
+          <span style="font-size: 0.8rem; opacity: 0.6;">@lehahiahmusique</span>
+        </a>
+      </div>
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="videos.html" class="btn btn--outline">Voir toutes les vidéos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA CONTACT -->
+  <section class="bg-white">
+    <div class="container--sm">
+      <div class="cta-band fade-up">
+        <span class="eyebrow">Programmer une date</span>
+        <h2>Vous avez un lieu, on a la musique</h2>
+        <p>Concert chez l'habitant, soirée associative, scène locale en Isère - prenez contact, on trouvera le format qui vous correspond.</p>
+        <div class="btn-group" style="justify-content: center;">
+          <a href="concerts.html#demande" class="btn btn--primary btn--lg">Demander une date</a>
+          <a href="mailto:contact.lehahiah@gmail.com" class="btn btn--outline">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            Envoyer un email
+          </a>
+        </div>
+        <p style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-light);">
+          <span class="geo-tag">Basé en Isère · disponible en région</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo" aria-label="Lehahiah – Accueil"><img src="images/lehahiah-logo-blanc.png" alt="Lehahiah"></a>
+          <p>Projet musical pop bohème basé en Isère. Concerts chez l'habitant, petites scènes et événements de proximité.</p>
+          <span class="geo-tag geo-tag--light" style="display: flex; margin-bottom: 1.5rem;">Isère · Apprieu (38140)</span>
+          <div class="social-links social-links--dark">
+            <a href="https://www.instagram.com/lehahiah_musique/" class="social-link" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+            </a>
+            <a href="https://www.facebook.com/Lehahiahmusique/" class="social-link" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+            </a>
+            <a href="https://www.youtube.com/@lehahiahmusique" class="social-link" target="_blank" rel="noopener" aria-label="YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"></path></svg>
+            </a>
+          </div>
+
+          <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid rgba(253,250,246,0.08);">
+            <p style="font-size: 0.9rem; color: rgba(253,250,246,0.72); margin-bottom: 0.75rem;">
+              Vous avez assisté à un concert ?
+            </p>
+            <a href="https://g.page/r/CZLfyg-4Ta7PEBM/review" target="_blank" rel="noopener" style="font-size: 0.95rem; color: var(--white); font-weight: 600;">
+              Laisser un avis Google ↗
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Navigation</h4>
+          <nav class="footer__links" aria-label="Navigation pied de page">
+            <a href="index.html">Accueil</a>
+            <a href="a-propos.html">À propos</a>
+            <a href="concerts.html">Concerts</a>
+            <a href="scenographie.html">Scénographie</a>
+            <a href="musique.html">Musique</a>
+            <a href="videos.html">Vidéos</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+        </div>
+
+        <div>
+          <h4>Écouter</h4>
+          <nav class="footer__links" aria-label="Plateformes musicales">
+            <a href="https://open.spotify.com/intl-fr/artist/2yqDEEHPHumesI5pdQhoCF" target="_blank" rel="noopener">Spotify</a>
+            <a href="https://www.deezer.com/fr/artist/169032937" target="_blank" rel="noopener">Deezer</a>
+            <a href="https://music.apple.com/fr/artist/lehahiah/1622890861" target="_blank" rel="noopener">Apple Music</a>
+            <a href="https://www.youtube.com/@lehahiahmusique" target="_blank" rel="noopener">YouTube</a>
+          </nav>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <a href="mailto:contact.lehahiah@gmail.com" class="footer__contact-email">contact.lehahiah@gmail.com</a>
+          <a href="https://www.helloasso.com/associations/lehahiah-en-musique" class="footer__links" target="_blank" rel="noopener" style="font-size:0.875rem; color: rgba(253,250,246,0.6);">Soutenir le projet ↗</a>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2025 Lehahiah musique · Association LEHAHIAH EN MUSIQUE · SIRET 923 820 625 00013</p>
+        <div class="footer__legal">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="mentions-legales.html#confidentialite">Confidentialité</a>
+        </div>
+        <div class="footer__intranet"><button class="footer__intranet-btn" onclick="openIntranet()">Espace musiciens</button></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Intranet modal -->
+  <div id="intranet-overlay" class="intranet-overlay" role="dialog" aria-modal="true" aria-labelledby="intranet-title">
+    <div class="intranet-modal">
+      <h3 id="intranet-title">Lehahiah App</h3>
+      <p>Accès réservé aux musiciens du groupe.</p>
+      <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0;">Indice : <em>Franceretrouvée</em></p>
+      <input type="password" id="intranet-pwd" placeholder="Mot de passe" autocomplete="current-password">
+      <div id="intranet-error" class="intranet-modal__error"></div>
+      <div class="intranet-modal__actions">
+        <button class="btn--ghost" onclick="closeIntranet()">Annuler</button>
+        <button class="btn--accent" onclick="submitIntranet()">Accéder</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lecteur audio flottant -->
+  <iframe id="sc-player"
+    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A1998955903%3Fsecret_token%3Ds-NZijecysy1y&auto_play=false&visual=false"
+    allow="autoplay"
+    style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden;"
+    aria-hidden="true">
+  </iframe>
+
+  <div id="sc-bar" class="sc-float-bar">
+    <button id="sc-toggle" class="sc-float-btn" onclick="toggleSC()" aria-label="Écouter Le café d'en face">
+      <span class="sc-icon sc-icon--play">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true">
+          <polygon points="5,3 19,12 5,21"></polygon>
+        </svg>
+      </span>
+      <span class="sc-icon sc-icon--pause" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+          <rect x="6" y="4" width="4" height="16"></rect>
+          <rect x="14" y="4" width="4" height="16"></rect>
+        </svg>
+      </span>
+      <span class="sc-label">Écouter - Le café d'en face</span>
+    </button>
+  </div>
+
+  <script src="https://w.soundcloud.com/player/api.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
