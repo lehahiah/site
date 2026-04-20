@@ -949,19 +949,25 @@ input[type="hidden"] { display: none; }
 
 /* ===== INTRANET BUTTON ===== */
 .footer__intranet {
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
 }
 .footer__intranet-btn {
-  background: none;
-  border: none;
-  color: rgba(253,250,246,0.35);
+  background: rgba(253,250,246,0.08);
+  border: 1px solid rgba(253,250,246,0.2);
+  border-radius: 20px;
+  color: rgba(253,250,246,0.7);
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   cursor: pointer;
-  padding: 0;
-  transition: color 0.2s;
+  padding: 0.35rem 0.9rem;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  letter-spacing: 0.01em;
 }
-.footer__intranet-btn:hover { color: rgba(253,250,246,0.65); }
+.footer__intranet-btn:hover {
+  background: rgba(253,250,246,0.15);
+  border-color: rgba(253,250,246,0.4);
+  color: rgba(253,250,246,0.95);
+}
 
 /* ===== INTRANET MODAL ===== */
 .intranet-overlay {

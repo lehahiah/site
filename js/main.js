@@ -136,9 +136,10 @@
   };
 
   window.submitIntranet = function () {
-    if (input && input.value === 'paysperdu2020') {
-      window.open('https://lehahiah-book-5lik.glide.page/dl/a400f7', '_blank', 'noopener');
+    var pwd = input ? input.value.trim() : '';
+    if (pwd === 'paysperdu2020') {
       closeIntranet();
+      window.open('https://lehahiah-book-5lik.glide.page/dl/a400f7', '_blank', 'noopener,noreferrer');
     } else {
       if (errorEl) errorEl.textContent = 'Mot de passe incorrect.';
       if (input) { input.value = ''; input.focus(); }
