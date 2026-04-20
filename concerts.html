@@ -430,10 +430,25 @@
           <a href="mentions-legales.html">Mentions légales</a>
           <a href="mentions-legales.html#confidentialite">Confidentialité</a>
         </div>
+        <div class="footer__intranet"><button class="footer__intranet-btn" onclick="openIntranet()">Espace musiciens</button></div>
       </div>
     </div>
   </footer>
 
+
+  <!-- Intranet modal -->
+  <div id="intranet-overlay" class="intranet-overlay" role="dialog" aria-modal="true" aria-labelledby="intranet-title">
+    <div class="intranet-modal">
+      <h3 id="intranet-title">Lehahiah App</h3>
+      <p>Accès réservé aux musiciens du groupe.</p>
+      <input type="password" id="intranet-pwd" placeholder="Mot de passe" autocomplete="current-password">
+      <div id="intranet-error" class="intranet-modal__error"></div>
+      <div class="intranet-modal__actions">
+        <button class="btn--ghost" onclick="closeIntranet()">Annuler</button>
+        <button class="btn--accent" onclick="submitIntranet()">Accéder</button>
+      </div>
+    </div>
+  </div>
   <script src="js/main.js"></script>
 </body>
 </html>
