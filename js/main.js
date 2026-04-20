@@ -23,25 +23,31 @@
   updateNav();
 
   if (hamburger && navLinks) {
+    // Déplace le menu comme enfant direct de <body> pour éviter
+    // les conflits de stacking context sur Android Chrome
+    document.body.appendChild(navLinks);
+
+    function closeMenu() {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
     hamburger.addEventListener('click', function () {
       const open = hamburger.classList.toggle('open');
       navLinks.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.body.style.overflow = open ? 'hidden' : '';
     });
 
     navLinks.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        hamburger.classList.remove('open');
-        navLinks.classList.remove('open');
-        document.body.style.overflow = '';
-      });
+      link.addEventListener('click', closeMenu);
     });
 
     document.addEventListener('click', function (e) {
-      if (!nav.contains(e.target) && navLinks.classList.contains('open')) {
-        hamburger.classList.remove('open');
-        navLinks.classList.remove('open');
-        document.body.style.overflow = '';
+      if (!nav.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('open')) {
+        closeMenu();
       }
     });
   }
