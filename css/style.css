@@ -947,6 +947,30 @@ input[type="hidden"] { display: none; }
   .platform-link { width: 100%; justify-content: center; }
 }
 
+/* ===== SCÉNOGRAPHIE ===== */
+.sceno-item {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.75rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+.sceno-venue {
+  font-weight: 600;
+  color: var(--text);
+}
+.sceno-loc {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+.sceno-note {
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
 /* ===== INTRANET BUTTON ===== */
 .footer__intranet {
   margin-top: 0.75rem;
