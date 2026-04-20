@@ -947,6 +947,35 @@ input[type="hidden"] { display: none; }
   .platform-link { width: 100%; justify-content: center; }
 }
 
+/* ===== LECTEUR AUDIO FLOTTANT ===== */
+.sc-float-bar {
+  position: fixed;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 500;
+}
+.sc-float-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: var(--bg-dark);
+  color: rgba(253,250,246,0.85);
+  border: 1px solid rgba(253,250,246,0.14);
+  border-radius: 99px;
+  padding: 0.55rem 1.1rem 0.55rem 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.sc-float-btn:hover { background: #2e2825; color: var(--white); border-color: rgba(253,250,246,0.25); }
+.sc-float-btn.playing { background: var(--accent); border-color: transparent; color: var(--white); }
+.sc-icon--pause { display: none; }
+
 /* ===== SCÉNOGRAPHIE ===== */
 .sceno-item {
   display: flex;
