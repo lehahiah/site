@@ -23,22 +23,31 @@
   updateNav();
 
   if (hamburger && navLinks) {
-    // Déplace le menu comme enfant direct de <body> pour éviter
-    // les conflits de stacking context sur Android Chrome
-    document.body.appendChild(navLinks);
+    const origParent = navLinks.parentElement;
+    const origNextSibling = navLinks.nextElementSibling;
 
     function closeMenu() {
       hamburger.classList.remove('open');
       navLinks.classList.remove('open');
       hamburger.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
+      // Remet navLinks dans le nav (annule le fix Android)
+      if (navLinks.parentElement === document.body) {
+        origParent.insertBefore(navLinks, origNextSibling);
+      }
     }
 
     hamburger.addEventListener('click', function () {
       const open = hamburger.classList.toggle('open');
-      navLinks.classList.toggle('open', open);
-      hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
-      document.body.style.overflow = open ? 'hidden' : '';
+      if (open) {
+        // Déplace vers <body> seulement à l'ouverture (fix stacking context Android)
+        document.body.appendChild(navLinks);
+        navLinks.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      } else {
+        closeMenu();
+      }
     });
 
     navLinks.querySelectorAll('a').forEach(function (link) {
