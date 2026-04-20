@@ -117,6 +117,51 @@
   });
 })();
 
+// ===== LECTEUR AUDIO SOUNDCLOUD =====
+(function () {
+  var bar = document.getElementById('sc-bar');
+  if (!bar) return;
+
+  var widget = null;
+  var isPlaying = false;
+
+  function getWidget() {
+    if (widget) return widget;
+    if (typeof SC === 'undefined' || !SC.Widget) return null;
+    var iframe = document.getElementById('sc-player');
+    if (!iframe) return null;
+    widget = SC.Widget(iframe);
+    widget.bind(SC.Widget.Events.FINISH, function () {
+      isPlaying = false;
+      updateUI();
+    });
+    return widget;
+  }
+
+  window.toggleSC = function () {
+    var w = getWidget();
+    if (!w) return;
+    if (isPlaying) {
+      w.pause();
+      isPlaying = false;
+    } else {
+      w.play();
+      isPlaying = true;
+    }
+    updateUI();
+  };
+
+  function updateUI() {
+    var btn = document.getElementById('sc-toggle');
+    var playIcon = document.querySelector('.sc-icon--play');
+    var pauseIcon = document.querySelector('.sc-icon--pause');
+    if (!btn) return;
+    btn.classList.toggle('playing', isPlaying);
+    if (playIcon) playIcon.style.display = isPlaying ? 'none' : '';
+    if (pauseIcon) pauseIcon.style.display = isPlaying ? '' : 'none';
+  }
+})();
+
 // ===== INTRANET MUSICIENS =====
 (function () {
   var overlay = document.getElementById('intranet-overlay');

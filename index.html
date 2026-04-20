@@ -229,26 +229,8 @@
     </div>
   </section>
 
-  <!-- SOUNDCLOUD -->
-  <section class="bg-alt">
-    <div class="container--sm">
-      <div class="section-header centered fade-up">
-        <span class="eyebrow">À écouter</span>
-        <h2>Le Café d'en Face</h2>
-        <p class="desc">Une maquette de travail – pour entendre l'univers Lehahiah avant l'arrangement final.</p>
-      </div>
-      <div class="fade-up" style="border-radius: var(--radius-lg); overflow: hidden;">
-        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
-          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A1998955903%3Fsecret_token%3Ds-NZijecysy1y&color=%23B5673A&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
-          title="Lehahiah – Le Café d'en Face (version demo) sur SoundCloud"
-          loading="lazy">
-        </iframe>
-      </div>
-    </div>
-  </section>
-
   <!-- VIDÉO -->
-  <section class="bg-white">
+  <section class="bg-alt">
     <div class="container">
       <div class="section-header fade-up">
         <span class="eyebrow">En scène</span>
@@ -364,6 +346,26 @@
       </div>
     </div>
   </div>
+  <!-- Lecteur audio flottant -->
+  <iframe id="sc-player"
+    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A1998955903%3Fsecret_token%3Ds-NZijecysy1y&auto_play=false&visual=false"
+    allow="autoplay"
+    style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden;"
+    aria-hidden="true">
+  </iframe>
+  <div id="sc-bar" class="sc-float-bar">
+    <button id="sc-toggle" class="sc-float-btn" onclick="toggleSC()" aria-label="Écouter Le café d'en face">
+      <span class="sc-icon sc-icon--play">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><polygon points="5,3 19,12 5,21"/></svg>
+      </span>
+      <span class="sc-icon sc-icon--pause" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+      </span>
+      <span class="sc-label">Le café d'en face</span>
+    </button>
+  </div>
+
+  <script src="https://w.soundcloud.com/player/api.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
