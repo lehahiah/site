@@ -116,3 +116,43 @@
     observer.observe(el);
   });
 })();
+
+// ===== INTRANET MUSICIENS =====
+(function () {
+  var overlay = document.getElementById('intranet-overlay');
+  var input = document.getElementById('intranet-pwd');
+  var errorEl = document.getElementById('intranet-error');
+  if (!overlay) return;
+
+  window.openIntranet = function () {
+    overlay.classList.add('open');
+    setTimeout(function () { if (input) input.focus(); }, 50);
+    if (errorEl) errorEl.textContent = '';
+    if (input) input.value = '';
+  };
+
+  window.closeIntranet = function () {
+    overlay.classList.remove('open');
+  };
+
+  window.submitIntranet = function () {
+    if (input && input.value === 'paysperdu2020') {
+      window.open('https://lehahiah-book-5lik.glide.page/dl/a400f7', '_blank', 'noopener');
+      closeIntranet();
+    } else {
+      if (errorEl) errorEl.textContent = 'Mot de passe incorrect.';
+      if (input) { input.value = ''; input.focus(); }
+    }
+  };
+
+  if (input) {
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') submitIntranet();
+      if (e.key === 'Escape') closeIntranet();
+    });
+  }
+
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeIntranet();
+  });
+})();
