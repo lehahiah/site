@@ -1,0 +1,21 @@
+{
+  "name": "Lehahiah",
+  "short_name": "Lehahiah",
+  "description": "Concert & Animation Musicale en Isère",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#1c1816",
+  "theme_color": "#1c1816",
+  "icons": [
+    {
+      "src": "/images/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
