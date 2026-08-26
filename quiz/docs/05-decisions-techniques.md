@@ -129,3 +129,81 @@ Si la V2 doit passer sous Next.js, `data/`, `js/scoring.js`, `js/storage.js`,
 6. **Lecteur d'écran réel** (NVDA / VoiceOver) : la structure, les libellés et les
    annonces sont en place et testés automatiquement, mais un passage sur lecteur d'écran
    réel reste à faire.
+
+## 6. Passe d'audit du 26 août 2026 — constats et corrections
+
+Trois audits indépendants ont été menés sur la V1 (fidélité éditoriale, robustesse du
+code, sécurité pédagogique et confidentialité). Un quatrième, sur l'accessibilité, n'a
+pas pu être mené à son terme ; ses vérifications ont été reprises directement.
+
+### 6.1 Corrigé — contenu
+
+| Constat | Correction |
+|---|---|
+| Q3-01 et Q3-09 : des puces de « Point de vigilance » figuraient dans `sources[]` et s'affichaient sur la page Sources, alors que les règles pédagogiques §3 interdisent d'afficher les notes internes | Retirées par le script de normalisation, qui compare chaque source à `vigilanceMarkdown` ; la validation refuse désormais toute source rédigée comme une consigne interne |
+| Le garde-fou anti-métadonnées ne couvrait que les cinq champs Markdown | Il couvre `sources[]` et vérifie l'absence des champs internes |
+| Marques d'emphase Markdown visibles dans trois références de Q3-09 | Retirées (les sources sont affichées en texte brut) |
+| Titres de bloc du master collés à `accessibilityMarkdown` (Q1-06, Q1-11) | Retirés |
+| `confidence`, `sourceNature` et `vigilanceMarkdown` étaient servis au navigateur | Le fichier d'exécution est désormais **expurgé** de ces trois champs internes ; ils restent dans `questions-31.source.json`, qui est le registre interne. Écart assumé au §11 des règles pédagogiques : la séparation des champs est conservée, mais le registre complet n'est plus public |
+
+La comparaison caractère par caractère des 31 items avec les masters n'a révélé **aucune
+divergence de fond** : énoncés, options et leur ordre, réponses attendues, corrigés,
+« À retenir » et approfondissements sont fidèles.
+
+### 6.2 Corrigé — code
+
+| Constat | Correction |
+|---|---|
+| Une exception pendant le rendu laissait un écran blanc (`clear()` avant construction) | L'écran est construit avant d'effacer, et toute erreur affiche un message |
+| `remediation.json` et `quiz-presentation.json` n'étaient validés nulle part | `validateSideFiles()` les contrôle au chargement (axes, seuils, items référencés, objectifs) |
+| Listes Markdown précédées d'une phrase d'amorce rendues en paragraphe à tirets (32 blocs, 18 items) : plus aucune liste annoncée aux lecteurs d'écran | Corrigé dans `renderBlock` ; 34 listes réelles rendues, vérifiées par test sur le contenu réel |
+| « Quiz terminé / 0 question parcourue » atteignable par le bouton Retour ou une adresse directe | Écran neutre « Rien à afficher pour l'instant » |
+| L'effacement depuis la page de résultats n'actualisait pas l'écran | Nouveau rendu immédiat |
+| Deux onglets sur la même série s'écrasaient silencieusement | Écouteur `storage` : l'onglet resynchronise sa progression (mitigation, pas fusion) |
+| Une série terminée n'offrait plus aucun chemin vers sa restitution | Lien « Revoir la fin du quiz » sur l'écran de présentation |
+| Adresse hors bornes (`?q=99`) : contenu ramené aux bornes mais URL fausse | L'adresse est corrigée dans l'historique |
+| Écriture dans `localStorage` au simple affichage d'une question | Persistance uniquement en cas de changement réel |
+| Saut de hiérarchie H1 → H3 sur les écrans de question | Intertitres d'item en `h2` |
+| Liens d'en-tête sous 24 px de haut (WCAG 2.5.8) | Cibles portées à 24 px minimum |
+
+### 6.3 Corrigé — restitution et données
+
+- **Axes de remédiation** : les déclenchements composés des masters sont désormais
+  reproduits (`mode: "all"` et `minSubErrors`). L'axe B du Quiz 1 exige une erreur à
+  l'item 5 **et** plusieurs facteurs manqués à l'item 6 ; idem pour l'axe D avec les
+  items 10 et 11. Une seule sous-erreur d'association ou de classement ne déclenche plus
+  un axe dont le message décrirait des confusions non commises. Pour les Quiz 2 et 3, les
+  masters ne fixent aucun seuil : le seuil d'une erreur est assumé et tracé dans
+  `remediation.json` (`_trigger`).
+- **Interface d'événements** : `expectedFound` est retiré des clés autorisées. Transmettre
+  la justesse item par item reviendrait à envoyer le détail des réponses, que le cahier des
+  charges §15 réserve à une décision explicite.
+
+### 6.4 Vérifié conforme, sans action
+
+- Aucun diagnostic, niveau de risque, profil, sévérité, prédiction, conseil personnalisé ni
+  qualification juridique individuelle sur 11 parcours couvrant les trois séries.
+- Deux axes au maximum partout ; messages verbatim des masters ; aucun texte généré.
+- Confidentialité : aucun cookie, aucune requête sortante, aucun champ libre, effacement
+  effectif et limité au préfixe de l'application.
+- Rendu Markdown : 43 charges hostiles, aucune exécution, aucune balise active.
+- Stockage local corrompu, tronqué, d'un autre schéma ou saturé : parcours préservé.
+- Zoom 200 % et 320 px : aucun débordement horizontal.
+- Thème sombre : aucun texte sous 4,5:1.
+
+### 6.5 Reste ouvert
+
+1. **Documents internes servis publiquement.** Dans ce dépôt, les deux chaînes de
+   déploiement publient la racine entière : `quiz/content/*.md` (masters, avec les coches
+   de bonne réponse), `quiz/content/referentiel-sources.md` (31 niveaux de confiance),
+   `quiz/docs/*.md` et `quiz/data/questions-31.source.json` seraient donc accessibles en
+   ligne. Rien n'est publié à ce stade — le workflow ne se déclenche que sur `main` — mais
+   la correction de fond appartient au dépôt cible : dans un projet à build, ces fichiers
+   vivent hors du répertoire servi. Un `.vercelignore` les exclut d'un déploiement Vercel
+   en attendant.
+2. **Mentions légales propres au quiz** : éditeur, hébergeur, contact. À rédiger avec les
+   informations de FormaSwift.
+3. **En-têtes de sécurité** (CSP, `X-Content-Type-Options`, `Referrer-Policy`) : à poser
+   dans la configuration du dépôt cible.
+4. **Lecteur d'écran réel** : structure, libellés et annonces vérifiés automatiquement ;
+   un passage NVDA / VoiceOver reste à faire.

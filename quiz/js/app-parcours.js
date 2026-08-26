@@ -9,6 +9,7 @@ import { loadContent, getQuiz, getItems, getItem, getBlockLabel } from './datase
 import { el, clear } from './dom.js';
 import { track } from './analytics.js';
 import {
+  STORAGE_PREFIX,
   createEmptyProgress,
   loadProgress,
   saveProgress,
@@ -67,9 +68,18 @@ function navigate(target, { replace = false } = {}) {
   render();
 }
 
+/** Aligne l'état sur l'adresse courante, puis rend. */
+function syncFromLocation() {
+  const next = readLocation();
+  state.view = next.view;
+  state.order = next.order;
+  render();
+}
+
 /* --- Progression --------------------------------------------------------- */
 
 function persist(next) {
+  if (next === state.progress) return; // les réducteurs renvoient l'objet inchangé
   state.progress = next;
   saveProgress(next, undefined);
 }
@@ -92,6 +102,7 @@ function renderIntro(quiz, presentation) {
     progress: state.progress,
     startHref: buildUrl({ view: 'question', order: 1 }),
     resumeHref: buildUrl({ view: 'question', order: resumeOrder }),
+    resultsHref: buildUrl({ view: 'resultats' }),
     onRestart: restart,
   });
 }
@@ -100,6 +111,12 @@ function renderQuestion(quiz) {
   const items = getItems(state.content.dataset, state.quizId);
   const total = items.length;
   const order = Math.min(Math.max(state.order, 1), total);
+  if (order !== state.order) {
+    // Adresse hors bornes : on corrige l'URL plutôt que d'afficher un contenu
+    // qui ne correspond pas à ce qui est demandé.
+    state.order = order;
+    window.history.replaceState({}, '', buildUrl({ view: 'question', order }));
+  }
   const item = getItem(state.content.dataset, state.quizId, order);
   const validated = isValidated(state.progress, item.id);
   const answer = state.progress.answers[item.id];
@@ -208,8 +225,26 @@ function renderQuestion(quiz) {
 function renderResults(quiz) {
   const items = getItems(state.content.dataset, state.quizId);
   const summary = computeSummary(items, state.progress);
+
+  // Aucune réponse validée : afficher « Quiz terminé / 0 sur 0 » n'aurait aucun sens.
+  if (summary.reviewed === 0) {
+    return el('section', { class: 'card' }, [
+      el('h1', { text: 'Rien à afficher pour l’instant' }),
+      el('p', { text: `Aucune réponse n’est enregistrée pour la série « ${quiz.shortTitle} » sur cet appareil.` }),
+      el('div', { class: 'button-row' }, [
+        el('a', { class: 'button', href: buildUrl({ view: 'question', order: 1 }), text: 'Commencer le quiz' }),
+        el('a', { class: 'button button--quiet', href: './', text: 'Choisir un autre quiz' }),
+      ]),
+    ]);
+  }
+
   const axesConfig = state.content.remediation.quizzes[state.quizId] ?? [];
-  const axes = selectAxes(axesConfig, summary.missedOrders, state.content.remediation.maxAxes ?? 2);
+  const axes = selectAxes(
+    axesConfig,
+    summary.missedOrders,
+    state.content.remediation.maxAxes ?? 2,
+    summary.subErrors,
+  );
 
   const expectedFoundIds = items
     .filter((item) => isValidated(state.progress, item.id) && evaluateAnswer(item, state.progress.answers[item.id]).expectedFound)
@@ -242,6 +277,8 @@ function renderResults(quiz) {
           clearProgress(state.quizId, undefined);
           state.progress = createEmptyProgress(state.quizId);
           track('progress_reset', { quizId: state.quizId });
+          // Sans nouveau rendu, l'écran continuerait d'afficher des réponses effacées.
+          render();
         },
       }),
     ]),
@@ -264,10 +301,21 @@ function render() {
   const presentation = state.content.presentation[state.quizId];
   document.title = `${quiz.shortTitle} — Quiz burn-out`;
 
+  let screen;
+  try {
+    if (state.view === 'question') screen = renderQuestion(quiz);
+    else if (state.view === 'resultats') screen = renderResults(quiz);
+    else screen = renderIntro(quiz, presentation);
+  } catch (error) {
+    // Un écran vide serait pire qu'un message : on n'efface `main` qu'une fois
+    // le nouvel écran construit.
+    console.error(error);
+    renderError("Cet écran n’a pas pu être affiché.");
+    return;
+  }
+
   clear(main);
-  if (state.view === 'question') main.append(renderQuestion(quiz));
-  else if (state.view === 'resultats') main.append(renderResults(quiz));
-  else main.append(renderIntro(quiz, presentation));
+  main.append(screen);
 
   if (state.pendingFocus === 'feedback') {
     state.pendingFocus = null;
@@ -321,21 +369,21 @@ async function start() {
 
   if (state.view === 'intro') track('quiz_started', { quizId: quiz.id });
 
-  window.addEventListener('popstate', () => {
-    const next = readLocation();
-    state.view = next.view;
-    state.order = next.order;
-    render();
-  });
+  window.addEventListener('popstate', syncFromLocation);
 
   document.addEventListener('click', (event) => {
     const link = event.target.closest('a[href^="?"]');
     if (!link || event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
     event.preventDefault();
     window.history.pushState({}, '', link.getAttribute('href'));
-    const next = readLocation();
-    state.view = next.view;
-    state.order = next.order;
+    syncFromLocation();
+  });
+
+  // Même série ouverte dans deux onglets : sans cette resynchronisation, le dernier
+  // onglet à valider écraserait les réponses enregistrées par l'autre.
+  window.addEventListener('storage', (event) => {
+    if (event.key !== STORAGE_PREFIX + state.quizId) return;
+    state.progress = loadProgress(state.quizId, undefined) ?? createEmptyProgress(state.quizId);
     render();
   });
 

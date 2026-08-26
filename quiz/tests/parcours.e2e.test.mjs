@@ -12,6 +12,8 @@ import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, normalize, extname } from 'node:path';
 
+import { buildClassificationElements } from '../js/scoring.js';
+
 const here = dirname(fileURLToPath(import.meta.url));
 const siteRoot = join(here, '..', '..');
 
@@ -214,6 +216,94 @@ if (!playwright) {
     await context.close();
   });
 
+  test('série complète avec les quatre formats (Quiz 1)', async () => {
+    const { context, page, errors } = await open();
+    await runQuiz(page, 'Q1', 'expected');
+    const text = await page.locator('main').innerText();
+    assert.match(text, /14 questions parcourues sur 14/);
+    assert.match(text, /Réponses attendues trouvées : 14 sur 14/);
+    assert.equal(await page.locator('.axis').count(), 0);
+    assertNoClinicalOutput(text, 'restitution Quiz 1');
+    assert.deepEqual(errors, []);
+    await context.close();
+  });
+
+  test('retour arrière après « Refaire le quiz » : pas de faux « quiz terminé »', async () => {
+    const { context, page, errors } = await open();
+    await runQuiz(page, 'Q2', 'expected');
+    await page.getByRole('button', { name: 'Refaire le quiz' }).click();
+    await page.waitForSelector('.question');
+    await page.goBack();
+    await page.waitForSelector('main .card');
+
+    const text = await page.locator('main').innerText();
+    assert.ok(!/Quiz terminé/.test(text), 'l’écran de fin ne doit pas s’afficher sans réponse');
+    assert.match(text, /Rien à afficher/);
+    assert.deepEqual(errors, []);
+    await context.close();
+  });
+
+  test('résultats atteints sans aucune réponse : écran neutre', async () => {
+    const { context, page } = await open();
+    await page.goto(`${base}/parcours.html?quiz=Q3&vue=resultats`);
+    await page.waitForSelector('main .card');
+    const text = await page.locator('main').innerText();
+    assert.match(text, /Rien à afficher/);
+    assert.ok(!/0 sur 0/.test(text));
+    await context.close();
+  });
+
+  test('effacer la progression depuis les résultats rafraîchit l’écran', async () => {
+    const { context, page } = await open();
+    await runQuiz(page, 'Q2', 'expected');
+    await page.getByRole('button', { name: /Effacer ma progression pour cette série/ }).click();
+    await page.getByRole('button', { name: /Confirmer/ }).click();
+    await page.waitForFunction(() => !document.body.innerText.includes('8 questions parcourues'));
+    assert.match(await page.locator('main').innerText(), /Rien à afficher/);
+    assert.deepEqual(await page.evaluate(() => Object.keys(window.localStorage)), []);
+    await context.close();
+  });
+
+  test('adresse hors bornes : le contenu et l’URL restent cohérents', async () => {
+    const { context, page } = await open();
+    await page.goto(`${base}/parcours.html?quiz=Q2&q=99`);
+    await page.waitForSelector('.question');
+    assert.match(await page.locator('h1').first().innerText(), /Question 8 sur 8/);
+    assert.equal(new URL(page.url()).searchParams.get('q'), '8');
+
+    await page.goto(`${base}/parcours.html?quiz=Q2&q=abc`);
+    await page.waitForSelector('h1');
+    assert.match(await page.locator('h1').first().innerText(), /idées reçues/);
+    await context.close();
+  });
+
+  test('série terminée : la présentation ramène à la restitution', async () => {
+    const { context, page } = await open();
+    await runQuiz(page, 'Q2', 'expected');
+    await page.goto(`${base}/parcours.html?quiz=Q2`);
+    await page.waitForSelector('h1');
+    await page.getByRole('link', { name: 'Revoir la fin du quiz' }).click();
+    await page.waitForSelector('.summary');
+    assert.match(await page.locator('main').innerText(), /8 questions parcourues sur 8/);
+    await context.close();
+  });
+
+  test('contenu annexe invalide : message d’erreur, jamais d’écran vide', async () => {
+    const context = await browser.newContext({ viewport: { width: 390, height: 780 } });
+    const page = await context.newPage();
+    await page.route('**/data/remediation.json', (route) => route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ maxAxes: 2 }),
+    }));
+    await page.goto(`${base}/parcours.html?quiz=Q1&q=1`);
+    await page.waitForSelector('main .card');
+    const text = await page.locator('main').innerText();
+    assert.match(text, /Contenu indisponible/);
+    assert.ok((await page.locator('main').innerText()).length > 0, 'la page ne doit jamais rester vide');
+    await context.close();
+  });
+
   test('reprise après fermeture du navigateur, puis effacement', async () => {
     const { context, page } = await open();
     await page.goto(`${base}/parcours.html?quiz=Q3&q=1`);
@@ -272,7 +362,7 @@ if (!playwright) {
     await context.close();
   });
 
-  /** Déroule un quiz entier ; `mode` vaut 'expected' (réponse attendue) ou 'other'. */
+  /** Déroule un quiz entier, tous formats compris ; `mode` vaut 'expected' ou 'other'. */
   async function runQuiz(page, quizId, mode) {
     const dataset = JSON.parse(await readFile(join(siteRoot, 'quiz', 'data', 'questions-31.json'), 'utf8'));
     const items = dataset.items.filter((item) => item.quizId === quizId).sort((a, b) => a.order - b.order);
@@ -280,15 +370,41 @@ if (!playwright) {
     await page.goto(`${base}/parcours.html?quiz=${quizId}&q=1`);
     for (const item of items) {
       await page.waitForSelector('.question');
-      const target = mode === 'expected'
-        ? item.correctOptionIds[0]
-        : item.options.find((option) => !option.correct).id;
-      await page.locator(`input[type=radio][value="${target}"]`).check();
+      await answerItem(page, item, mode);
       await page.getByRole('button', { name: 'Valider ma réponse' }).click();
       await page.waitForSelector('.feedback');
       const isLast = item.order === items.length;
       await page.getByRole('button', { name: isLast ? 'Voir la fin du quiz' : 'Question suivante' }).click();
     }
-    await page.waitForSelector('.summary');
+    await page.waitForSelector('.summary, .card');
+  }
+
+  /** Répond à un item quel que soit son format. */
+  async function answerItem(page, item, mode) {
+    if (item.format === 'single_choice' || item.format === 'true_false') {
+      const target = mode === 'expected'
+        ? item.correctOptionIds[0]
+        : item.options.find((option) => !option.correct).id;
+      await page.locator(`input[type=radio][value="${target}"]`).check();
+      return;
+    }
+
+    if (item.format === 'association') {
+      const answers = item.pairs.map((pair) => pair.answer);
+      for (const [index, pair] of item.pairs.entries()) {
+        const value = mode === 'expected' ? pair.answer : answers[(index + 1) % answers.length];
+        await page.locator(`#pair-${item.id}-${pair.id}`).selectOption(value);
+      }
+      return;
+    }
+
+    if (item.format === 'classification') {
+      const elements = buildClassificationElements(item);
+      for (const element of elements) {
+        const other = item.categories.find((category) => category.id !== element.categoryId).id;
+        const value = mode === 'expected' ? element.categoryId : other;
+        await page.locator(`input[name="class-${item.id}-${element.id}"][value="${value}"]`).check();
+      }
+    }
   }
 }

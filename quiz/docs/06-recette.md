@@ -1,7 +1,7 @@
 # Résultat de recette — V1
 
 Date : 26 août 2026
-Méthode : tests automatisés (`node --test quiz/tests/*.test.mjs`, 42 tests, tous verts),
+Méthode : tests automatisés (`node --test quiz/tests/*.test.mjs`, 56 tests, tous verts),
 parcours réels dans Chromium (Playwright) et vérifications manuelles.
 
 Légende : `OK` vérifié · `À FAIRE` hors de ce qui peut être vérifié ici.
@@ -22,7 +22,7 @@ Légende : `OK` vérifié · `À FAIRE` hors de ce qui peut être vérifié ici.
 | Corrigé court pour chaque item | OK | test dédié |
 | « À retenir » pour chaque item | OK | test dédié |
 | Au moins une source par item | OK | test dédié |
-| Champs internes jamais affichés | OK | `confidence`, `sourceNature`, `vigilanceMarkdown` non lus par l'interface ; test anti-métadonnées sur les champs publics |
+| Champs internes jamais affichés | OK | Ces trois champs sont retirés du fichier d'exécution ; tests anti-métadonnées sur les champs publics **et sur les sources** |
 
 ## B. Parcours
 
@@ -111,6 +111,9 @@ santé, et les tests échouent si l'une de ces formulations apparaît.
 | Cibles tactiles suffisantes | OK — 44 px minimum sur les contrôles |
 | Réduction des animations respectée | OK — `prefers-reduced-motion` |
 | Lecteur d'écran réel | À FAIRE — NVDA / VoiceOver sur la version fonctionnelle |
+| Hiérarchie de titres sans saut | OK — vérifié sur les 6 écrans |
+| Zoom 200 % | OK — aucun débordement (accueil, association, sources) |
+| Thème sombre | OK — aucun texte sous 4,5:1 |
 
 ## I. Responsive
 
@@ -128,7 +131,7 @@ santé, et les tests échouent si l'une de ces formulations apparaît.
 | Build de production | Sans objet — site statique sans étape de build (voir `05-decisions-techniques.md` §2) |
 | TypeScript sans erreur | Sans objet — JavaScript documenté et validé à l'exécution et par les tests |
 | Console sans erreur | OK — vérifié sur chaque scénario e2e |
-| Tests automatisés passés | OK — 42 tests |
+| Tests automatisés passés | OK — 56 tests |
 | Aucune requête réseau pour charger une question | OK — contenu chargé une fois puis conservé en mémoire |
 | Contenu remplaçable sans réécrire les composants | OK — un nouveau JSON suffit ; la validation signale les écarts |
 
@@ -140,3 +143,12 @@ santé, et les tests échouent si l'une de ces formulations apparaît.
 | Revalidation des autres items juridiques | À FAIRE si le droit a évolué |
 | URL des sources vérifiées | À FAIRE — aucune URL n'est présente dans les données, donc aucun lien cliquable pour l'instant |
 | Test utilisateur | À FAIRE sur la version fonctionnelle complète |
+
+## L. Passe d'audit (26 août 2026)
+
+Trois audits indépendants ont été menés après la V1 ; leurs constats et les corrections
+apportées sont détaillés dans `05-decisions-techniques.md` §6. Les tests ajoutés à cette
+occasion couvrent : historique du navigateur, série complète du Quiz 1 avec les quatre
+formats, adresses hors bornes, écran d'erreur sur contenu annexe invalide, effacement
+depuis la page de résultats, rendu des listes sur le contenu réel, absence de note de
+vigilance dans les sources et absence de champ interne dans le contenu servi.

@@ -38,6 +38,12 @@ export const INTERNAL_METADATA_PATTERNS = Object.freeze([
   /Réponse attendue/i,
 ]);
 
+/** Tournures propres aux notes de vigilance internes (consignes à l'équipe éditoriale). */
+export const VIGILANCE_PHRASING = /^(ne pas |ne jamais |éviter |distinguer |respecter |rester |déplacer |rappeler |l'item |le maintien )/i;
+
+/** Champs internes qui ne doivent pas figurer dans le contenu servi au public. */
+export const INTERNAL_FIELDS = Object.freeze(['confidence', 'sourceNature', 'vigilanceMarkdown']);
+
 const CHOICE_FORMATS = ['single_choice', 'true_false'];
 
 /**
@@ -79,6 +85,26 @@ export function validateDataset(dataset) {
       for (const pattern of INTERNAL_METADATA_PATTERNS) {
         if (pattern.test(value)) fail(`${id} : métadonnée interne (${pattern}) dans le champ public ${field}.`);
       }
+    }
+
+    // Les références sont publiques : elles ne doivent contenir ni métadonnée
+    // interne, ni note de vigilance rédigée à l'impératif.
+    for (const source of item.sources ?? []) {
+      if (typeof source !== 'string') {
+        fail(`${id} : référence de source non textuelle.`);
+        continue;
+      }
+      for (const pattern of INTERNAL_METADATA_PATTERNS) {
+        if (pattern.test(source)) fail(`${id} : métadonnée interne (${pattern}) dans une source publique.`);
+      }
+      if (VIGILANCE_PHRASING.test(source)) {
+        fail(`${id} : note de vigilance interne publiée comme source (« ${source.slice(0, 60)}… »).`);
+      }
+    }
+
+    // Les champs internes ne doivent pas être servis au navigateur.
+    for (const field of INTERNAL_FIELDS) {
+      if (field in item) fail(`${id} : champ interne ${field} présent dans le contenu public.`);
     }
 
     if (CHOICE_FORMATS.includes(item.format)) {
@@ -144,6 +170,58 @@ export function validateDataset(dataset) {
     }
     if (expectation.categories && (item.categories ?? []).length !== expectation.categories) {
       fail(`${itemId} : ${expectation.categories} catégories attendues.`);
+    }
+  }
+
+  return { ok: errors.length === 0, errors };
+}
+
+/**
+ * Valide les fichiers de contenu annexes (axes de remédiation, présentation des séries).
+ * Sans ce contrôle, un fichier annexe malformé casse le rendu au lieu d'être signalé.
+ */
+export function validateSideFiles(remediation, presentation, dataset) {
+  const errors = [];
+  const fail = (message) => errors.push(message);
+
+  if (!remediation || typeof remediation !== 'object' || !remediation.quizzes) {
+    fail('Axes de remédiation absents ou illisibles.');
+  } else {
+    const maxAxes = remediation.maxAxes;
+    if (!Number.isInteger(maxAxes) || maxAxes < 1 || maxAxes > 2) {
+      fail('maxAxes doit valoir 1 ou 2 (règles pédagogiques §4 : deux axes au maximum).');
+    }
+    for (const quizId of Object.keys(EXPECTED_ITEM_COUNTS)) {
+      const axes = remediation.quizzes[quizId];
+      if (!Array.isArray(axes) || axes.length === 0) {
+        fail(`${quizId} : aucun axe de remédiation.`);
+        continue;
+      }
+      const orders = (dataset?.items ?? []).filter((item) => item.quizId === quizId).map((item) => item.order);
+      for (const axis of axes) {
+        if (!axis.id || !axis.label || !axis.message) fail(`${quizId} : axe incomplet (${axis.id ?? '?'}).`);
+        if (!Array.isArray(axis.items) || axis.items.length === 0) {
+          fail(`${quizId} : axe ${axis.id} sans item.`);
+          continue;
+        }
+        for (const order of axis.items) {
+          if (!orders.includes(order)) fail(`${quizId} : axe ${axis.id} référence l'item ${order}, inexistant.`);
+        }
+        for (const order of Object.keys(axis.minSubErrors ?? {})) {
+          if (!axis.items.includes(Number(order))) {
+            fail(`${quizId} : axe ${axis.id} exige des sous-erreurs sur l'item ${order}, hors de son périmètre.`);
+          }
+        }
+      }
+    }
+  }
+
+  if (!presentation || typeof presentation !== 'object') {
+    fail('Présentation des séries absente ou illisible.');
+  } else {
+    for (const quizId of Object.keys(EXPECTED_ITEM_COUNTS)) {
+      if (!presentation[quizId]?.objective) fail(`${quizId} : objectif de série manquant.`);
+      if (!presentation[quizId]?.summary) fail(`${quizId} : description de série manquante.`);
     }
   }
 

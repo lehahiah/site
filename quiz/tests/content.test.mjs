@@ -9,7 +9,13 @@ import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
-import { validateDataset, INTERNAL_METADATA_PATTERNS, PUBLIC_MARKDOWN_FIELDS } from '../js/validate.js';
+import {
+  validateDataset,
+  INTERNAL_METADATA_PATTERNS,
+  PUBLIC_MARKDOWN_FIELDS,
+  VIGILANCE_PHRASING,
+  INTERNAL_FIELDS,
+} from '../js/validate.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..');
@@ -72,6 +78,38 @@ test('aucune métadonnée interne dans les champs affichés au public', () => {
       for (const pattern of INTERNAL_METADATA_PATTERNS) {
         assert.ok(!pattern.test(value), `${item.id}.${field} contient ${pattern}`);
       }
+    }
+  }
+});
+
+test('aucun champ interne n’est servi au public', () => {
+  for (const item of dataset.items) {
+    for (const field of INTERNAL_FIELDS) {
+      assert.ok(!(field in item), `${item.id} : ${field} présent dans le contenu public`);
+    }
+  }
+});
+
+test('aucune note de vigilance interne n’est publiée comme source', () => {
+  const source = read('data/questions-31.source.json');
+  const vigilanceById = Object.fromEntries(
+    source.items.map((item) => [
+      item.id,
+      (item.vigilanceMarkdown ?? '')
+        .split('\n')
+        .map((line) => line.replace(/^[-•]\s+/, '').trim().toLowerCase())
+        .filter(Boolean),
+    ]),
+  );
+
+  for (const item of dataset.items) {
+    for (const entry of item.sources) {
+      assert.ok(!VIGILANCE_PHRASING.test(entry), `${item.id} : source rédigée comme une note de vigilance`);
+      assert.ok(
+        !vigilanceById[item.id].includes(entry.trim().toLowerCase()),
+        `${item.id} : « ${entry.slice(0, 50)}… » provient du point de vigilance interne`,
+      );
+      assert.ok(!entry.includes('*'), `${item.id} : marque Markdown visible dans une source`);
     }
   }
 });

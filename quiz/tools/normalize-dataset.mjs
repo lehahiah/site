@@ -12,7 +12,13 @@
  *     recopiées à la fin de champs destinés à l'affichage public ;
  *  2. la mention « **Réponse attendue : X** » laissée à la fin de 17 énoncés de question,
  *     qui révélait la bonne réponse avant validation ;
- *  3. des espaces parasites dans les éléments de classement et les réponses d'association.
+ *  3. des espaces parasites dans les éléments de classement et les réponses d'association ;
+ *  4. des puces de « Point de vigilance » versées dans la liste publique `sources`.
+ *
+ * Le fichier produit est le CONTENU PUBLIC : les champs internes (`confidence`,
+ * `sourceNature`, `vigilanceMarkdown`) en sont retirés pour ne pas être servis au
+ * navigateur. Ils restent disponibles dans le fichier source d'origine, qui est le
+ * registre interne.
  *
  * Les informations retirées ne sont pas perdues : elles existent déjà dans les champs
  * structurés `sources`, `sourceNature`, `confidence` et `vigilanceMarkdown`.
@@ -95,6 +101,43 @@ function normalizeItem(item, report) {
     });
   }
 
+  // Puces de « Point de vigilance » versées dans `sources` par l'extraction :
+  // elles sont internes (règles pédagogiques §3) et ne doivent pas être publiées.
+  if (Array.isArray(item.sources) && item.vigilanceMarkdown) {
+    const vigilanceLines = item.vigilanceMarkdown
+      .split('\n')
+      .map((line) => normalizeForCompare(line.replace(/^[-•]\s+/, '')))
+      .filter(Boolean);
+    const kept = item.sources.filter((source) => !vigilanceLines.includes(normalizeForCompare(source)));
+    if (kept.length !== item.sources.length) {
+      changes.push({
+        field: 'sources',
+        reason: `${item.sources.length - kept.length} note(s) de vigilance interne retirée(s) de la liste publique des sources`,
+        removed: item.sources.filter((source) => !kept.includes(source)).join('\n'),
+      });
+      item.sources = kept;
+    }
+  }
+
+  // Les références sont affichées en texte brut : les marques d'emphase Markdown
+  // resteraient visibles telles quelles.
+  if (Array.isArray(item.sources)) {
+    const before = item.sources.join('|');
+    item.sources = item.sources.map((source) => source.replace(/\*\*?([^*]+)\*\*?/g, '$1').trim());
+    if (before !== item.sources.join('|')) {
+      changes.push({ field: 'sources', reason: 'marques d’emphase Markdown retirées des références', removed: null });
+    }
+  }
+
+  // Titres de bloc du master collés à la fin d'une note d'accessibilité.
+  if (typeof item.accessibilityMarkdown === 'string') {
+    const cleaned = item.accessibilityMarkdown.replace(/\n#{1,6}\s+BLOC[\s\S]*$/i, '').trim();
+    if (cleaned !== item.accessibilityMarkdown) {
+      changes.push({ field: 'accessibilityMarkdown', reason: 'titre de bloc du master retiré', removed: null });
+      item.accessibilityMarkdown = cleaned;
+    }
+  }
+
   if (Array.isArray(item.categories)) {
     for (const category of item.categories) {
       const before = category.items.slice();
@@ -160,7 +203,19 @@ for (const entry of report) {
   checkSourcesPreserved(item, entry.changes, warnings);
 }
 
-const output = `${JSON.stringify(dataset, null, 2)}\n`;
+/** Champs internes (cahier des charges §9) : jamais servis au navigateur. */
+const INTERNAL_FIELDS = ['confidence', 'sourceNature', 'vigilanceMarkdown'];
+
+const publicDataset = {
+  ...dataset,
+  items: dataset.items.map((item) => {
+    const publicItem = { ...item };
+    for (const field of INTERNAL_FIELDS) delete publicItem[field];
+    return publicItem;
+  }),
+};
+
+const output = `${JSON.stringify(publicDataset, null, 2)}\n`;
 const checkOnly = process.argv.includes('--check');
 
 if (checkOnly) {

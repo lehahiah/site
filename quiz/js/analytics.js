@@ -18,7 +18,10 @@ export const ALLOWED_EVENTS = Object.freeze([
   'progress_reset',
 ]);
 
-const ALLOWED_PAYLOAD_KEYS = Object.freeze(['quizId', 'itemId', 'order', 'panel', 'value', 'expectedFound']);
+// `expectedFound` est volontairement absent : transmettre la justesse item par item
+// reviendrait à envoyer le détail des réponses, que le cahier des charges §15 réserve
+// à une décision explicite ultérieure.
+const ALLOWED_PAYLOAD_KEYS = Object.freeze(['quizId', 'itemId', 'order', 'panel', 'value']);
 const ALLOWED_VALUE_TYPES = Object.freeze(['string', 'number', 'boolean']);
 
 let sink = null;

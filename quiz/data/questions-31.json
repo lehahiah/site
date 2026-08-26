@@ -173,11 +173,6 @@
         "INRS, \"Epuisement professionnel ou burnout\", mise à jour du 24 septembre 2024.",
         "Vallerand et al., \"On the Role of Passion for Work in Burnout: A Process Model\", Journal of Personality, 2010."
       ],
-      "sourceNature": [
-        "DONNEE"
-      ],
-      "confidence": 0.98,
-      "vigilanceMarkdown": null,
       "accessibilityMarkdown": null,
       "blockId": "Q1-A"
     },
@@ -223,11 +218,6 @@
         "DARES, \"Les risques psychosociaux au travail : les indicateurs disponibles\", 2010.",
         "DARES, données Sumer 2017 sur les expositions aux RPS, publication 2020."
       ],
-      "sourceNature": [
-        "DONNEE"
-      ],
-      "confidence": 0.99,
-      "vigilanceMarkdown": null,
       "accessibilityMarkdown": null,
       "blockId": "Q1-A"
     },
@@ -274,11 +264,6 @@
         "Guseva Canu et al., \"Predictors of Occupational Burnout: A Systematic Review\", 2021.",
         "Travaux sur le modèle effort-récompense et l'épuisement professionnel."
       ],
-      "sourceNature": [
-        "DONNEE"
-      ],
-      "confidence": 0.97,
-      "vigilanceMarkdown": null,
       "accessibilityMarkdown": null,
       "blockId": "Q1-A"
     },
@@ -324,12 +309,6 @@
         "INRS, FAQ burnout, 2024.",
         "DGT, INRS, ANACT, guide burnout, 2015."
       ],
-      "sourceNature": [
-        "DONNEE",
-        "PRATIQUE"
-      ],
-      "confidence": 0.99,
-      "vigilanceMarkdown": null,
       "accessibilityMarkdown": null,
       "blockId": "Q1-A"
     },
@@ -375,12 +354,6 @@
         "INRS, facteurs de risques psychosociaux.",
         "Rapport Gollac, 2011."
       ],
-      "sourceNature": [
-        "DONNEE",
-        "PRATIQUE"
-      ],
-      "confidence": 0.99,
-      "vigilanceMarkdown": null,
       "accessibilityMarkdown": null,
       "blockId": "Q1-B"
     },
@@ -433,13 +406,7 @@
         "INRS, « Comment agir en prévention ? », ED 6349, 2026.",
         "HAS, fiche mémo burnout, mise à jour octobre 2025."
       ],
-      "sourceNature": [
-        "DONNEE",
-        "PRATIQUE"
-      ],
-      "confidence": 0.99,
-      "vigilanceMarkdown": null,
-      "accessibilityMarkdown": "Prévoir une alternative à l'association : présenter chaque situation successivement et proposer les six familles comme choix.\n# BLOC C - Ce que l'on prend pour des preuves",
+      "accessibilityMarkdown": "Prévoir une alternative à l'association : présenter chaque situation successivement et proposer les six familles comme choix.",
       "blockId": "Q1-B"
     },
     {
@@ -485,12 +452,6 @@
         "Santé publique France, Programme MCP : souffrance psychique en lien avec le travail, évolution 2007-2019, publication 2024.",
         "Santé publique France, résultats MCP 2019-2023, publication 2026."
       ],
-      "sourceNature": [
-        "DONNEE",
-        "PRATIQUE"
-      ],
-      "confidence": 0.99,
-      "vigilanceMarkdown": null,
       "accessibilityMarkdown": null,
       "blockId": "Q1-C"
     },
@@ -536,11 +497,6 @@
         "OMS, \"ICD-11 Implementation\".",
         "HAS, fiche mémo burnout, mise à jour octobre 2025."
       ],
-      "sourceNature": [
-        "DONNEE"
-      ],
-      "confidence": 0.99,
-      "vigilanceMarkdown": null,
       "accessibilityMarkdown": null,
       "blockId": "Q1-C"
     },
@@ -585,11 +541,6 @@
         "HAS, fiche mémo burnout, mise à jour octobre 2025.",
         "INRS, FAQ burnout, 2024."
       ],
-      "sourceNature": [
-        "DONNEE"
-      ],
-      "confidence": 0.98,
-      "vigilanceMarkdown": null,
       "accessibilityMarkdown": null,
       "blockId": "Q1-C"
     },
@@ -633,11 +584,6 @@
       "sources": [
         "Boini S., Colin R., Langevin V., Gautier M.-A., INRS, Références en santé au travail n° 180, décembre 2024, TP 57, tableau II."
       ],
-      "sourceNature": [
-        "DONNEE"
-      ],
-      "confidence": 0.99,
-      "vigilanceMarkdown": null,
       "accessibilityMarkdown": null,
       "blockId": "Q1-D"
     },
@@ -676,13 +622,7 @@
         "INRS, \"Effets des expositions psychosociales sur la santé des salariés\", Références en santé au travail n° 180, décembre 2024, TP 57.",
         "INRS, \"Conséquences pour le salarié et l'entreprise\"."
       ],
-      "sourceNature": [
-        "DONNEE",
-        "PRATIQUE"
-      ],
-      "confidence": 0.99,
-      "vigilanceMarkdown": null,
-      "accessibilityMarkdown": "Prévoir une alternative au glisser-déposer : sélectionner l'élément puis choisir la catégorie.\n# BLOC E - Les fausses bonnes solutions",
+      "accessibilityMarkdown": "Prévoir une alternative au glisser-déposer : sélectionner l'élément puis choisir la catégorie.",
       "blockId": "Q1-D"
     },
     {
@@ -727,12 +667,6 @@
         "INRS, prévention des RPS.",
         "ANACT, ressources méthodologiques sur les trois niveaux de prévention."
       ],
-      "sourceNature": [
-        "LEGAL",
-        "PRATIQUE"
-      ],
-      "confidence": 0.99,
-      "vigilanceMarkdown": null,
       "accessibilityMarkdown": null,
       "blockId": "Q1-E"
     },
@@ -779,12 +713,6 @@
         "INRS, ED 6403, juin 2025.",
         "INRS, TJ 29, mai 2026."
       ],
-      "sourceNature": [
-        "LEGAL",
-        "PRATIQUE"
-      ],
-      "confidence": 0.99,
-      "vigilanceMarkdown": null,
       "accessibilityMarkdown": null,
       "blockId": "Q1-E"
     },
@@ -828,12 +756,6 @@
         "Code du travail, L. 2315-38.",
         "Ministère du Travail, ressources sur les acteurs de la santé au travail."
       ],
-      "sourceNature": [
-        "LEGAL",
-        "PRATIQUE"
-      ],
-      "confidence": 0.98,
-      "vigilanceMarkdown": null,
       "accessibilityMarkdown": "Prévoir une alternative au glisser-déposer : sélectionner une situation puis choisir l'interlocuteur.",
       "blockId": "Q1-E"
     },
@@ -879,12 +801,6 @@
         "\"Experiences of returning to work after sick leave due to exhaustion disorder: a qualitative content analysis\", 2025/2026.",
         "HAS, accompagnement du retour au travail, mise à jour octobre 2025."
       ],
-      "sourceNature": [
-        "DONNEE",
-        "PRATIQUE"
-      ],
-      "confidence": 0.97,
-      "vigilanceMarkdown": "- l'item ne traite pas des activités juridiquement autorisées pendant un arrêt ;\n- ne pas transformer l'activité visible en signe diagnostique inverse ;\n- ne pas prétendre qu'une personne qui paraît active est nécessairement en burn-out.",
       "accessibilityMarkdown": null,
       "blockId": "Q2-A"
     },
@@ -933,12 +849,6 @@
         "Eskilsson et al., \"Symptoms, work situation and work functioning 10 years after rehabilitation of stress-induced exhaustion disorder\", 2024.",
         "Assurance Maladie et références institutionnelles sur le trouble de stress post-traumatique."
       ],
-      "sourceNature": [
-        "DONNEE",
-        "PRATIQUE"
-      ],
-      "confidence": 0.99,
-      "vigilanceMarkdown": "- ne pas transformer l'item en checklist personnelle ;\n- ne pas présenter cauchemars ou reviviscences comme des symptômes spécifiques du burn-out ;\n- ne pas présenter un TSPT comme conséquence automatique d'un harcèlement ou d'un conflit ;\n- ne pas déduire une qualification juridique à partir de manifestations cliniques ;\n- rappeler que le diagnostic différentiel et les troubles associés relèvent d'une évaluation clinique.",
       "accessibilityMarkdown": null,
       "blockId": "Q2-A"
     },
@@ -985,13 +895,6 @@
         "\"Barriers and Facilitators for Return to Work from the Perspective of Workers with Common Mental Disorders\", étude qualitative longitudinale, 2022.",
         "Témoignages exploratoires utilisés pour identifier le thème de culpabilité."
       ],
-      "sourceNature": [
-        "LEGAL",
-        "DONNEE",
-        "PRATIQUE"
-      ],
-      "confidence": 0.97,
-      "vigilanceMarkdown": "- ne jamais dire que le quiz prescrit un arrêt ;\n- ne pas culpabiliser inversement les personnes qui continuent à travailler ;\n- ne pas nier qu'une absence peut avoir des conséquences réelles pour les collègues ;\n- déplacer l'analyse vers la responsabilité organisationnelle.",
       "accessibilityMarkdown": null,
       "blockId": "Q2-B"
     },
@@ -1037,12 +940,6 @@
         "Assurance Maladie, \"Affections psychiques d'origine professionnelle : reconnaissance et rôle du CMI\", 23 avril 2026.",
         "Assurance Maladie - Risques professionnels, rapport annuel 2024."
       ],
-      "sourceNature": [
-        "LEGAL",
-        "DONNEE"
-      ],
-      "confidence": 0.99,
-      "vigilanceMarkdown": "- ne pas présenter \"burn-out\" comme une maladie professionnelle juridiquement autonome ;\n- ne pas transformer les statistiques de reconnaissance en prévalence ;\n- ne pas afficher de seuil réglementaire dans le quiz public ;\n- revalider l'article L. 461-1 et ses textes d'application juste avant publication, le régime évoluant à l'automne 2026. La réponse centrale de l'item reste volontairement indépendante de ce seuil.",
       "accessibilityMarkdown": null,
       "blockId": "Q2-B"
     },
@@ -1089,12 +986,6 @@
         "Assurance Maladie, \"Affections psychiques d'origine professionnelle : reconnaissance et rôle du CMI\", avril 2026.",
         "Ministère du Travail, définition de l'accident du travail."
       ],
-      "sourceNature": [
-        "LEGAL",
-        "DONNEE"
-      ],
-      "confidence": 0.99,
-      "vigilanceMarkdown": "- ne jamais demander au répondant de qualifier un événement personnel ;\n- ne pas laisser entendre que toute souffrance apparue au travail est un AT ;\n- ne pas utiliser le ratio AT/MP de l'ancien cadrage.",
       "accessibilityMarkdown": null,
       "blockId": "Q2-B"
     },
@@ -1143,13 +1034,6 @@
         "Strömbäck et al., \"Restoring confidence in return to work\", PLOS One, 2020.",
         "Finnish qualitative study on occupational health return-to-work practices for workers with burnout, 2018."
       ],
-      "sourceNature": [
-        "LEGAL",
-        "DONNEE",
-        "PRATIQUE"
-      ],
-      "confidence": 0.99,
-      "vigilanceMarkdown": "- ne pas présenter le médecin du travail comme seul décideur du retour ;\n- ne pas confondre avis médical, propositions d'aménagement et organisation effective du travail ;\n- ne pas laisser entendre qu'un aménagement est obligatoire dans chaque cas.",
       "accessibilityMarkdown": null,
       "blockId": "Q2-C"
     },
@@ -1196,13 +1080,6 @@
         "Rooman et al., \"Successful return to work after burnout\", 2022.",
         "Forslund et al., étude qualitative sur le retour après trouble d'épuisement, 2025."
       ],
-      "sourceNature": [
-        "LEGAL",
-        "DONNEE",
-        "PRATIQUE"
-      ],
-      "confidence": 0.99,
-      "vigilanceMarkdown": null,
       "accessibilityMarkdown": null,
       "blockId": "Q2-C"
     },
@@ -1249,13 +1126,6 @@
         "Synthèse qualitative sur les interventions de retour au travail après burnout, Occupational Medicine, 2024.",
         "Code du travail, principes généraux de prévention."
       ],
-      "sourceNature": [
-        "DONNEE",
-        "LEGAL",
-        "PRATIQUE"
-      ],
-      "confidence": 0.99,
-      "vigilanceMarkdown": null,
       "accessibilityMarkdown": null,
       "blockId": "Q2-C"
     },
@@ -1299,13 +1169,8 @@
       "sources": [
         "INRS, dossier \"Epuisement professionnel ou burnout\".",
         "Travaux sur le surengagement / overcommitment dans les modèles de stress au travail.",
-        "Etudes qualitatives sur l'invisibilité de certaines limitations après épuisement.",
-        "le maintien d'une forte activité n'est ni un critère diagnostique ni une étape obligatoire ;",
-        "l'item porte sur l'impossibilité de conclure à partir de l'apparence."
+        "Etudes qualitatives sur l'invisibilité de certaines limitations après épuisement."
       ],
-      "sourceNature": [],
-      "confidence": 0.97,
-      "vigilanceMarkdown": "- le maintien d'une forte activité n'est ni un critère diagnostique ni une étape obligatoire ;\n- l'item porte sur l'impossibilité de conclure à partir de l'apparence.",
       "accessibilityMarkdown": null,
       "blockId": "Q3-A"
     },
@@ -1350,9 +1215,6 @@
         "INRS, FAQ burnout.",
         "HAS, repérage et diagnostic différentiel du syndrome d'épuisement professionnel."
       ],
-      "sourceNature": [],
-      "confidence": 0.99,
-      "vigilanceMarkdown": null,
       "accessibilityMarkdown": null,
       "blockId": "Q3-A"
     },
@@ -1397,11 +1259,6 @@
         "INRS, FAQ « Epuisement professionnel ou burnout ».",
         "INRS / DGT / ANACT, guide d'aide à la prévention du syndrome d'épuisement professionnel."
       ],
-      "sourceNature": [
-        "PRATIQUE"
-      ],
-      "confidence": 0.99,
-      "vigilanceMarkdown": "- ne pas transformer l'orientation en injonction ;\n- ne pas nier les situations où une alerte immédiate peut être nécessaire ;\n- rester sur le rôle ordinaire du collègue dans une situation non urgente.",
       "accessibilityMarkdown": null,
       "blockId": "Q3-B"
     },
@@ -1446,11 +1303,6 @@
         "INRS, FAQ \"Epuisement professionnel ou burnout\".",
         "INRS / DGT / ANACT, guide de prévention du syndrome d'épuisement professionnel."
       ],
-      "sourceNature": [
-        "PRATIQUE"
-      ],
-      "confidence": 0.99,
-      "vigilanceMarkdown": "- ne pas suggérer qu'il faudrait ignorer tout signe de difficulté ;\n- distinguer disponibilité et insistance ;\n- ne pas imposer une orientation si la personne ne la demande pas, hors situation nécessitant une alerte spécifique.",
       "accessibilityMarkdown": null,
       "blockId": "Q3-B"
     },
@@ -1498,12 +1350,6 @@
         "\"Leave Me Alone With Your Symptoms! Social Exclusion at the Workplace Mediates the Relationship of Employee's Mental Illness and Sick Leave\", 2022.",
         "\"Attitudes of nursing staff towards co-workers returning from psychiatric and physical illnesses\", 2007."
       ],
-      "sourceNature": [
-        "DONNEE",
-        "PRATIQUE"
-      ],
-      "confidence": 0.98,
-      "vigilanceMarkdown": "- ne pas affirmer que tout collègue en arrêt souhaite recevoir des messages ;\n- respecter une demande explicite de ne pas être contacté ;\n- ne pas comparer quantitativement la fréquence réelle des contacts entre maladies physiques et psychiques faute de données suffisantes ;\n- distinguer un signe humain d'une demande de nouvelles médicales ou professionnelles.",
       "accessibilityMarkdown": null,
       "blockId": "Q3-C"
     },
@@ -1549,11 +1395,6 @@
         "Témoignages exploratoires utilisés pour identifier le thème du silence et des relances.",
         "Etudes qualitatives sur soutien social et retour au travail."
       ],
-      "sourceNature": [
-        "PRATIQUE"
-      ],
-      "confidence": 0.98,
-      "vigilanceMarkdown": "- ne pas transformer la réponse en \"ne relancez jamais\" ;\n- aucune fréquence de contact ne peut être présentée comme universelle ;\n- distinguer silence, retrait social et intention relationnelle.",
       "accessibilityMarkdown": null,
       "blockId": "Q3-C"
     },
@@ -1600,12 +1441,6 @@
         "Strömbäck et al., dialogue au travail et restauration de la confiance.",
         "Synthèse qualitative Occupational Medicine, 2024."
       ],
-      "sourceNature": [
-        "DONNEE",
-        "PRATIQUE"
-      ],
-      "confidence": 0.98,
-      "vigilanceMarkdown": "- ne pas rendre les collègues responsables des décisions médicales ou d'aménagement ;\n- ne pas présenter une adaptation comme obligatoire ;\n- éviter la surveillance du collègue à son retour.",
       "accessibilityMarkdown": null,
       "blockId": "Q3-D"
     },
@@ -1652,12 +1487,6 @@
         "Code du travail et secret médical en santé au travail.",
         "Etudes qualitatives sur retour au travail et stigmatisation."
       ],
-      "sourceNature": [
-        "LEGAL",
-        "PRATIQUE"
-      ],
-      "confidence": 0.99,
-      "vigilanceMarkdown": "- ne pas confondre informations médicales et informations organisationnelles ;\n- ne pas laisser entendre que la personne doit cacher sa santé si elle souhaite en parler ;\n- respecter la maîtrise par la personne de ce qu'elle souhaite partager.",
       "accessibilityMarkdown": null,
       "blockId": "Q3-D"
     },
@@ -1699,20 +1528,10 @@
       "whyMythMarkdown": "Les recherches sur la stigmatisation du burn-out montrent que les personnes ayant un antécédent de burn-out peuvent être perçues comme :\n- moins résistantes au stress ;\n- moins autonomes ;\n- moins capables d'apprendre ;\n- moins susceptibles de réussir dans certaines fonctions.\n\nCes anticipations constituent des représentations sociales ; elles ne remplacent pas l'évaluation réelle des compétences et du fonctionnement actuel d'une personne.",
       "deeperMarkdown": "Des travaux qualitatifs sur la réhabilitation après burn-out décrivent chez certaines personnes :\n- une meilleure conscience de leurs besoins et limites ;\n- une capacité accrue à repérer les situations à risque ;\n- des stratégies de régulation plus élaborées ;\n- une réflexion plus approfondie sur leurs priorités professionnelles ;\n- une manière plus soutenable d'organiser leur travail.\n\nCes apprentissages ne sont ni automatiques ni universels.\n\nPijpker et al. décrivent notamment un processus continu d'apprentissage : repérer les situations susceptibles de déclencher à nouveau des symptômes et développer la confiance dans sa capacité à prévenir une récidive. Salminen et al. décrivent également une meilleure reconnaissance des besoins et limites au cours de la réhabilitation.\n\nLe quiz évite donc deux récits opposés :\n- **\"après un burn-out, on reste fragile\"** ;\n- **\"le burn-out rend forcément plus fort\".**",
       "sources": [
-        "Sterkens P., Baert S., Rooman C., Derous E., \"As if it weren't hard enough already: Breaking down hiring discrimination following burnout\", *Economics & Human Biology*, 43, 2021, 101050. Expérience par vignettes auprès de 425 recruteurs réels.",
-        "Pijpker R., Vaandrager L., Veen E.J., Koelen M.A., \"Seizing and realizing the opportunity: A salutogenic perspective on rehabilitation after burnout\", *Work*, 68(3), 2021, 551-561.",
-        "Salminen S., Mäkikangas A., Hätinen M., Kinnunen U., Pekkonen M., \"My Well-Being in My Own Hands: Experiences of Beneficial Recovery During Burnout Rehabilitation\", *Journal of Occupational Rehabilitation*, 25(4), 2015, 733-741.",
-        "ne pas présenter la récupération comme une transformation positive obligatoire ;",
-        "ne pas nier la possibilité de difficultés persistantes ;",
-        "ne pas faire du burn-out une preuve de compétence particulière ;",
-        "distinguer stigmatisation anticipée et évaluation individuelle actuelle."
+        "Sterkens P., Baert S., Rooman C., Derous E., \"As if it weren't hard enough already: Breaking down hiring discrimination following burnout\", Economics & Human Biology, 43, 2021, 101050. Expérience par vignettes auprès de 425 recruteurs réels.",
+        "Pijpker R., Vaandrager L., Veen E.J., Koelen M.A., \"Seizing and realizing the opportunity: A salutogenic perspective on rehabilitation after burnout\", Work, 68(3), 2021, 551-561.",
+        "Salminen S., Mäkikangas A., Hätinen M., Kinnunen U., Pekkonen M., \"My Well-Being in My Own Hands: Experiences of Beneficial Recovery During Burnout Rehabilitation\", Journal of Occupational Rehabilitation, 25(4), 2015, 733-741."
       ],
-      "sourceNature": [
-        "DONNEE",
-        "PRATIQUE"
-      ],
-      "confidence": 0.97,
-      "vigilanceMarkdown": "- ne pas présenter la récupération comme une transformation positive obligatoire ;\n- ne pas nier la possibilité de difficultés persistantes ;\n- ne pas faire du burn-out une preuve de compétence particulière ;\n- distinguer stigmatisation anticipée et évaluation individuelle actuelle.",
       "accessibilityMarkdown": null,
       "blockId": "Q3-E"
     }

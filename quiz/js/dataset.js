@@ -9,7 +9,7 @@
  * réseau n'est nécessaire pour afficher une question.
  */
 
-import { validateDataset } from './validate.js';
+import { validateDataset, validateSideFiles } from './validate.js';
 
 const url = (file) => new URL(`../data/${file}`, import.meta.url);
 
@@ -32,6 +32,9 @@ export async function loadContent() {
 
   const { ok, errors } = validateDataset(dataset);
   if (!ok) throw new Error(`Contenu invalide :\n- ${errors.join('\n- ')}`);
+
+  const side = validateSideFiles(remediation, presentation, dataset);
+  if (!side.ok) throw new Error(`Contenu annexe invalide :\n- ${side.errors.join('\n- ')}`);
 
   cache = { dataset, remediation, presentation };
   return cache;

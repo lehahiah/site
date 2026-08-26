@@ -46,7 +46,8 @@ function renderBlock(block, headingTag) {
   const heading = lines[0].match(/^(#{1,6})\s+(.*)$/);
   if (heading && lines.length === 1) {
     // Les titres internes d'un item sont de courts intertitres : ils sont rendus à
-    // un niveau unique pour ne pas créer de saut dans la hiérarchie de la page.
+    // un niveau unique, directement sous le titre de l'écran, pour ne créer ni saut
+    // ni hiérarchie factice (WCAG 1.3.1).
     return `<${headingTag}>${renderInline(heading[2])}</${headingTag}>`;
   }
 
@@ -55,14 +56,31 @@ function renderBlock(block, headingTag) {
     return `<blockquote>${renderBlocks(inner, headingTag)}</blockquote>`;
   }
 
-  if (lines.every((line) => /^\s*[-*]\s+/.test(line))) {
-    const entries = lines.map((line) => `<li>${renderInline(line.replace(/^\s*[-*]\s+/, ''))}</li>`).join('');
-    return `<ul>${entries}</ul>`;
+  // Liste à puces, éventuellement précédée d'une phrase d'amorce sans ligne vide
+  // (forme fréquente dans les masters). Sans ce traitement, tout le bloc tombait
+  // dans un paragraphe et la liste n'était plus annoncée aux lecteurs d'écran.
+  const isBullet = (line) => /^\s*[-*]\s+/.test(line);
+  const firstBullet = lines.findIndex(isBullet);
+  if (firstBullet !== -1 && lines.slice(firstBullet).every(isBullet)) {
+    const entries = lines
+      .slice(firstBullet)
+      .map((line) => `<li>${renderInline(line.replace(/^\s*[-*]\s+/, ''))}</li>`)
+      .join('');
+    const intro = lines.slice(0, firstBullet);
+    const lead = intro.length ? `<p>${intro.map(renderInline).join('<br>')}</p>` : '';
+    return `${lead}<ul>${entries}</ul>`;
   }
 
-  if (lines.every((line) => /^\s*\d+\.\s+/.test(line))) {
-    const entries = lines.map((line) => `<li>${renderInline(line.replace(/^\s*\d+\.\s+/, ''))}</li>`).join('');
-    return `<ol>${entries}</ol>`;
+  const isNumbered = (line) => /^\s*\d+\.\s+/.test(line);
+  const firstNumbered = lines.findIndex(isNumbered);
+  if (firstNumbered !== -1 && lines.slice(firstNumbered).every(isNumbered)) {
+    const entries = lines
+      .slice(firstNumbered)
+      .map((line) => `<li>${renderInline(line.replace(/^\s*\d+\.\s+/, ''))}</li>`)
+      .join('');
+    const intro = lines.slice(0, firstNumbered);
+    const lead = intro.length ? `<p>${intro.map(renderInline).join('<br>')}</p>` : '';
+    return `${lead}<ol>${entries}</ol>`;
   }
 
   return `<p>${lines.map(renderInline).join('<br>')}</p>`;
@@ -75,13 +93,13 @@ function renderBlocks(markdown, headingTag) {
 }
 
 /** Retourne le HTML correspondant au markdown fourni (chaîne vide si null). */
-export function renderMarkdown(markdown, { headingTag = 'h3' } = {}) {
+export function renderMarkdown(markdown, { headingTag = 'h2' } = {}) {
   if (!markdown) return '';
   return renderBlocks(markdown, headingTag);
 }
 
 /** Crée un élément dont le contenu est le markdown rendu. */
-export function markdownElement(markdown, { tag = 'div', className = '', headingTag = 'h3' } = {}) {
+export function markdownElement(markdown, { tag = 'div', className = '', headingTag = 'h2' } = {}) {
   const element = document.createElement(tag);
   if (className) element.className = className;
   element.innerHTML = renderMarkdown(markdown, { headingTag });

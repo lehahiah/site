@@ -1,0 +1,8 @@
+# Contenu éditorial interne du quiz : masters, registre des sources, documents de
+# gouvernance et export d'origine. Ces fichiers ne doivent jamais être servis en ligne
+# (règles pédagogiques §3, cahier des charges §9).
+quiz/content
+quiz/docs
+quiz/tests
+quiz/tools
+quiz/data/questions-31.source.json

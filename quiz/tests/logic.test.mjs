@@ -31,12 +31,14 @@ import {
   STORAGE_PREFIX,
 } from '../js/storage.js';
 import { renderMarkdown, escapeHtml } from '../js/markdown.js';
+import { validateSideFiles } from '../js/validate.js';
 import { track, setSink, sanitizePayload, ALLOWED_EVENTS } from '../js/analytics.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..');
 const dataset = JSON.parse(readFileSync(join(root, 'data/questions-31.json'), 'utf8'));
 const remediation = JSON.parse(readFileSync(join(root, 'data/remediation.json'), 'utf8'));
+const presentation = JSON.parse(readFileSync(join(root, 'data/quiz-presentation.json'), 'utf8'));
 const byId = Object.fromEntries(dataset.items.map((item) => [item.id, item]));
 const itemsOf = (quizId) => dataset.items.filter((item) => item.quizId === quizId).sort((a, b) => a.order - b.order);
 
@@ -188,7 +190,7 @@ test('la synthèse décrit des réponses, pas une personne', () => {
     progress = markValidated(setAnswer(progress, item.id, answer), item.id);
   }
   const summary = computeSummary(items, progress);
-  assert.deepEqual(Object.keys(summary).sort(), ['expectedFound', 'missedOrders', 'reviewed', 'total']);
+  assert.deepEqual(Object.keys(summary).sort(), ['expectedFound', 'missedOrders', 'reviewed', 'subErrors', 'total']);
   assert.equal(summary.total, 14);
   assert.equal(summary.reviewed, 14);
   assert.equal(summary.expectedFound, 14);
@@ -226,6 +228,46 @@ test('les axes les plus concernés passent en premier', () => {
   assert.deepEqual(axes.map((axis) => axis.id), ['Q1-axe-A', 'Q1-axe-C']);
 });
 
+test('les axes à condition composée suivent les masters', () => {
+  const axes = remediation.quizzes.Q1;
+  const axeB = axes.find((axis) => axis.id === 'Q1-axe-B');
+  assert.equal(axeB.mode, 'all');
+
+  // Master : « erreur à l'item 5 ET plusieurs facteurs manqués à l'item 6 ».
+  assert.deepEqual(selectAxes(axes, [5], 2, { 5: 1 }), []);
+  assert.deepEqual(selectAxes(axes, [6], 2, { 6: 4 }), []);
+  assert.deepEqual(selectAxes(axes, [5, 6], 2, { 5: 1, 6: 1 }), [], 'une seule association manquée ne suffit pas');
+  assert.deepEqual(
+    selectAxes(axes, [5, 6], 2, { 5: 1, 6: 3 }).map((axis) => axis.id),
+    ['Q1-axe-B'],
+  );
+
+  // Même règle pour l'axe D (item 10 + plusieurs erreurs de classement à l'item 11).
+  assert.deepEqual(selectAxes(axes, [10, 11], 2, { 10: 1, 11: 1 }), []);
+  assert.deepEqual(selectAxes(axes, [10, 11], 2, { 10: 1, 11: 2 }).map((axis) => axis.id), ['Q1-axe-D']);
+});
+
+test('le nombre de sous-erreurs est comptabilisé pour chaque item structuré', () => {
+  const item = byId['Q1-06'];
+  let progress = createEmptyProgress('Q1');
+  const answer = Object.fromEntries(item.pairs.map((pair) => [pair.id, pair.answer]));
+  answer['1'] = item.pairs[1].answer; // une seule association fausse
+  progress = markValidated(setAnswer(progress, item.id, answer), item.id);
+  assert.equal(computeSummary([item], progress).subErrors[6], 1);
+});
+
+test('les fichiers de contenu annexes sont validés', () => {
+  assert.equal(validateSideFiles(remediation, presentation, dataset).ok, true);
+  assert.equal(validateSideFiles({ maxAxes: 2 }, presentation, dataset).ok, false);
+  assert.equal(validateSideFiles({ maxAxes: 2, quizzes: { Q1: 'oups' } }, presentation, dataset).ok, false);
+  assert.equal(validateSideFiles({ maxAxes: 5, quizzes: remediation.quizzes }, presentation, dataset).ok, false);
+  assert.equal(validateSideFiles(remediation, {}, dataset).ok, false);
+
+  const wrongItem = structuredClone(remediation);
+  wrongItem.quizzes.Q1[0].items = [99];
+  assert.equal(validateSideFiles(wrongItem, presentation, dataset).ok, false);
+});
+
 /* --- Rendu et événements -------------------------------------------------- */
 
 test('le rendu Markdown échappe le HTML du contenu', () => {
@@ -238,9 +280,31 @@ test('le rendu Markdown échappe le HTML du contenu', () => {
 
 test('le rendu Markdown restitue citations, listes et intertitres', () => {
   const html = renderMarkdown('### Titre\n\n> **Repère**\n\n- un\n- deux');
-  assert.ok(html.includes('<h3>Titre</h3>'));
+  // Les intertitres d'un item s'insèrent directement sous le titre de l'écran.
+  assert.ok(html.includes('<h2>Titre</h2>'));
+  assert.ok(renderMarkdown('## Autre', { headingTag: 'h4' }).includes('<h4>Autre</h4>'));
   assert.ok(html.includes('<blockquote><p><strong>Repère</strong></p></blockquote>'));
   assert.ok(html.includes('<ul><li>un</li><li>deux</li></ul>'));
+});
+
+test('une liste précédée d’une phrase d’amorce reste une liste', () => {
+  const html = renderMarkdown('Cela peut conduire à :\n- donner des conseils ;\n- interpréter la situation.');
+  assert.ok(html.includes('<p>Cela peut conduire à :</p>'));
+  assert.ok(html.includes('<ul><li>donner des conseils ;</li><li>interpréter la situation.</li></ul>'));
+  assert.ok(!html.includes('<br>- '));
+});
+
+test('aucun champ du contenu réel ne rend une liste en paragraphe à tirets', () => {
+  let lists = 0;
+  for (const item of dataset.items) {
+    for (const field of ['promptMarkdown', 'correctionShortMarkdown', 'takeawayMarkdown', 'whyMythMarkdown', 'deeperMarkdown']) {
+      const html = renderMarkdown(item[field]);
+      if (!html) continue;
+      lists += (html.match(/<ul>/g) ?? []).length;
+      assert.ok(!/<p>[^<]*<br>- /.test(html), `${item.id}.${field} : liste rendue en paragraphe`);
+    }
+  }
+  assert.ok(lists > 30, `listes rendues : ${lists}`);
 });
 
 test('aucun événement n’est émis sans collecteur installé', () => {
@@ -261,7 +325,8 @@ test('les événements filtrent les données non produit', () => {
   setSink(null);
 
   assert.equal(received.length, 1);
-  assert.deepEqual(received[0][1], { quizId: 'Q1', itemId: 'Q1-01', expectedFound: true });
+  // `expectedFound` est filtré : le détail des réponses ne quitte pas le navigateur.
+  assert.deepEqual(received[0][1], { quizId: 'Q1', itemId: 'Q1-01' });
   assert.deepEqual(sanitizePayload({ email: 'a@b.c' }), {});
   assert.ok(!ALLOWED_EVENTS.includes('événement_inconnu'));
 });

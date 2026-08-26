@@ -98,11 +98,19 @@ export function computeSummary(items, progress) {
   const validated = new Set(progress?.validatedItemIds ?? []);
   let expectedFound = 0;
   const missedOrders = [];
+  const subErrors = {};
 
   for (const item of items) {
     if (!validated.has(item.id)) continue;
-    if (evaluateAnswer(item, answers[item.id]).expectedFound) expectedFound += 1;
-    else missedOrders.push(item.order);
+    const evaluation = evaluateAnswer(item, answers[item.id]);
+    if (evaluation.expectedFound) {
+      expectedFound += 1;
+      continue;
+    }
+    missedOrders.push(item.order);
+    // Nombre de sous-réponses non attendues : les masters distinguent « une erreur »
+    // de « plusieurs facteurs manqués » pour déclencher certains axes.
+    subErrors[item.order] = evaluation.details.filter((detail) => detail.expectedFound === false).length || 1;
   }
 
   return {
@@ -110,6 +118,7 @@ export function computeSummary(items, progress) {
     reviewed: items.filter((item) => validated.has(item.id)).length,
     expectedFound,
     missedOrders,
+    subErrors,
   };
 }
 
@@ -117,15 +126,27 @@ export function computeSummary(items, progress) {
  * Sélectionne au maximum `maxAxes` axes de remédiation (règles pédagogiques §4).
  * Les axes sont ceux des masters ; aucun message n'est généré dynamiquement.
  */
-export function selectAxes(axes, missedOrders, maxAxes = 2) {
+export function selectAxes(axes, missedOrders, maxAxes = 2, subErrors = {}) {
   const missed = new Set(missedOrders);
+
+  const triggered = (axis, missedCount) => {
+    // `mode: "all"` reproduit les déclenchements composés des masters
+    // (« erreur à l'item 5 ET plusieurs facteurs manqués à l'item 6 »).
+    if (axis.mode === 'all' && missedCount !== axis.items.length) return false;
+    if (missedCount < (axis.minMissed ?? 1)) return false;
+    for (const [order, required] of Object.entries(axis.minSubErrors ?? {})) {
+      if ((subErrors[order] ?? 0) < required) return false;
+    }
+    return true;
+  };
+
   return axes
     .map((axis, index) => ({
       axis,
       index,
       missedCount: axis.items.filter((order) => missed.has(order)).length,
     }))
-    .filter((entry) => entry.missedCount >= (entry.axis.minMissed ?? 1))
+    .filter((entry) => triggered(entry.axis, entry.missedCount))
     .sort((a, b) => b.missedCount - a.missedCount || a.index - b.index)
     .slice(0, maxAxes)
     .map((entry) => entry.axis);
