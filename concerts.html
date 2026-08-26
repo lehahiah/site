@@ -83,6 +83,69 @@
     ]
   }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "MusicEvent",
+          "name": "Lehahiah aux Caves de Chartreuse",
+          "startDate": "2026-09-03T18:30",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "url": "https://lehahiah.fr/concerts.html#agenda",
+          "location": {
+            "@type": "Place",
+            "name": "Caves de Chartreuse",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Voiron",
+              "addressRegion": "Isère",
+              "addressCountry": "FR"
+            }
+          },
+          "performer": {
+            "@type": "MusicGroup",
+            "name": "Lehahiah",
+            "url": "https://lehahiah.fr/"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "MusicEvent",
+          "name": "Lehahiah à L\u2019Absinthe",
+          "startDate": "2027-01-29T20:00",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "url": "https://lehahiah.fr/concerts.html#agenda",
+          "location": {
+            "@type": "Place",
+            "name": "L\u2019Absinthe",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Voiron",
+              "addressRegion": "Isère",
+              "addressCountry": "FR"
+            }
+          },
+          "performer": {
+            "@type": "MusicGroup",
+            "name": "Lehahiah",
+            "url": "https://lehahiah.fr/"
+          }
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -237,15 +300,30 @@
       -->
       <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 700px; margin-inline: auto;" class="fade-up">
 
-        <!-- Aucune date annoncée – à remplacer par de vrais concerts -->
-        <div class="info-card" style="text-align: center; padding: 2.5rem;">
-          <p style="color: var(--text-muted); font-size: 1rem;">Aucune date annoncée pour le moment.</p>
-          <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Suivez-nous sur les réseaux pour être informé en premier.</p>
-          <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap;">
-            <a href="https://www.facebook.com/Lehahiahmusique/" target="_blank" rel="noopener" class="btn btn--outline" style="font-size: 0.875rem;">Facebook</a>
-            <a href="https://www.instagram.com/lehahiah_musique/" target="_blank" rel="noopener" class="btn btn--outline" style="font-size: 0.875rem;">Instagram</a>
+        <div class="concert-date" style="display: flex; align-items: center; gap: 1.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; flex-wrap: wrap;">
+          <div style="text-align: center; min-width: 56px;">
+            <p style="font-size: 1.5rem; font-weight: 800; color: var(--accent); line-height: 1;">3</p>
+            <p style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em;">sept.</p>
+            <p style="font-size: 0.75rem; color: var(--text-muted);">2026</p>
+          </div>
+          <div style="flex: 1; min-width: 180px;">
+            <p style="font-weight: 700; color: var(--text);">Caves de Chartreuse</p>
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.2rem;">Voiron · Isère · 18h30</p>
           </div>
         </div>
+
+        <div class="concert-date" style="display: flex; align-items: center; gap: 1.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; flex-wrap: wrap;">
+          <div style="text-align: center; min-width: 56px;">
+            <p style="font-size: 1.5rem; font-weight: 800; color: var(--accent); line-height: 1;">29</p>
+            <p style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em;">janv.</p>
+            <p style="font-size: 0.75rem; color: var(--text-muted);">2027</p>
+          </div>
+          <div style="flex: 1; min-width: 180px;">
+            <p style="font-weight: 700; color: var(--text);">L’Absinthe</p>
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.2rem;">Voiron · Isère · 20h00</p>
+          </div>
+        </div>
+
         <div style="text-align: center; margin-top: 1.5rem;">
           <a href="scenographie.html" class="btn btn--outline" style="font-size: 0.875rem;">Voir l'historique des dates →</a>
         </div>
