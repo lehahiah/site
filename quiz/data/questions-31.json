@@ -1,0 +1,1539 @@
+{
+  "version": "2026-08-26-predev",
+  "language": "fr-FR",
+  "productType": "sensibilisation",
+  "clinicalAssessment": false,
+  "quizzes": [
+    {
+      "id": "Q1",
+      "title": "Burn-out : 14 idées reçues à l'épreuve des faits",
+      "shortTitle": "Comprendre le burn-out",
+      "itemCount": 14,
+      "blocks": [
+        {
+          "id": "Q1-A",
+          "label": "Qui peut faire un burn-out ?",
+          "items": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": "Q1-B",
+          "label": "Ce qui épuise réellement",
+          "items": [
+            5,
+            6
+          ]
+        },
+        {
+          "id": "Q1-C",
+          "label": "Ce que l'on prend pour des preuves",
+          "items": [
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "id": "Q1-D",
+          "label": "« C'est dans la tête »",
+          "items": [
+            10,
+            11
+          ]
+        },
+        {
+          "id": "Q1-E",
+          "label": "Les fausses bonnes solutions",
+          "items": [
+            12,
+            13,
+            14
+          ]
+        }
+      ],
+      "introDisclaimer": "Ce quiz informe sur le burn-out et les risques psychosociaux. Il ne permet pas de déterminer si une personne est en burn-out."
+    },
+    {
+      "id": "Q2",
+      "title": "Burn-out : 8 idées reçues sur l'arrêt, les suites possibles et la reprise",
+      "shortTitle": "Après le burn-out",
+      "itemCount": 8,
+      "blocks": [
+        {
+          "id": "Q2-A",
+          "label": "Ce que l'on voit ne dit pas tout",
+          "items": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": "Q2-B",
+          "label": "Responsabilité, travail et reconnaissance",
+          "items": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "id": "Q2-C",
+          "label": "Reprendre sans revenir automatiquement à l'identique",
+          "items": [
+            6,
+            7,
+            8
+          ]
+        }
+      ],
+      "introDisclaimer": "Ce quiz ne permet pas de décider si un arrêt, une reprise ou une reconnaissance AT/MP s'applique à une situation personnelle."
+    },
+    {
+      "id": "Q3",
+      "title": "Burn-out : 9 idées reçues sur la manière d'aider, le retour et le regard porté sur un collègue",
+      "shortTitle": "Entourage et retour",
+      "itemCount": 9,
+      "blocks": [
+        {
+          "id": "Q3-A",
+          "label": "Observer sans conclure",
+          "items": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": "Q3-B",
+          "label": "Soutenir sans prendre la place",
+          "items": [
+            3,
+            4
+          ]
+        },
+        {
+          "id": "Q3-C",
+          "label": "Être présent sans envahir",
+          "items": [
+            5,
+            6
+          ]
+        },
+        {
+          "id": "Q3-D",
+          "label": "Revenir dans le collectif",
+          "items": [
+            7,
+            8
+          ]
+        },
+        {
+          "id": "Q3-E",
+          "label": "Ne pas réduire une personne à son burn-out passé",
+          "items": [
+            9
+          ]
+        }
+      ],
+      "introDisclaimer": "Observer un changement peut conduire à proposer un soutien ; cela ne permet pas de poser un diagnostic."
+    }
+  ],
+  "items": [
+    {
+      "id": "Q1-01",
+      "quizId": "Q1",
+      "order": 1,
+      "format": "true_false",
+      "editorialType": "Idée reçue - Vrai / faux",
+      "promptMarkdown": "### Idée reçue\n\n> \"Quand on aime vraiment son métier, on est protégé du burn-out.\"",
+      "options": [
+        {
+          "id": "true",
+          "text": "Vrai",
+          "correct": false
+        },
+        {
+          "id": "false",
+          "text": "Faux",
+          "correct": true
+        }
+      ],
+      "correctOptionIds": [
+        "false"
+      ],
+      "expectedAnswer": "Faux.",
+      "correctionShortMarkdown": "> **Faux. L'engagement n'est pas une immunité.**\n>\n> L'INRS décrit le burn-out dans des situations de stress professionnel chronique où l'engagement personnel peut être important. Un écart durable entre les attentes liées au métier et la réalité du travail peut participer à l'épuisement.\n>\n> Aimer son métier n'empêche donc ni la surcharge, ni les conflits de valeurs, ni le manque de moyens ou de reconnaissance.",
+      "takeawayMarkdown": "> **Aimer son métier ne protège pas automatiquement du burn-out.**",
+      "whyMythMarkdown": "On associe facilement l'épuisement à un travail que l'on n'aime plus. Pourtant, l'investissement dans son métier peut justement rendre certaines contradictions plus difficiles à supporter : ne plus pouvoir faire un travail que l'on juge de qualité, devoir agir contre ses valeurs ou manquer de moyens pour atteindre des objectifs auxquels on tient.",
+      "deeperMarkdown": "La littérature scientifique distingue plusieurs formes de passion pour le travail. Certaines formes d'investissement très contraint, dans lesquelles la personne peine à se détacher de son activité, ont été associées à davantage de conflit entre travail et autres sphères de vie et à davantage d'épuisement.\n\nCela ne signifie pas que \"plus on aime son métier, plus on risque un burn-out\".\n\nLe repère est plus simple :\n\n> aimer son métier ne protège pas automatiquement des effets de conditions de travail dégradées.",
+      "sources": [
+        "INRS, \"Epuisement professionnel ou burnout\", mise à jour du 24 septembre 2024.",
+        "Vallerand et al., \"On the Role of Passion for Work in Burnout: A Process Model\", Journal of Personality, 2010."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q1-A"
+    },
+    {
+      "id": "Q1-02",
+      "quizId": "Q1",
+      "order": 2,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de nuance",
+      "promptMarkdown": "### Idée reçue\n\nUne personne affirme :\n\n> \"Le burn-out, c'est surtout un problème de cadres ou de soignants. Dans les autres métiers, le risque est beaucoup plus marginal.\"\n\nQuelle réponse est la plus exacte ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Oui : ces deux catégories concentrent l'essentiel des situations de burn-out.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "Non : d'autres professions sont concernées, avec des expositions qui varient selon les métiers.",
+          "correct": true
+        },
+        {
+          "id": "C",
+          "text": "Oui : hors métiers de soin, le risque concerne essentiellement les fonctions d'encadrement.",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "text": "Non : toutes les professions sont exposées aux mêmes facteurs avec la même intensité.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "expectedAnswer": "B.",
+      "correctionShortMarkdown": "> **Il n'existe pas un \"métier type\" du burn-out.**\n>\n> L'INRS rappelle que le syndrome, initialement décrit chez les soignants et les aidants, peut concerner de nombreuses professions nécessitant un engagement personnel intense.\n>\n> Les données DARES montrent parallèlement que les catégories professionnelles n'ont pas les mêmes profils d'exposition aux RPS.",
+      "takeawayMarkdown": "> **Il n'existe pas un métier ou une catégorie professionnelle unique du burn-out.**",
+      "whyMythMarkdown": "L'histoire même du concept explique en partie ce stéréotype : les premières descriptions ont porté sur des métiers de soin et d'aide. Les cadres sont également très visibles dans les enquêtes ou les témoignages médiatiques.\n\nCela ne suffit pas à en faire les seules catégories concernées.",
+      "deeperMarkdown": "Les professions qualifiées peuvent être davantage exposées à certaines exigences psychosociales ou à certains conflits de valeurs, tout en étant mieux protégées sur d'autres dimensions.\n\nD'autres professions connaissent davantage de faible autonomie, de manque de soutien ou d'insécurité.\n\nLa prévention doit donc partir du travail réel et des expositions concrètes, pas du prestige ou de l'intitulé du métier.",
+      "sources": [
+        "INRS, dossier \"Epuisement professionnel ou burnout\", 2024.",
+        "DARES, \"Les risques psychosociaux au travail : les indicateurs disponibles\", 2010.",
+        "DARES, données Sumer 2017 sur les expositions aux RPS, publication 2020."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q1-A"
+    },
+    {
+      "id": "Q1-03",
+      "quizId": "Q1",
+      "order": 3,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de raisonnement",
+      "promptMarkdown": "### Idée reçue\n\nDeux salariés sont soumis à une forte charge émotionnelle et à des objectifs contradictoires. L'un d'eux est nettement mieux rémunéré.\n\nQue peut-on raisonnablement en conclure ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sa rémunération élevée compense généralement les facteurs psychosociaux.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "Son niveau de salaire permet de le considérer comme peu exposé au burn-out.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "Le salaire n'entretient jamais aucune relation avec l'épuisement professionnel.",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "text": "Une rémunération élevée ne suffit pas à écarter les autres facteurs de travail.",
+          "correct": true
+        }
+      ],
+      "correctOptionIds": [
+        "D"
+      ],
+      "expectedAnswer": "D.",
+      "correctionShortMarkdown": "> **Une meilleure rémunération n'est pas une immunité.**\n>\n> La rémunération peut participer à la dimension de récompense du travail, mais elle ne neutralise pas des exigences élevées, des objectifs contradictoires, un manque de soutien ou des conflits de valeurs.\n>\n> Les revues de la littérature retrouvent surtout l'importance de plusieurs caractéristiques du travail et de déséquilibres comme l'effort-récompense. Le salaire, pris isolément, ne permet donc pas d'estimer l'exposition d'une personne.",
+      "takeawayMarkdown": "> **Une rémunération élevée ne neutralise pas les autres facteurs de travail.**",
+      "whyMythMarkdown": "Le salaire constitue réellement une forme de récompense. Il serait donc faux de dire qu'il n'a jamais aucune importance.\n\nL'erreur consiste à en faire un facteur suffisant : une rémunération élevée ne fait pas disparaître des objectifs contradictoires, un conflit de valeurs, une surcharge émotionnelle ou une organisation injuste.",
+      "deeperMarkdown": "Le modèle effort-récompense rappelle que la récompense ne se réduit pas au salaire : elle comprend aussi la reconnaissance, les perspectives et la sécurité.\n\nLes revues prospectives sur le burn-out montrent par ailleurs que les caractéristiques du travail ne se résument pas à une seule variable. Les demandes de travail, les ressources disponibles et certains déséquilibres organisationnels peuvent tous contribuer à l'épuisement.\n\nLe quiz ne prétend donc pas mesurer l'effet propre du salaire. Il rejette seulement le raccourci :\n\n> salaire élevé = faible exposition psychosociale.",
+      "sources": [
+        "Rapport Gollac, facteurs psychosociaux de risque au travail, 2011.",
+        "INRS, facteurs de risques psychosociaux.",
+        "Guseva Canu et al., \"Predictors of Occupational Burnout: A Systematic Review\", 2021.",
+        "Travaux sur le modèle effort-récompense et l'épuisement professionnel."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q1-A"
+    },
+    {
+      "id": "Q1-04",
+      "quizId": "Q1",
+      "order": 4,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de situation",
+      "promptMarkdown": "### Idée reçue\n\nAprès une réorganisation, une personne d'une équipe signale un épuisement important lié au travail alors que plusieurs collègues semblent continuer à travailler normalement.\n\nQuelle conclusion peut-on tirer ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Les réponses individuelles peuvent varier, mais les facteurs de travail restent à analyser.",
+          "correct": true
+        },
+        {
+          "id": "B",
+          "text": "Le maintien des autres collègues indique que la cause est surtout individuelle.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "L'organisation peut être écartée tant que la majorité de l'équipe semble tenir.",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "text": "Les caractéristiques individuelles ne doivent jamais entrer dans l'analyse d'une situation.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "expectedAnswer": "A.",
+      "correctionShortMarkdown": "> **Des personnes exposées à une même situation peuvent réagir différemment ; cela ne suffit pas à attribuer le problème à une \"fragilité\".**\n>\n> La HAS et l'INRS décrivent le burn-out comme un phénomène qui dépend de plusieurs facteurs : l'analyse porte sur les conditions de travail et peut aussi tenir compte de caractéristiques individuelles.\n>\n> En prévention, l'enjeu reste d'identifier les facteurs de travail sur lesquels il est possible d'agir.",
+      "takeawayMarkdown": "> **Si une seule personne est touchée, cela ne suffit pas à conclure à une fragilité individuelle.**",
+      "whyMythMarkdown": "Nous avons tendance à comparer les personnes : \"les autres tiennent, donc le problème vient de lui ou d'elle\".\n\nCe raisonnement confond variation individuelle et causalité.",
+      "deeperMarkdown": "La HAS précise que les facteurs individuels peuvent être pris en compte, mais qu'ils ne doivent ni servir à sélectionner les travailleurs ni conduire à écarter les facteurs de risque présents dans l'environnement de travail.\n\nIl faut donc éviter deux erreurs :\n- psychologiser entièrement le problème ;\n- nier l'existence de différences individuelles.",
+      "sources": [
+        "HAS, fiche mémo burnout, mars 2017, mise à jour octobre 2025.",
+        "INRS, FAQ burnout, 2024.",
+        "DGT, INRS, ANACT, guide burnout, 2015."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q1-A"
+    },
+    {
+      "id": "Q1-05",
+      "quizId": "Q1",
+      "order": 5,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de situation",
+      "promptMarkdown": "### Idée reçue\n\nPlusieurs personnes d'une équipe signalent une fatigue importante et des difficultés liées au travail. L'analyse conclut rapidement :\n\n> \"Le volume de travail est dans la norme, il n'y a donc pas de facteur organisationnel à rechercher.\"\n\nQuelle est la principale faiblesse de ce raisonnement ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Aucune : un volume de travail normal permet d'écarter les principaux facteurs professionnels.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "Il analyse le travail alors qu'il faudrait d'abord évaluer la vulnérabilité des membres de l'équipe.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "Il réduit l'analyse au volume et écarte d'autres familles de facteurs de RPS.",
+          "correct": true
+        },
+        {
+          "id": "D",
+          "text": "Il oublie que les facteurs de RPS concernent surtout les métiers en contact avec le public.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "expectedAnswer": "C.",
+      "correctionShortMarkdown": "> **Le volume de travail ne résume pas les facteurs de RPS.**\n>\n> La HAS et l'INRS s'appuient sur six grandes familles de facteurs liés au travail, qui comprennent aussi l'autonomie, les exigences émotionnelles, les relations et la reconnaissance, les conflits de valeurs et l'insécurité.\n>\n> Une charge quantitative jugée \"normale\" ne dispense pas d'analyser le travail réel.",
+      "takeawayMarkdown": "> **L'absence de surcharge quantitative ne permet pas d'écarter les autres facteurs de RPS.**",
+      "whyMythMarkdown": "La surcharge est visible et facile à mesurer. Elle devient donc facilement l'explication unique.\n\nOr deux emplois de même volume peuvent être vécus très différemment selon les marges de manoeuvre, les contradictions, les exigences émotionnelles, le soutien ou la possibilité de faire un travail jugé de qualité.",
+      "deeperMarkdown": null,
+      "sources": [
+        "HAS, fiche mémo burnout, mise à jour octobre 2025.",
+        "INRS, facteurs de risques psychosociaux.",
+        "Rapport Gollac, 2011."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q1-B"
+    },
+    {
+      "id": "Q1-06",
+      "quizId": "Q1",
+      "order": 6,
+      "format": "association",
+      "editorialType": "Association - Les six familles de facteurs de RPS",
+      "promptMarkdown": "### Situation\n\nUne équipe décrit plusieurs difficultés de travail.\n\nAssociez chaque situation à la famille de facteurs de RPS qui permet le mieux de structurer l'analyse.",
+      "pairs": [
+        {
+          "id": "1",
+          "promptMarkdown": "Délais très courts, interruptions fréquentes et horaires qui débordent régulièrement.",
+          "answer": "intensité et temps de travail"
+        },
+        {
+          "id": "2",
+          "promptMarkdown": "Devoir rester calme et accueillant face à des personnes agressives ou en détresse.",
+          "answer": "exigences émotionnelles"
+        },
+        {
+          "id": "3",
+          "promptMarkdown": "Ne pouvoir décider ni de l'ordre des tâches ni de la manière de les réaliser.",
+          "answer": "manque d'autonomie et de marges de manoeuvre"
+        },
+        {
+          "id": "4",
+          "promptMarkdown": "Manque de soutien, reconnaissance insuffisante et sentiment d'injustice dans les décisions.",
+          "answer": "rapports sociaux au travail dégradés"
+        },
+        {
+          "id": "5",
+          "promptMarkdown": "Devoir réaliser un travail que l'on juge contraire à ses valeurs ou ne plus pouvoir faire un travail de qualité.",
+          "answer": "conflits de valeurs"
+        },
+        {
+          "id": "6",
+          "promptMarkdown": "Crainte durable de perdre son emploi ou de voir son activité profondément transformée sans visibilité.",
+          "answer": "insécurité de la situation de travail"
+        }
+      ],
+      "correctionShortMarkdown": "> **Ces six situations relèvent de six familles différentes de facteurs de RPS.**\n>\n> Le rapport Gollac et les ressources de l'INRS permettent de structurer l'analyse autour de l'intensité et du temps de travail, des exigences émotionnelles, de l'autonomie, des rapports sociaux, des conflits de valeurs et de l'insécurité.\n>\n> Cette grille aide à ne pas réduire les RPS à la seule surcharge quantitative.",
+      "takeawayMarkdown": "> **Les facteurs de RPS couvrent plusieurs dimensions du travail : la charge n'en est qu'une.**",
+      "whyMythMarkdown": "La surcharge est souvent le facteur le plus visible. Elle peut donc occuper toute l'analyse.\n\nUne grille structurée permet de rechercher aussi ce qui relève :\n- des émotions mobilisées par le travail ;\n- des marges de manoeuvre ;\n- du soutien et de la reconnaissance ;\n- de la qualité empêchée ;\n- de l'incertitude professionnelle.",
+      "deeperMarkdown": "Des caractéristiques individuelles peuvent influencer la manière dont une situation est vécue, mais elles ne constituent pas des familles de facteurs de RPS sur lesquelles une démarche de prévention collective agit directement.",
+      "sources": [
+        "Rapport Gollac, 2011.",
+        "INRS, facteurs de risques psychosociaux.",
+        "INRS, « Comment agir en prévention ? », ED 6349, 2026.",
+        "HAS, fiche mémo burnout, mise à jour octobre 2025."
+      ],
+      "accessibilityMarkdown": "Prévoir une alternative à l'association : présenter chaque situation successivement et proposer les six familles comme choix.",
+      "blockId": "Q1-B"
+    },
+    {
+      "id": "Q1-07",
+      "quizId": "Q1",
+      "order": 7,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de raisonnement",
+      "promptMarkdown": "### Idée reçue\n\nAprès une période de travail très intense, une personne raconte :\n\n> \"J'ai fait un burn-out : j'étais complètement épuisée. Après deux semaines de vacances, ça allait nettement mieux.\"\n\nUne autre personne lui répond :\n\n> \"Alors ce n'était pas un burn-out.\"\n\nQuelle analyse est la plus rigoureuse ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Une fatigue professionnelle très intense suffit à qualifier un burn-out.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "Une amélioration nette pendant les vacances suffit à exclure un burn-out.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "Ni la fatigue intense ni l'amélioration pendant les congés ne suffisent à trancher.",
+          "correct": true
+        },
+        {
+          "id": "D",
+          "text": "Le terme burn-out peut être utilisé dès qu'une personne se sent à bout à cause de son travail.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "expectedAnswer": "C.",
+      "correctionShortMarkdown": "> **Etre très fatigué ne suffit pas à qualifier un burn-out, et les vacances ne constituent pas un test.**\n>\n> L'INRS précise qu'une plainte liée à la charge de travail ne signifie pas, à elle seule, qu'une personne est en état de burn-out. La HAS recommande une démarche clinique reposant sur plusieurs éléments, dont les manifestations et les conditions de travail.\n>\n> De la même manière, une amélioration pendant une période de repos ne permet pas, à elle seule, d'exclure un burn-out.",
+      "takeawayMarkdown": "> **Burn-out n'est pas un synonyme de « très fatigué » ; l'effet des vacances ne permet pas non plus de trancher.**",
+      "whyMythMarkdown": "Le mot \"burn-out\" est aujourd'hui utilisé très largement dans le langage courant pour dire :\n- \"je suis épuisé\" ;\n- \"je n'en peux plus\" ;\n- \"je suis à bout\".\n\nCette banalisation peut produire deux erreurs opposées :\n\n1. appeler \"burn-out\" toute période de fatigue intense ;\n2. minimiser ensuite les situations sévères en affirmant que \"tout le monde est en burn-out maintenant\".\n\nL'INRS rappelle pourtant qu'une plainte sur la charge ou le sentiment d'être débordé ne suffit pas à qualifier un burn-out.",
+      "deeperMarkdown": "Santé publique France documente une **augmentation réelle de la souffrance psychique en lien avec le travail** dans son programme de surveillance des maladies à caractère professionnel : entre 2007 et 2019, les prévalences observées ont plus que doublé chez les femmes comme chez les hommes.\n\nEn 2019, la souffrance psychique en lien avec le travail était signalée chez 5,9 % des femmes et 2,7 % des hommes vus dans ce dispositif.\n\nCette augmentation concernait plusieurs catégories de troubles, notamment anxieux, dépressifs et des burn-out diagnostiqués par les médecins volontaires.\n\nCes données ne signifient donc ni :\n- que \"tout le monde est en burn-out\" ;\n- que toute personne utilisant ce mot relève cliniquement d'un burn-out ;\n- que la hausse observée peut être réduite à un simple effet de mode.\n\nLe vocabulaire courant et les données épidémiologiques répondent à deux questions différentes.",
+      "sources": [
+        "INRS, \"Epuisement professionnel ou burnout - Foire aux questions\", 24 septembre 2024.",
+        "HAS, fiche mémo burnout, mise à jour octobre 2025.",
+        "Santé publique France, Programme MCP : souffrance psychique en lien avec le travail, évolution 2007-2019, publication 2024.",
+        "Santé publique France, résultats MCP 2019-2023, publication 2026."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q1-C"
+    },
+    {
+      "id": "Q1-08",
+      "quizId": "Q1",
+      "order": 8,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de correction",
+      "promptMarkdown": "### Idée reçue\n\nUne présentation interne affirme :\n\n> \"Depuis l'entrée en vigueur de la CIM-11, l'OMS reconnaît officiellement le burn-out comme une maladie mentale.\"\n\nQuelle correction est la plus exacte ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "L'affirmation est inexacte : la CIM-11 le classe comme un phénomène lié au travail, et non comme une affection médicale.",
+          "correct": true
+        },
+        {
+          "id": "B",
+          "text": "L'affirmation est exacte : la CIM-11 classe désormais le burn-out parmi les troubles mentaux.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "L'affirmation est incomplète : la CIM-11 le classe comme maladie professionnelle lorsque le lien avec le travail est établi.",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "text": "L'affirmation est prématurée : la CIM-11 ne contient pas encore de catégorie spécifique concernant le burn-out.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "expectedAnswer": "A.",
+      "correctionShortMarkdown": "> **La CIM-11 reconnaît le burn-out comme un phénomène lié au travail, pas comme une affection médicale.**\n>\n> L'OMS le rattache à un stress professionnel chronique qui n'a pas été géré avec succès et limite son emploi au contexte professionnel.\n>\n> Ce classement n'exclut pas une démarche clinique : la HAS indique qu'un ensemble syndromique évoquant un burn-out nécessite une démarche diagnostique.",
+      "takeawayMarkdown": "> **L'OMS classe le burn-out comme un phénomène lié au travail, pas comme une affection médicale.**",
+      "whyMythMarkdown": null,
+      "deeperMarkdown": "La classification OMS et la démarche clinique répondent à deux questions différentes.\n\nLa classification OMS ne détermine pas non plus les règles françaises de reconnaissance en maladie professionnelle.",
+      "sources": [
+        "OMS, \"Burn-out an occupational phenomenon\".",
+        "OMS, \"ICD-11 Implementation\".",
+        "HAS, fiche mémo burnout, mise à jour octobre 2025."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q1-C"
+    },
+    {
+      "id": "Q1-09",
+      "quizId": "Q1",
+      "order": 9,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de raisonnement",
+      "promptMarkdown": "### Idée reçue\n\nLors d'une action de sensibilisation, une personne affirme :\n\n> \"Si l'épuisement vient du travail, on peut parler de burn-out et exclure une dépression.\"\n\nQuelle réponse est la plus juste ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Oui : l'origine professionnelle suffit à exclure une dépression.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "Oui : si les difficultés restent limitées au travail, une dépression peut être écartée.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "Non : burn-out et dépression sont deux formulations différentes du même trouble.",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "text": "Non : ils sont distincts, mais un trouble dépressif peut être associé ou sous-jacent.",
+          "correct": true
+        }
+      ],
+      "correctOptionIds": [
+        "D"
+      ],
+      "expectedAnswer": "D.",
+      "correctionShortMarkdown": "> **Burn-out et dépression ne se confondent pas, mais ils ne s'excluent pas non plus.**\n>\n> L'INRS distingue un burn-out qui s'exprime au départ dans la sphère professionnelle d'une dépression qui concerne plus largement les différents domaines de la vie. La HAS demande néanmoins de rechercher notamment un trouble dépressif dans la démarche diagnostique.\n>\n> Un questionnaire ou une étiquette ne suffit donc pas à trancher une situation individuelle.",
+      "takeawayMarkdown": "> **Burn-out et dépression sont distincts, mais peuvent être associés.**",
+      "whyMythMarkdown": null,
+      "deeperMarkdown": "La HAS reprend trois dimensions issues des travaux de Maslach : épuisement émotionnel, distanciation ou cynisme vis-à-vis du travail, diminution de l'accomplissement personnel ou de l'efficacité professionnelle.\n\nCes dimensions ne constituent pas, à elles seules, un outil de diagnostic individuel.",
+      "sources": [
+        "HAS, fiche mémo burnout, mise à jour octobre 2025.",
+        "INRS, FAQ burnout, 2024."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q1-C"
+    },
+    {
+      "id": "Q1-10",
+      "quizId": "Q1",
+      "order": 10,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de situation",
+      "promptMarkdown": "### Idée reçue\n\nDans un plan de prévention, une entreprise classe le manque de soutien des collègues ou de l'encadrement uniquement parmi les sujets \"d'ambiance\", sans lien possible avec la santé physique.\n\nQuelle analyse correspond le mieux aux connaissances actuelles ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Le classement est correct : aucun lien avec la santé physique n'est documenté.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "Il est incomplet : des associations avec certains effets physiques, notamment des TMS, sont documentées.",
+          "correct": true
+        },
+        {
+          "id": "C",
+          "text": "Il est incorrect : le faible soutien social explique à lui seul la majorité des lombalgies.",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "text": "Il est correct dès lors que les postes ont fait l'objet d'une étude ergonomique.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "expectedAnswer": "B.",
+      "correctionShortMarkdown": "> **Les facteurs psychosociaux ne sont pas associés uniquement à la santé mentale.**\n>\n> La synthèse INRS publiée en décembre 2024 documente notamment des associations entre faible soutien social et troubles musculosquelettiques du dos.\n>\n> Une association statistique ne signifie pas qu'un facteur explique à lui seul un problème de santé.",
+      "takeawayMarkdown": "> **Les facteurs psychosociaux peuvent aussi être associés à des effets de santé physique.**",
+      "whyMythMarkdown": "Le mot \"psychosocial\" conduit facilement à penser \"psychologique\".\n\nLes travaux épidémiologiques montrent pourtant des associations avec plusieurs catégories d'effets de santé physique.",
+      "deeperMarkdown": "Dans la synthèse INRS de décembre 2024, le faible soutien social est associé aux TMS du dos avec un risque relatif de 1,42 [1,25-1,61]. Cela correspond à un risque observé environ 42 % plus élevé dans la population exposée comparée.\n\nCe chiffre ne signifie ni que 42 % des personnes exposées auront une lombalgie, ni que le manque de soutien en est la cause unique.",
+      "sources": [
+        "Boini S., Colin R., Langevin V., Gautier M.-A., INRS, Références en santé au travail n° 180, décembre 2024, TP 57, tableau II."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q1-D"
+    },
+    {
+      "id": "Q1-11",
+      "quizId": "Q1",
+      "order": 11,
+      "format": "classification",
+      "editorialType": "Classement - Effets sur la santé et signaux dans l'entreprise",
+      "promptMarkdown": "Classez les éléments suivants dans la catégorie la plus adaptée.",
+      "categories": [
+        {
+          "id": "c1",
+          "label": "Effets de santé documentés",
+          "items": [
+            "troubles de santé mentale",
+            "troubles musculosquelettiques",
+            "maladies cardiovasculaires"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Signaux ou répercussions dans l'entreprise",
+          "items": [
+            "absentéisme",
+            "turnover",
+            "difficultés de remplacement ou de recrutement"
+          ]
+        }
+      ],
+      "correctionShortMarkdown": "> Les risques psychosociaux ne concernent pas seulement le ressenti individuel.\n>\n> L'INRS documente des liens entre certaines expositions psychosociales et la santé mentale, les TMS ou certaines maladies cardiovasculaires. Il cite aussi, parmi les répercussions observables dans les entreprises, l'absentéisme, le turnover et les difficultés de remplacement ou de recrutement.\n>\n> Ces indicateurs ne prouvent pas, pris isolément, l'existence d'un RPS : ils constituent des signaux à analyser avec le travail réel.",
+      "takeawayMarkdown": "> **Les RPS peuvent affecter la santé et se traduire par des signaux dans le fonctionnement de l'entreprise.**",
+      "whyMythMarkdown": null,
+      "deeperMarkdown": "Les accidents du travail sont également associés à certaines expositions psychosociales dans la littérature INRS. Ils ne sont pas utilisés dans cet exercice de classement parce qu'un accident concerne à la fois la santé de la personne et le fonctionnement de l'entreprise : il rendrait les deux catégories artificiellement ambiguës.",
+      "sources": [
+        "INRS, \"Effets des expositions psychosociales sur la santé des salariés\", Références en santé au travail n° 180, décembre 2024, TP 57.",
+        "INRS, \"Conséquences pour le salarié et l'entreprise\"."
+      ],
+      "accessibilityMarkdown": "Prévoir une alternative au glisser-déposer : sélectionner l'élément puis choisir la catégorie.",
+      "blockId": "Q1-D"
+    },
+    {
+      "id": "Q1-12",
+      "quizId": "Q1",
+      "order": 12,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de situation",
+      "promptMarkdown": "### Idée reçue\n\nUne évaluation des RPS met en évidence des objectifs contradictoires, un manque de marges de manoeuvre et des difficultés de régulation de la charge.\n\nL'entreprise décide comme seule action de proposer à toute l'équipe une formation à la gestion du stress.\n\nQuelle analyse est la plus juste ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "L'action est suffisante dès lors que tous les salariés reçoivent la même formation.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "La formation devient inadaptée dès qu'un facteur organisationnel est identifié.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "La formation peut compléter la démarche, mais ne remplace pas l'action sur les facteurs identifiés.",
+          "correct": true
+        },
+        {
+          "id": "D",
+          "text": "L'action sur l'organisation doit attendre qu'une personne soit effectivement en arrêt.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "expectedAnswer": "C.",
+      "correctionShortMarkdown": "> **Une formation peut renforcer les ressources des salariés, mais elle ne supprime pas des objectifs contradictoires ou un manque de marges de manoeuvre.**\n>\n> Le Code du travail demande de combattre les risques à la source et de privilégier la protection collective. Pour les RPS, l'INRS recommande une prévention collective centrée sur le travail et son organisation.\n>\n> Les actions primaires, secondaires et tertiaires peuvent être complémentaires ; elles ne répondent simplement pas au même objectif.",
+      "takeawayMarkdown": "> **La gestion du stress peut compléter la prévention, mais ne remplace pas l'action sur les causes.**",
+      "whyMythMarkdown": "La formation est visible, rapide à déployer et donne l'impression d'agir.\n\nElle peut réellement être utile, mais devient insuffisante si elle se substitue à l'action sur les facteurs identifiés.",
+      "deeperMarkdown": "- prévention primaire : agir sur les facteurs à la source ;\n- prévention secondaire : renforcer les ressources face aux contraintes restantes ;\n- prévention tertiaire : prendre en charge les conséquences de situations déjà dégradées.",
+      "sources": [
+        "Code du travail, article L. 4121-2.",
+        "INRS, prévention des RPS.",
+        "ANACT, ressources méthodologiques sur les trois niveaux de prévention."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q1-E"
+    },
+    {
+      "id": "Q1-13",
+      "quizId": "Q1",
+      "order": 13,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de situation",
+      "promptMarkdown": "### Idée reçue\n\nUne entreprise a identifié des problèmes de charge de travail, d'autonomie et de relations de travail. Elle les traite dans un accord sur la qualité de vie et les conditions de travail (QVCT), mais ils ne figurent pas dans son document unique d'évaluation des risques professionnels (DUERP).\n\nQuelle analyse est la plus juste ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "L'accord QVCT peut remplacer le DUERP pour les risques psychosociaux.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "L'accord peut compléter la démarche, mais l'évaluation des RPS doit être transcrite dans le DUERP.",
+          "correct": true
+        },
+        {
+          "id": "C",
+          "text": "Le DUERP ne concerne les RPS que lorsqu'un accident du travail a déjà été reconnu.",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "text": "L'inscription au DUERP est facultative lorsqu'un SPST intervient dans l'entreprise.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "expectedAnswer": "B.",
+      "correctionShortMarkdown": "> **Un accord QVCT peut compléter la démarche, mais il ne remplace pas le DUERP.**\n>\n> Le Code du travail impose d'évaluer les risques pour la santé physique et mentale et de transcrire dans le DUERP les résultats de l'évaluation de l'ensemble des risques professionnels.\n>\n> Traiter le sujet dans une autre politique d'entreprise ne dispense donc pas de l'évaluer et de le tracer dans le document unique.",
+      "takeawayMarkdown": "> **L'évaluation des RPS doit être intégrée au DUERP.**",
+      "whyMythMarkdown": null,
+      "deeperMarkdown": "Depuis la loi du 2 août 2021, l'article L. 4121-3-1 prévoit que le DUERP répertorie l'ensemble des risques professionnels auxquels sont exposés les travailleurs et assure la traçabilité collective de ces expositions.\n\nLes travailleurs disposent d'un droit d'accès au DUERP dans les conditions prévues par l'article R. 4121-4.",
+      "sources": [
+        "Code du travail, L. 4121-1, L. 4121-3, L. 4121-3-1.",
+        "Code du travail, R. 4121-1, R. 4121-2, R. 4121-4.",
+        "INRS, ED 6403, juin 2025.",
+        "INRS, TJ 29, mai 2026."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q1-E"
+    },
+    {
+      "id": "Q1-14",
+      "quizId": "Q1",
+      "order": 14,
+      "format": "association",
+      "editorialType": "Association - Un seul interlocuteur ?",
+      "promptMarkdown": "### Idée reçue\n\n> \"Quand une difficulté de santé est liée au travail, il faut d'abord passer par son manager.\"\n\nAssociez chaque besoin à l'interlocuteur le plus directement compétent.",
+      "pairs": [
+        {
+          "id": "1",
+          "promptMarkdown": "Une personne souhaite parler de son état de santé et de sa prise en charge médicale.",
+          "answer": "médecin traitant"
+        },
+        {
+          "id": "2",
+          "promptMarkdown": "Une personne souhaite examiner le lien entre son état de santé, son poste et ses conditions de travail, ou anticiper un problème de maintien en emploi.",
+          "answer": "médecin du travail / service de prévention et de santé au travail (SPST)"
+        },
+        {
+          "id": "3",
+          "promptMarkdown": "Un problème concerne collectivement l'organisation, la santé, la sécurité ou les conditions de travail.",
+          "answer": "comité social et économique (CSE) et, lorsqu'elle existe, commission santé, sécurité et conditions de travail (CSSCT) dans le cadre des attributions qui lui sont déléguées"
+        },
+        {
+          "id": "4",
+          "promptMarkdown": "La question porte sur le respect par l'employeur des règles de droit du travail, notamment en matière de santé et de sécurité.",
+          "answer": "inspection du travail / service de renseignements en droit du travail"
+        }
+      ],
+      "correctionShortMarkdown": "> Il n'existe pas un interlocuteur unique.\n>\n> Le médecin traitant intervient sur la santé personnelle ; le médecin du travail et le SPST font le lien entre santé et travail ; le CSE agit sur les questions collectives de santé, sécurité et conditions de travail ; l'inspection du travail contrôle l'application du droit.\n>\n> Un travailleur peut demander directement une visite auprès du médecin du travail dans les conditions prévues par l'article R. 4624-34 du Code du travail.",
+      "takeawayMarkdown": "> **L'interlocuteur pertinent dépend du besoin : santé, santé-travail, collectif ou droit du travail.**",
+      "whyMythMarkdown": null,
+      "deeperMarkdown": "Plusieurs acteurs peuvent intervenir dans une même situation avec des rôles complémentaires.\n\nLa CSSCT agit par délégation du CSE. Le SPST a une mission de prévention et de conseil. Le médecin du travail n'est pas le médecin traitant.",
+      "sources": [
+        "Code du travail, R. 4624-34.",
+        "Code du travail, L. 4622-2.",
+        "Code du travail, L. 2312-5 et L. 2312-9.",
+        "Code du travail, L. 2315-38.",
+        "Ministère du Travail, ressources sur les acteurs de la santé au travail."
+      ],
+      "accessibilityMarkdown": "Prévoir une alternative au glisser-déposer : sélectionner une situation puis choisir l'interlocuteur.",
+      "blockId": "Q1-E"
+    },
+    {
+      "id": "Q2-01",
+      "quizId": "Q2",
+      "order": 1,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de situation",
+      "promptMarkdown": "**Représentation visée :**\n\n> \"Si elle peut faire certaines activités, elle pourrait travailler.\"\n\n### Question\n\nUne personne en cours de récupération après un épuisement professionnel est vue en train de prendre un café avec des proches et de participer ponctuellement à quelques activités.\n\nUn collègue conclut :\n\n> \"Si elle peut faire tout ça, elle serait capable de travailler.\"\n\nQuelle analyse est la plus juste ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Le raisonnement est valable : toute activité sociale démontre une capacité de travail suffisante.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "Une activité ponctuelle ne permet pas d'évaluer la capacité à tenir un poste dans la durée.",
+          "correct": true
+        },
+        {
+          "id": "C",
+          "text": "Le raisonnement est valable si l'activité dure plusieurs heures sans difficulté apparente.",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "text": "Le raisonnement est faux parce qu'une personne en épuisement professionnel ne peut normalement exercer aucune activité.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "expectedAnswer": "B.",
+      "correctionShortMarkdown": "> **Ce que l'on voit ne permet pas d'évaluer une capacité de travail.**\n>\n> La capacité de travail renvoie à la possibilité de répondre aux exigences mentales et physiques d'un emploi dans la durée. Elle ne se déduit pas du fait de pouvoir réaliser ponctuellement une activité sociale ou personnelle.\n>\n> Des travaux qualitatifs sur l'épuisement décrivent également des limitations importantes qui peuvent rester invisibles pour l'entourage.",
+      "takeawayMarkdown": "> **Une activité ponctuelle ne permet pas d'évaluer la capacité à tenir durablement les exigences d'un poste.**",
+      "whyMythMarkdown": "Nous évaluons facilement l'état d'une personne à partir de ce qui est visible :\n- elle sort ;\n- elle parle ;\n- elle sourit ;\n- elle réalise une activité.\n\nMais un emploi impose un ensemble spécifique de contraintes :\n- concentration ;\n- rythme ;\n- durée ;\n- interactions ;\n- responsabilités ;\n- charge émotionnelle ;\n- possibilités de récupération.\n\nLa comparaison directe n'est donc pas valable.",
+      "deeperMarkdown": "Une étude longitudinale publiée en 2026 définit la \"work ability\" comme la capacité mentale et physique à accomplir son travail et à répondre à ses exigences.\n\nUne étude qualitative récente auprès de personnes revenant au travail après un trouble d'épuisement décrit aussi des symptômes et limitations de fonctionnement parfois invisibles pour l'extérieur, ce qui peut conduire l'entourage ou l'employeur à sous-estimer les difficultés.\n\nCes travaux ne permettent pas d'évaluer la capacité d'une personne donnée. Ils permettent de comprendre pourquoi l'apparence ou une activité ponctuelle ne constitue pas un test.",
+      "sources": [
+        "Deprez et al., \"Determinants of Sustainable Return to Work After Burnout or Depression\", Journal of Occupational Rehabilitation, 2026.",
+        "\"Experiences of returning to work after sick leave due to exhaustion disorder: a qualitative content analysis\", 2025/2026.",
+        "HAS, accompagnement du retour au travail, mise à jour octobre 2025."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q2-A"
+    },
+    {
+      "id": "Q2-02",
+      "quizId": "Q2",
+      "order": 2,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de raisonnement",
+      "promptMarkdown": "**Représentation visée :**\n\n> \"Une fois éloignée du travail, une personne en burn-out ne devrait plus avoir autre chose qu'un peu de fatigue.\"\n\n### Question\n\nUne personne a connu un épuisement professionnel dans un contexte de relations de travail très dégradées.\n\nAprès l'arrêt, elle continue à présenter une fatigue importante, des difficultés de concentration et de sommeil. Elle fait aussi des cauchemars et revit parfois certaines scènes de travail.\n\nQuelle analyse est la plus exacte ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Toutes ces manifestations sont nécessairement des symptômes caractéristiques du burn-out.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "Leur persistance après l'arrêt suffit à exclure un lien avec la situation de travail.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "La présence de cauchemars ou de reviviscences suffit à établir juridiquement qu'il y a eu harcèlement moral.",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "text": "Certaines difficultés peuvent persister ; des manifestations traumatiques peuvent relever d'un trouble associé.",
+          "correct": true
+        }
+      ],
+      "correctOptionIds": [
+        "D"
+      ],
+      "expectedAnswer": "D.",
+      "correctionShortMarkdown": "> **L'arrêt ne garantit pas la disparition rapide de toutes les difficultés.**\n>\n> Des suivis cliniques de personnes traitées pour un épuisement sévère lié au stress retrouvent, chez certaines d'entre elles, des difficultés persistantes de fatigue, sommeil, concentration, mémoire ou tolérance au stress.\n>\n> En revanche, des cauchemars, reviviscences ou une hypervigilance importante ne sont pas spécifiques du burn-out. Ils peuvent notamment conduire à rechercher un trouble associé, comme un trouble de stress post-traumatique.",
+      "takeawayMarkdown": "> **Des difficultés peuvent persister après l'arrêt, mais le burn-out n'explique pas nécessairement tous les symptômes.**",
+      "whyMythMarkdown": null,
+      "deeperMarkdown": "Une partie importante des suivis à long terme disponibles porte sur le *stress-related exhaustion disorder* ou *exhaustion disorder* étudié en Suède. Ce cadre clinique recoupe certaines situations d'épuisement sévère lié au stress, mais il n'est pas strictement équivalent au phénomène professionnel « burn-out » défini par l'OMS.\n\nCes travaux sont donc utilisés ici pour documenter la possibilité de difficultés résiduelles, pas pour décrire une trajectoire universelle du burn-out.",
+      "sources": [
+        "HAS, \"Repérage et prise en charge cliniques du syndrome d'épuisement professionnel ou burnout\", mise à jour octobre 2025.",
+        "Oosterholt et al., \"Getting better, but not well\", suivi à 1,5 an, 2016.",
+        "Glise et al., suivi à long terme des symptômes résiduels après stress-related exhaustion, 2020.",
+        "Österberg et al., difficultés cognitives 7 à 12 ans après prise en charge pour stress-related exhaustion, 2021.",
+        "Eskilsson et al., \"Symptoms, work situation and work functioning 10 years after rehabilitation of stress-induced exhaustion disorder\", 2024.",
+        "Assurance Maladie et références institutionnelles sur le trouble de stress post-traumatique."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q2-A"
+    },
+    {
+      "id": "Q2-03",
+      "quizId": "Q2",
+      "order": 3,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - Mise en situation",
+      "promptMarkdown": "**Représentation visée :**\n\n> \"Quand l'équipe dépend de moi, continuer à tenir malgré mon épuisement est la chose responsable à faire.\"\n\n### Question\n\nUne personne très épuisée explique :\n\n> \"Je ne peux pas envisager de m'arrêter. Nous sommes déjà en sous-effectif et mes collègues récupéreraient tout mon travail. Ce serait les abandonner.\"\n\nSans se prononcer sur la décision médicale qui lui convient, quelle analyse relève le mieux de la prévention ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Les effectifs, la charge et la continuité de l'activité relèvent d'abord de l'organisation du travail.",
+          "correct": true
+        },
+        {
+          "id": "B",
+          "text": "Une personne responsable doit continuer tant qu'aucun remplacement n'a été organisé.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "La culpabilité envers les collègues permet d'évaluer si l'on est encore capable de travailler.",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "text": "Les collègues devraient décider ensemble si l'arrêt est suffisamment justifié pour être acceptable.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "expectedAnswer": "A.",
+      "correctionShortMarkdown": "> **La continuité du travail est une question d'organisation, pas une dette personnelle envers les collègues.**\n>\n> Le Code du travail impose à l'employeur de protéger la santé physique et mentale et de mettre en place une organisation et des moyens adaptés.\n>\n> La peur de reporter sa charge sur les autres est fréquente dans les témoignages de personnes en arrêt, mais elle ne constitue pas un critère permettant d'évaluer la santé ou la capacité de travail.",
+      "takeawayMarkdown": "> **La continuité de l'activité, les effectifs et la répartition de la charge relèvent de l'organisation du travail.**",
+      "whyMythMarkdown": "Les relations avec les collègues comptent beaucoup.\n\nLorsqu'une équipe est déjà sous tension, une absence peut effectivement modifier la charge des autres. Cela peut créer une culpabilité très forte :\n\n- \"ils vont devoir faire mon travail\" ;\n- \"personne ne peut me remplacer\" ;\n- \"je les laisse tomber\".\n\nLe problème existe réellement, mais son traitement relève de l'organisation du travail.",
+      "deeperMarkdown": "Une étude qualitative sur le retour au travail après des troubles mentaux courants rapporte que la culpabilité envers les collègues est fréquente pendant l'arrêt : plusieurs personnes interrogées expliquent se sentir responsables du travail reporté sur les autres.\n\nDes études sur les obstacles au retour au travail décrivent également la honte, la culpabilité et le manque de compréhension des collègues comme des difficultés supplémentaires.\n\nSur le plan de la prévention, le Code du travail prévoit que l'employeur doit :\n- protéger la santé physique et mentale ;\n- mettre en place une organisation et des moyens adaptés ;\n- combattre les risques à la source ;\n- intégrer l'organisation du travail dans la prévention.\n\nL'item ne dit donc pas si une personne particulière devrait ou non être arrêtée. Il déconstruit l'idée selon laquelle une insuffisance d'organisation devrait être compensée par son état de santé.",
+      "sources": [
+        "Code du travail, articles L. 4121-1 et L. 4121-2.",
+        "\"Self-directing return-to-work: Employees' perspective\", étude qualitative.",
+        "\"Barriers and Facilitators for Return to Work from the Perspective of Workers with Common Mental Disorders\", étude qualitative longitudinale, 2022.",
+        "Témoignages exploratoires utilisés pour identifier le thème de culpabilité."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q2-B"
+    },
+    {
+      "id": "Q2-04",
+      "quizId": "Q2",
+      "order": 4,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM",
+      "promptMarkdown": "**Représentation visée :**\n\n> \"Si un médecin parle de burn-out lié au travail, la maladie professionnelle est automatiquement reconnue.\"\n\n### Question\n\nUne personne affirme :\n\n> \"Dès lors qu'un médecin relie un burn-out au travail, la reconnaissance en maladie professionnelle est automatique.\"\n\nQuelle réponse est la plus exacte ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Oui : le certificat médical suffit à établir juridiquement l'origine professionnelle.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "Oui : le burn-out figure parmi les maladies professionnelles présumées liées au travail.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "Non : le lien au travail ne rend pas la reconnaissance automatique ; elle dépend de conditions juridiques.",
+          "correct": true
+        },
+        {
+          "id": "D",
+          "text": "Non : une affection psychique ne peut jamais être reconnue comme maladie professionnelle.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "expectedAnswer": "C.",
+      "correctionShortMarkdown": "> **Le lien avec le travail ne rend pas la reconnaissance automatique.**\n>\n> Les affections psychiques ne disposent pas d'un tableau spécifique de maladie professionnelle. Elles peuvent néanmoins être reconnues par la voie des maladies hors tableau lorsque les conditions légales sont remplies.\n>\n> Un certificat médical est important dans la procédure, mais il ne décide pas à lui seul de la reconnaissance.",
+      "takeawayMarkdown": "> **Une affection psychique liée au travail peut être reconnue en maladie professionnelle, mais la reconnaissance n'est pas automatique.**",
+      "whyMythMarkdown": "Le mot \"professionnel\" dans \"épuisement professionnel\" peut laisser penser que la qualification médicale entraîne automatiquement la qualification juridique.\n\nCe sont pourtant deux questions différentes :\n- caractériser une situation clinique ;\n- reconnaître juridiquement une maladie d'origine professionnelle.",
+      "deeperMarkdown": "En 2024, l'Assurance Maladie a recensé 1 805 maladies psychiques reconnues comme maladies professionnelles.\n\nCette donnée mesure les dossiers reconnus. Elle ne permet pas de dire combien de personnes souffrent d'un burn-out ou d'un trouble psychique lié au travail.\n\nLe régime juridique des maladies professionnelles évolue à l'automne 2026. Les détails techniques de la procédure seront revérifiés avant publication.",
+      "sources": [
+        "Code de la sécurité sociale, article L. 461-1.",
+        "Assurance Maladie, \"Affections psychiques d'origine professionnelle : reconnaissance et rôle du CMI\", 23 avril 2026.",
+        "Assurance Maladie - Risques professionnels, rapport annuel 2024."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q2-B"
+    },
+    {
+      "id": "Q2-05",
+      "quizId": "Q2",
+      "order": 5,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de raisonnement",
+      "promptMarkdown": "**Représentation visée :**\n\n> \"Une atteinte psychique ne peut pas être un accident du travail.\"\n\n### Question\n\nLors d'une discussion, quelqu'un affirme :\n\n> \"Un accident du travail suppose une blessure physique. Une atteinte psychique liée au travail relève forcément de la maladie professionnelle.\"\n\nQuelle réponse est la plus exacte ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Exact : un accident du travail suppose toujours une lésion corporelle visible.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "Inexact : un accident du travail peut aussi provoquer une lésion psychique, selon les circonstances.",
+          "correct": true
+        },
+        {
+          "id": "C",
+          "text": "Exact : les atteintes psychiques sont juridiquement exclues du régime des accidents du travail.",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "text": "Inexact : toute souffrance psychique apparue pendant un emploi est automatiquement un accident du travail.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "expectedAnswer": "B.",
+      "correctionShortMarkdown": "> **Une lésion psychique peut relever d'un accident du travail.**\n>\n> L'Assurance Maladie indique qu'un accident du travail peut être à l'origine d'une lésion corporelle ou psychique et qu'il doit pouvoir être daté avec précision.\n>\n> La maladie professionnelle relève d'une autre logique, notamment lorsqu'une maladie est liée à une exposition ou à des conditions de travail qui s'inscrivent dans le temps.",
+      "takeawayMarkdown": "> **Une lésion psychique peut, selon les circonstances, relever d'un accident du travail.**",
+      "whyMythMarkdown": "Le mot \"accident\" évoque spontanément :\n- une chute ;\n- une coupure ;\n- un choc physique.\n\nLe droit n'est pas limité aux lésions visibles.\n\nL'Assurance Maladie cite par exemple des troubles psychiques consécutifs à certains événements de travail parmi les situations pouvant relever de la voie accident du travail.",
+      "deeperMarkdown": "En 2024, près de 29 000 accidents du travail reconnus ont été identifiés par l'Assurance Maladie comme étant en lien avec des affections psychiques / RPS.\n\nCe chiffre ne doit pas être comparé mécaniquement aux 1 805 maladies psychiques reconnues comme maladies professionnelles : les catégories statistiques et les logiques de reconnaissance diffèrent.",
+      "sources": [
+        "Code de la sécurité sociale, article L. 411-1.",
+        "Assurance Maladie, \"Accident du travail ou de trajet : les démarches du salarié\", mise à jour 30 septembre 2025.",
+        "Assurance Maladie, \"Affections psychiques d'origine professionnelle : reconnaissance et rôle du CMI\", avril 2026.",
+        "Ministère du Travail, définition de l'accident du travail."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q2-B"
+    },
+    {
+      "id": "Q2-06",
+      "quizId": "Q2",
+      "order": 6,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de situation",
+      "promptMarkdown": "**Représentation visée :**\n\n> \"Une fois que le médecin estime que la reprise est possible, le reste est réglé.\"\n\n### Question\n\nUne personne prépare son retour au travail après un arrêt lié à un épuisement professionnel.\n\nQuelqu'un lui dit :\n\n> \"La reprise est une question médicale : une fois qu'un médecin dit que tu peux retravailler, il n'y a plus vraiment de sujet à traiter dans l'entreprise.\"\n\nQuelle réponse est la plus exacte ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Exact : la décision médicale suffit à déterminer les conditions concrètes de reprise.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "Exact : l'entreprise n'a pas à intervenir tant que la personne dispose d'un suivi médical.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "Inexact : les conditions de reprise relèvent uniquement de la décision de l'employeur.",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "text": "Inexact : la reprise articule santé et travail ; des adaptations peuvent parfois être nécessaires.",
+          "correct": true
+        }
+      ],
+      "correctOptionIds": [
+        "D"
+      ],
+      "expectedAnswer": "D.",
+      "correctionShortMarkdown": "> **Reprendre ne se résume pas à pouvoir médicalement retravailler.**\n>\n> La HAS recommande de préparer le retour au travail. Le médecin du travail peut proposer des aménagements, des adaptations ou une transformation du poste ou du temps de travail lorsque l'état de santé le justifie.\n>\n> L'employeur doit prendre ces propositions en considération.",
+      "takeawayMarkdown": "> **Le retour au travail comporte une dimension médicale, mais aussi une dimension de santé au travail et d'organisation.**",
+      "whyMythMarkdown": "L'arrêt de travail et les soins sont médicaux. Il est donc facile d'en déduire que la reprise l'est entièrement aussi.\n\nMais reprendre signifie revenir dans un environnement concret :\n- un poste ;\n- une charge ;\n- des horaires ;\n- des relations ;\n- des exigences ;\n- une organisation.\n\nLa santé et le travail doivent donc être articulés.",
+      "deeperMarkdown": "L'article L. 4624-3 du Code du travail permet au médecin du travail, après échange avec le salarié et l'employeur, de proposer notamment :\n- des mesures d'aménagement ;\n- d'adaptation ;\n- de transformation du poste ;\n- des mesures d'aménagement du temps de travail.\n\nLa HAS recommande également la préparation du retour et l'analyse du poste et des conditions de travail.\n\nLes études sur le retour après burnout montrent de leur côté l'importance :\n- du soutien dans le milieu professionnel ;\n- de l'adéquation entre la personne et son travail ;\n- de la communication entre les acteurs ;\n- de l'ajustement des conditions de reprise.\n\nAucune de ces données ne signifie qu'un aménagement est systématiquement nécessaire pour toute personne.",
+      "sources": [
+        "Code du travail, article L. 4624-3.",
+        "Code du travail, dispositions relatives au suivi de la mise en oeuvre des propositions du médecin du travail.",
+        "HAS, fiche mémo burnout, mise à jour octobre 2025.",
+        "Rooman et al., \"Successful return to work after burnout\", Disability and Rehabilitation, 2022.",
+        "Strömbäck et al., \"Restoring confidence in return to work\", PLOS One, 2020.",
+        "Finnish qualitative study on occupational health return-to-work practices for workers with burnout, 2018."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q2-C"
+    },
+    {
+      "id": "Q2-07",
+      "quizId": "Q2",
+      "order": 7,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de situation",
+      "promptMarkdown": "**Représentation visée :**\n\n> \"S'il reprend, c'est qu'il est redevenu comme avant.\"\n\n### Question\n\nUne personne reprend son poste après un arrêt lié à un épuisement professionnel.\n\nDans l'équipe, quelqu'un affirme :\n\n> \"Puisqu'elle reprend, on peut repartir comme avant : mêmes tâches, même rythme, mêmes objectifs.\"\n\nQuelle analyse est la plus juste ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Pas nécessairement : la reprise peut être progressive ou adaptée selon la situation.",
+          "correct": true
+        },
+        {
+          "id": "B",
+          "text": "Oui : la reprise signifie que les capacités professionnelles antérieures sont entièrement retrouvées.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "Oui : si une reprise est possible, les conditions de travail antérieures n'ont plus à être réexaminées.",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "text": "Non : après un burn-out, il faut obligatoirement réduire durablement les responsabilités.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "expectedAnswer": "A.",
+      "correctionShortMarkdown": "> **Reprendre ne signifie pas forcément reprendre à l'identique.**\n>\n> La HAS recommande de préparer le retour au travail. Le médecin du travail peut proposer des mesures d'aménagement ou d'adaptation du poste ou du temps de travail lorsque l'état de santé le justifie.\n>\n> Ces mesures ne sont ni automatiques ni identiques pour tout le monde.",
+      "takeawayMarkdown": "> **Reprendre ne signifie pas forcément reprendre immédiatement à l'identique.**",
+      "whyMythMarkdown": "Dans de nombreuses situations, le retour au travail est assimilé à la fin du problème :\n\n> absent -> présent.\n\nMais la présence au travail ne dit pas à elle seule :\n- quelles tâches peuvent être reprises ;\n- à quel rythme ;\n- avec quelles marges de manoeuvre ;\n- dans quelles conditions.",
+      "deeperMarkdown": "Les études qualitatives sur le retour après burn-out ou trouble d'épuisement décrivent régulièrement :\n- une reprise progressive ;\n- la nécessité de poser de nouvelles limites ;\n- une adaptation de la charge ou des tâches ;\n- un besoin de soutien dans la durée.\n\nLe Code du travail permet au médecin du travail de proposer des mesures d'aménagement, d'adaptation ou de transformation du poste et du temps de travail.",
+      "sources": [
+        "Code du travail, article L. 4624-3.",
+        "HAS, fiche mémo burnout, mise à jour octobre 2025.",
+        "Rooman et al., \"Successful return to work after burnout\", 2022.",
+        "Forslund et al., étude qualitative sur le retour après trouble d'épuisement, 2025."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q2-C"
+    },
+    {
+      "id": "Q2-08",
+      "quizId": "Q2",
+      "order": 8,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de raisonnement",
+      "promptMarkdown": "**Représentation visée :**\n\n> \"Si la personne est bien suivie et soutenue, le travail peut rester exactement comme avant.\"\n\n### Question\n\nUne personne revient après un épuisement professionnel. Elle bénéficie d'un suivi médical, d'un accompagnement psychologique et d'un entourage très soutenant.\n\nUn responsable conclut :\n\n> \"Avec tout cet accompagnement, il n'est plus nécessaire de se demander si quelque chose doit changer dans le travail.\"\n\nQuelle réponse est la plus exacte ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Exact : le soutien médical et personnel suffit à compenser les facteurs professionnels.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "Exact : l'organisation du travail ne doit être réexaminée que si la personne connaît un nouvel arrêt.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "Inexact : le soutien est une ressource, mais il ne remplace pas l'analyse des facteurs de travail et des conditions de reprise.",
+          "correct": true
+        },
+        {
+          "id": "D",
+          "text": "Inexact : tout retour après burn-out impose nécessairement une modification permanente du poste.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "expectedAnswer": "C.",
+      "correctionShortMarkdown": "> **Etre bien entouré ne transforme pas les conditions de travail.**\n>\n> Les soins et le soutien personnel peuvent jouer un rôle important. Mais lorsqu'un épuisement est lié à des facteurs de travail, la prévention suppose aussi d'examiner ces facteurs.\n>\n> Un accompagnement individuel ne remplace pas une action sur une charge excessive, des objectifs contradictoires, un conflit de valeurs ou un manque de marges de manoeuvre.",
+      "takeawayMarkdown": "> **Le soutien individuel ne remplace pas l'analyse des facteurs de travail.**",
+      "whyMythMarkdown": "Le suivi psychologique, médical ou social est visible et indispensable dans certaines situations.\n\nIl peut alors devenir, involontairement, la seule réponse au problème :\n\n> \"la personne est accompagnée, donc l'entreprise a fait sa part.\"\n\nLe risque est de déplacer entièrement la prévention vers l'individu.",
+      "deeperMarkdown": "La synthèse qualitative des interventions de retour au travail après burn-out fait ressortir plusieurs dimensions complémentaires :\n- soutien des professionnels et de l'entourage ;\n- adaptations du travail ;\n- communication entre acteurs.\n\nL'INRS rappelle par ailleurs que la prévention des RPS doit être centrée sur le travail et son organisation.\n\nCela ne signifie pas que le poste doit être modifié dans tous les cas.\n\nLe principe est :\n\n> **le soutien individuel ne dispense pas d'analyser les facteurs de travail.**",
+      "sources": [
+        "INRS, prévention du burn-out et des RPS.",
+        "HAS, fiche mémo burnout, mise à jour octobre 2025.",
+        "Synthèse qualitative sur les interventions de retour au travail après burnout, Occupational Medicine, 2024.",
+        "Code du travail, principes généraux de prévention."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q2-C"
+    },
+    {
+      "id": "Q3-01",
+      "quizId": "Q3",
+      "order": 1,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de situation",
+      "promptMarkdown": "**Représentation visée :**\n\n> \"S'il plaisante et reste actif, il ne peut pas être vraiment en difficulté.\"\n\n## Question\n\nDepuis quelque temps, un collègue paraît très fatigué et plus irritable. Pourtant, il continue à participer aux réunions, plaisante avec l'équipe et reste très actif.\n\nQuelqu'un conclut :\n\n> \"S'il était vraiment en train de s'épuiser, ça se verrait davantage.\"\n\nQuelle analyse est la plus juste ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "L'apparence et le niveau d'activité suffisent généralement à écarter un épuisement important.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "L'apparence et l'activité ne suffisent ni à écarter ni à confirmer un épuisement important.",
+          "correct": true
+        },
+        {
+          "id": "C",
+          "text": "Le fait de rester très actif prouve que la personne dispose encore de ressources suffisantes.",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "text": "Le maintien d'une forte activité constitue au contraire un signe permettant d'identifier un burn-out.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "expectedAnswer": "B.",
+      "correctionShortMarkdown": "> **Ce qui est visible ne permet pas de conclure sur l'état de santé.**\n>\n> Certaines trajectoires d'épuisement peuvent comporter du surengagement ou le maintien d'un niveau d'activité élevé.\n>\n> Cela ne signifie pas qu'une personne très active est en burn-out : l'apparence ne permet ni d'exclure ni de poser un diagnostic.",
+      "takeawayMarkdown": "> **On peut observer un changement ; on ne peut pas diagnostiquer à partir de ce que l'on voit.**",
+      "whyMythMarkdown": "Nous associons spontanément l'épuisement à :\n- ralentissement ;\n- incapacité ;\n- absence ;\n- apparence très fatiguée.\n\nMais les manifestations ne sont pas identiques chez tout le monde et certaines difficultés peuvent rester peu visibles.",
+      "deeperMarkdown": null,
+      "sources": [
+        "INRS, dossier \"Epuisement professionnel ou burnout\".",
+        "Travaux sur le surengagement / overcommitment dans les modèles de stress au travail.",
+        "Etudes qualitatives sur l'invisibilité de certaines limitations après épuisement."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q3-A"
+    },
+    {
+      "id": "Q3-02",
+      "quizId": "Q3",
+      "order": 2,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de raisonnement",
+      "promptMarkdown": "**Représentation visée :**\n\n> \"Si je reconnais les signes, le plus utile est de lui dire qu'il fait un burn-out.\"\n\n## Question\n\nUn collègue constate qu'une personne de son équipe a beaucoup changé : fatigue, irritabilité, difficultés de concentration et désengagement.\n\nQuelle attitude est la plus appropriée ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Lui annoncer qu'elle fait probablement un burn-out afin de provoquer une prise de conscience.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "Lui demander de confirmer si elle souffre bien d'un burn-out avant d'en parler davantage.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "Attendre qu'un diagnostic officiel soit connu avant de pouvoir lui proposer un soutien.",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "text": "Parler des changements observés, proposer une écoute et orienter sans poser de diagnostic.",
+          "correct": true
+        }
+      ],
+      "correctOptionIds": [
+        "D"
+      ],
+      "expectedAnswer": "D.",
+      "correctionShortMarkdown": "> **Un collègue peut observer, écouter et orienter ; il n'a pas à poser un diagnostic.**\n>\n> L'INRS recommande notamment d'ouvrir la discussion, de signifier sa disponibilité et d'orienter vers le service de prévention et de santé au travail, en restant empathique et non intrusif.",
+      "takeawayMarkdown": "> **Repérer une difficulté n'est pas diagnostiquer une maladie.**",
+      "whyMythMarkdown": "Les listes de \"signes du burn-out\" sont très présentes dans les médias.\n\nElles peuvent donner l'impression qu'il suffit de reconnaître plusieurs comportements pour savoir ce que la personne a.\n\nOr les manifestations sont non spécifiques et peuvent relever de plusieurs situations.",
+      "deeperMarkdown": null,
+      "sources": [
+        "INRS, FAQ burnout.",
+        "HAS, repérage et diagnostic différentiel du syndrome d'épuisement professionnel."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q3-A"
+    },
+    {
+      "id": "Q3-03",
+      "quizId": "Q3",
+      "order": 3,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de situation",
+      "promptMarkdown": "**Représentation visée :**\n\n> \"Pour aider vraiment, il faut trouver la solution à la place de la personne.\"\n\n### Question\n\nUne collègue confie qu'elle ne se sent plus capable de faire face à sa situation de travail.\n\nUn membre de l'équipe répond :\n\n> \"Il faut que je lui dise quoi faire : s'arrêter, changer de poste, voir tel professionnel... Sinon je ne l'aide pas vraiment.\"\n\nQuelle attitude respecte le mieux le rôle d'un collègue ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ecouter, rester disponible et orienter sans décider à la place de la personne.",
+          "correct": true
+        },
+        {
+          "id": "B",
+          "text": "Proposer immédiatement le plan d'action qui paraît le plus protecteur.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "Chercher d'abord à identifier précisément la cause psychologique de la situation.",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "text": "Eviter toute discussion, car seul un professionnel de santé peut parler d'une difficulté liée au travail.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "expectedAnswer": "A.",
+      "correctionShortMarkdown": "> **Soutenir ne signifie pas prescrire une conduite.**\n>\n> Un collègue peut écouter, exprimer une inquiétude à partir de faits observés et orienter vers les interlocuteurs compétents.\n>\n> Il n'a pas à poser un diagnostic, choisir un traitement ou décider d'un arrêt, d'une reprise ou d'un changement professionnel.",
+      "takeawayMarkdown": "> **Aider ne signifie pas décider à la place de la personne.**",
+      "whyMythMarkdown": "Face à quelqu'un qui souffre, chercher rapidement une solution peut sembler rassurant et concret.\n\nMais cette volonté d'aider peut conduire à :\n- donner des conseils médicaux ;\n- interpréter la situation ;\n- décider ce que la personne « devrait » faire ;\n- dépasser le rôle d'un collègue.",
+      "deeperMarkdown": "L'INRS recommande notamment :\n- d'ouvrir la discussion ;\n- de signifier sa disponibilité ;\n- d'écouter sans intrusion ;\n- d'orienter vers le service de prévention et de santé au travail ou d'autres professionnels compétents.\n\nLe rôle de soutien reste distinct du rôle médical, thérapeutique ou juridique.",
+      "sources": [
+        "INRS, FAQ « Epuisement professionnel ou burnout ».",
+        "INRS / DGT / ANACT, guide d'aide à la prévention du syndrome d'épuisement professionnel."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q3-B"
+    },
+    {
+      "id": "Q3-04",
+      "quizId": "Q3",
+      "order": 4,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de situation",
+      "promptMarkdown": "**Représentation visée :**\n\n> \"Pour aider quelqu'un qui se replie, il faut réussir à le faire parler.\"\n\n## Question\n\nDepuis quelque temps, une collègue s'isole davantage et répond peu lorsqu'on lui demande comment elle va.\n\nUn membre de l'équipe propose :\n\n> \"Il faut insister un peu. Si on arrive à la faire parler, ça lui fera forcément du bien.\"\n\nQuelle attitude est la plus appropriée ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Multiplier les questions jusqu'à ce qu'elle explique ce qui ne va pas.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "Lui dire qu'elle doit parler à l'équipe pour éviter de rester seule avec le problème.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "Lui dire qu'on est disponible, puis respecter son choix de parler ou non.",
+          "correct": true
+        },
+        {
+          "id": "D",
+          "text": "Ne plus jamais aborder le sujet pour éviter toute intrusion.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "expectedAnswer": "C.",
+      "correctionShortMarkdown": "> **Proposer une écoute n'est pas obtenir une confidence.**\n>\n> L'INRS recommande une écoute empathique, le respect de la confidentialité et une attitude non intrusive.\n>\n> On peut ouvrir une porte sans obliger la personne à la franchir.",
+      "takeawayMarkdown": "> **Etre disponible n'oblige pas l'autre à parler.**",
+      "whyMythMarkdown": "Lorsqu'une personne semble en difficulté, faire parler peut paraître être la meilleure façon de l'aider.\n\nMais une question bien intentionnée peut devenir une pression si la personne :\n- ne souhaite pas parler ;\n- ne sait pas encore quoi dire ;\n- ne veut pas partager des informations personnelles ;\n- préfère s'adresser à un professionnel.",
+      "deeperMarkdown": "Un collègue peut notamment :\n- signaler les changements qu'il a observés sans les interpréter ;\n- dire qu'il est disponible ;\n- écouter si la personne souhaite parler ;\n- orienter vers le service de prévention et de santé au travail ou un autre professionnel compétent.\n\nLe rôle du collègue n'est pas de provoquer une confession ni de mener un entretien thérapeutique.",
+      "sources": [
+        "INRS, FAQ \"Epuisement professionnel ou burnout\".",
+        "INRS / DGT / ANACT, guide de prévention du syndrome d'épuisement professionnel."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q3-B"
+    },
+    {
+      "id": "Q3-05",
+      "quizId": "Q3",
+      "order": 5,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de situation",
+      "promptMarkdown": "**Représentation visée :**\n\n> \"Quand l'absence concerne la santé psychique, le plus respectueux est souvent de ne pas prendre de nouvelles.\"\n\n## Question\n\nDans une équipe, lorsqu'un collègue s'est cassé la jambe, plusieurs personnes lui ont envoyé spontanément un message ou une carte.\n\nQuelques mois plus tard, une collègue est arrêtée après un épuisement professionnel. Cette fois, personne n'ose lui écrire :\n\n> \"C'est psychologique, c'est plus personnel. On risque d'être intrusifs.\"\n\nQuelle analyse est la plus juste ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Une absence pour raison psychique justifie davantage le silence qu'une absence pour raison physique.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "Il faudrait envoyer exactement les mêmes messages et à la même fréquence dans les deux situations.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "Pour respecter la vie privée, il vaut mieux attendre que la personne reprenne elle-même contact.",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "text": "La crainte d'être intrusif est compréhensible, mais elle ne rend pas inapproprié un signe de soutien simple, sans question médicale ni obligation de réponse.",
+          "correct": true
+        }
+      ],
+      "correctOptionIds": [
+        "D"
+      ],
+      "expectedAnswer": "D.",
+      "correctionShortMarkdown": "> **Une difficulté psychique ne rend pas la personne moins digne de marques ordinaires de soutien.**\n>\n> Les recherches sur la santé mentale au travail documentent encore de la stigmatisation, de la peur du contact et parfois de l'exclusion sociale.\n>\n> Un message simple peut signifier : « je pense à toi, aucune obligation de répondre », sans demander de diagnostic, sans parler des dossiers et en respectant une demande de distance.",
+      "takeawayMarkdown": "> **Respecter la vie privée ne signifie pas rendre la personne invisible.**",
+      "whyMythMarkdown": "Face à une blessure physique visible, les codes sociaux sont généralement plus simples :\n- prendre des nouvelles ;\n- envoyer un message ;\n- souhaiter un bon rétablissement.\n\nFace à une difficulté psychique, les collègues peuvent davantage craindre :\n- de dire quelque chose de maladroit ;\n- d'être intrusifs ;\n- d'aborder un sujet trop personnel ;\n- de ne pas savoir comment réagir.\n\nCette gêne peut conduire au silence, alors même que l'absence de soutien peut être vécue comme une mise à distance.",
+      "deeperMarkdown": "Des travaux sur le retour au travail après des troubles psychiques montrent que :\n- le sentiment d'appartenance et le soutien des collègues peuvent faciliter le retour ;\n- la peur du contact et le manque d'acceptation dans l'équipe peuvent constituer des obstacles ;\n- les personnes présentant des troubles psychiques restent exposées à la stigmatisation et à l'exclusion sociale au travail.\n\nUne étude menée auprès de personnels hospitaliers a également retrouvé des attitudes plus négatives envers des collègues revenant après une maladie psychiatrique qu'envers des collègues présentant certaines maladies physiques. Cette étude ne permet pas de conclure que les personnes en arrêt pour raison psychique reçoivent systématiquement moins de messages ; elle documente en revanche une différence de regard et de stigmatisation.\n\nLe quiz ne fixe donc pas une règle de fréquence de contact. Il distingue simplement :\n- **soutien humain proposé** ;\n- **intrusion dans la vie privée** ;\n- **sollicitation professionnelle**.",
+      "sources": [
+        "INRS, recommandations d'écoute, de disponibilité, de confidentialité et de non-intrusion.",
+        "\"Navigating work and life – a qualitative exploration of managers' and employees' views of return-to-work after sick leave due to common mental disorders\", BMC Public Health, 2024.",
+        "\"Return to work after sick leave due to mental illness – a qualitative study on the perspective of workplace integration managers\", 2025.",
+        "\"Leave Me Alone With Your Symptoms! Social Exclusion at the Workplace Mediates the Relationship of Employee's Mental Illness and Sick Leave\", 2022.",
+        "\"Attitudes of nursing staff towards co-workers returning from psychiatric and physical illnesses\", 2007."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q3-C"
+    },
+    {
+      "id": "Q3-06",
+      "quizId": "Q3",
+      "order": 6,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de situation",
+      "promptMarkdown": "**Représentation visée :**\n\n> \"S'il ne répond pas, cela veut forcément dire quelque chose sur ce qu'il attend de nous.\"\n\n## Question\n\nUne personne en arrêt répond de moins en moins aux messages de ses collègues.\n\nQue peut-on conclure de ce silence, à lui seul ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Qu'elle souhaite que les collègues la relancent davantage.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "Qu'elle veut couper durablement le lien avec l'équipe.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "Qu'elle va nécessairement plus mal.",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "text": "Aucune de ces intentions ne peut être déduite de l'absence de réponse.",
+          "correct": true
+        }
+      ],
+      "correctOptionIds": [
+        "D"
+      ],
+      "expectedAnswer": "D.",
+      "correctionShortMarkdown": "> **Le silence ne donne pas accès aux intentions de la personne.**\n>\n> L'INRS recommande une attitude non intrusive et de ne pas trop insister.\n>\n> La disponibilité peut être exprimée sans transformer chaque absence de réponse en message à interpréter.",
+      "takeawayMarkdown": "> **Ne pas répondre ne signifie ni \"insistez davantage\", ni \"laissez-moi définitivement tranquille\".**",
+      "whyMythMarkdown": "Le silence est facilement interprété comme :\n- un rejet ;\n- un appel indirect ;\n- un signe d'aggravation ;\n- une volonté d'être laissé seul.\n\nMais ces significations ne peuvent pas être déduites automatiquement d'une absence de réponse.\n\nDes témoignages de personnes en épuisement décrivent parfois peu d'énergie sociale, une difficulté à répondre même à des proches appréciés ou une culpabilité face à l'accumulation des messages. Ces témoignages illustrent des vécus possibles ; ils ne constituent pas une règle générale.",
+      "deeperMarkdown": "Lorsque la personne a exprimé ses préférences ou ses limites, celles-ci fournissent un repère plus fiable que l'interprétation de son silence.\n\nLe quiz ne fixe aucune cadence de messages et ne prescrit ni relance systématique ni coupure systématique du contact.",
+      "sources": [
+        "INRS, FAQ burnout : écoute empathique, confidentialité, non-intrusion.",
+        "Témoignages exploratoires utilisés pour identifier le thème du silence et des relances.",
+        "Etudes qualitatives sur soutien social et retour au travail."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q3-C"
+    },
+    {
+      "id": "Q3-07",
+      "quizId": "Q3",
+      "order": 7,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de situation",
+      "promptMarkdown": "**Représentation visée :**\n\n> \"Au retour, le plus simple est de faire comme si rien ne s'était passé.\"\n\n## Question\n\nUne collègue revient après une longue absence liée à sa santé.\n\nSon équipe veut éviter de la mettre mal à l'aise.\n\nUne personne propose :\n\n> \"Le mieux, c'est de ne rien changer et de faire exactement comme avant. Comme ça, elle ne se sentira pas différente.\"\n\nQuelle analyse est la plus juste ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Oui : toute adaptation risque de stigmatiser la personne, donc il faut reprendre strictement comme avant.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "Pas nécessairement : le retour peut être préparé et certaines adaptations intégrées sans stigmatiser.",
+          "correct": true
+        },
+        {
+          "id": "C",
+          "text": "Oui : les conditions du retour concernent uniquement la personne et les professionnels de santé.",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "text": "Non : l'équipe doit au contraire surveiller davantage la personne pour vérifier qu'elle tient.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "expectedAnswer": "B.",
+      "correctionShortMarkdown": "> **Ne pas stigmatiser ne signifie pas ignorer les conditions du retour.**\n>\n> Les études qualitatives sur le retour après épuisement montrent l'importance du soutien, du sentiment de sécurité, de la compréhension et d'ajustements concrets lorsqu'ils sont nécessaires.\n>\n> Le collectif peut contribuer à un retour soutenant sans surveiller ni médicaliser la personne.",
+      "takeawayMarkdown": "> **Traiter normalement une personne ne signifie pas faire comme si le travail n'avait rien à ajuster.**",
+      "whyMythMarkdown": "L'équipe peut craindre :\n- d'être maladroite ;\n- de rappeler une période difficile ;\n- de traiter différemment la personne ;\n- de donner l'impression de la fragiliser.\n\nFaire \"comme avant\" paraît alors protecteur.\n\nMais si les mêmes difficultés de travail sont toujours présentes ou si des adaptations sont prévues, les ignorer peut compliquer la reprise.",
+      "deeperMarkdown": "Les études sur le retour au travail après épuisement mettent en avant :\n- la compréhension ;\n- la sécurité psychologique ;\n- l'écoute ;\n- le soutien concret ;\n- les adaptations de tâches ou de charge lorsqu'elles sont nécessaires ;\n- le suivi dans le temps.\n\nCela ne signifie pas que toute personne doit bénéficier des mêmes aménagements.",
+      "sources": [
+        "HAS, préparation du retour au travail.",
+        "Forslund et al., retour après exhaustion disorder, 2025/2026.",
+        "Strömbäck et al., dialogue au travail et restauration de la confiance.",
+        "Synthèse qualitative Occupational Medicine, 2024."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q3-D"
+    },
+    {
+      "id": "Q3-08",
+      "quizId": "Q3",
+      "order": 8,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de raisonnement",
+      "promptMarkdown": "**Représentation visée :**\n\n> \"Pour bien accueillir le retour, l'équipe doit savoir ce qui s'est réellement passé.\"\n\n## Question\n\nAvant le retour d'un collègue après une longue absence pour raison de santé, une personne de l'équipe demande :\n\n> \"On devrait quand même nous expliquer ce qu'il a eu et pourquoi il a été absent. Sinon, comment voulez-vous qu'on sache quoi faire ?\"\n\nQuelle réponse est la plus exacte ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "L'équipe doit connaître le diagnostic pour pouvoir organiser correctement le travail.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "Le manager peut communiquer les informations médicales nécessaires si cela facilite le retour.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "Les besoins de travail peuvent être organisés sans communiquer le diagnostic ni l'histoire médicale.",
+          "correct": true
+        },
+        {
+          "id": "D",
+          "text": "Aucune information sur les conditions de travail ne peut être partagée avec l'équipe après un arrêt.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "expectedAnswer": "C.",
+      "correctionShortMarkdown": "> **Le collectif a besoin d'informations sur le travail, pas d'un dossier médical.**\n>\n> Une personne est libre de révéler ou non son problème de santé. Les informations médicales sont protégées.\n>\n> Les préconisations utiles au poste et les modalités d'organisation peuvent être mises en oeuvre sans transmettre le diagnostic.",
+      "takeawayMarkdown": "> **Besoin d'organisation ne signifie pas droit de connaître le diagnostic.**",
+      "whyMythMarkdown": "Lorsqu'une personne revient avec :\n- un temps de travail différent ;\n- certaines tâches modifiées ;\n- des restrictions ;\n- des modalités particulières,\n\nles collègues peuvent vouloir comprendre \"pourquoi\".\n\nMais le besoin de comprendre l'organisation ne crée pas un droit d'accès aux informations médicales.",
+      "deeperMarkdown": "Le médecin du travail peut transmettre des conclusions ou propositions relatives au travail sans communiquer le diagnostic.\n\nLe retour peut être préparé avec le collectif en expliquant :\n- l'organisation ;\n- les rôles ;\n- les modalités de collaboration ;\n- les adaptations utiles,\n\nsans raconter la situation médicale de la personne.",
+      "sources": [
+        "Ministère du Travail, communication du problème de santé à l'employeur.",
+        "CNIL, données de santé des salariés.",
+        "Code du travail et secret médical en santé au travail.",
+        "Etudes qualitatives sur retour au travail et stigmatisation."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q3-D"
+    },
+    {
+      "id": "Q3-09",
+      "quizId": "Q3",
+      "order": 9,
+      "format": "single_choice",
+      "editorialType": "Idée reçue - QCM de raisonnement",
+      "promptMarkdown": "**Représentation visée :**\n\n> \"Après un burn-out, une personne sera forcément plus fragile et moins fiable professionnellement.\"\n\n## Question\n\nLors d'un recrutement, une candidature mentionne une interruption professionnelle liée à un burn-out plusieurs années auparavant.\n\nUn recruteur dit :\n\n> \"Même si la personne va mieux aujourd'hui, elle restera probablement plus fragile face au stress et moins autonome.\"\n\nQuelle analyse est la plus rigoureuse ?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Un antécédent de burn-out permet effectivement de prévoir une fragilité professionnelle durable.",
+          "correct": false
+        },
+        {
+          "id": "B",
+          "text": "Une personne ayant traversé un burn-out devient généralement plus performante qu'avant.",
+          "correct": false
+        },
+        {
+          "id": "C",
+          "text": "Un antécédent de burn-out ne permet pas, à lui seul, de prédire les capacités professionnelles futures ; certaines personnes décrivent aussi avoir acquis une meilleure connaissance de leurs limites, de leurs facteurs de risque et de leurs stratégies de régulation.",
+          "correct": true
+        },
+        {
+          "id": "D",
+          "text": "Après un burn-out, les capacités professionnelles ne peuvent plus être évaluées de manière fiable.",
+          "correct": false
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "expectedAnswer": "C.",
+      "correctionShortMarkdown": "> **Un antécédent de burn-out n'est ni un certificat de fragilité permanente, ni une garantie d'être devenu \"plus fort\".**\n>\n> La récupération est variable. Certaines personnes peuvent conserver des difficultés ou avoir besoin d'adaptations.\n>\n> D'autres décrivent, au cours de leur réhabilitation, une meilleure connaissance de leurs limites, de leurs signaux d'alerte, de leurs priorités et de leur manière de travailler.",
+      "takeawayMarkdown": "> **Un burn-out passé ne permet pas de prédire à lui seul les compétences ou la fiabilité professionnelle futures.**",
+      "whyMythMarkdown": "Les recherches sur la stigmatisation du burn-out montrent que les personnes ayant un antécédent de burn-out peuvent être perçues comme :\n- moins résistantes au stress ;\n- moins autonomes ;\n- moins capables d'apprendre ;\n- moins susceptibles de réussir dans certaines fonctions.\n\nCes anticipations constituent des représentations sociales ; elles ne remplacent pas l'évaluation réelle des compétences et du fonctionnement actuel d'une personne.",
+      "deeperMarkdown": "Des travaux qualitatifs sur la réhabilitation après burn-out décrivent chez certaines personnes :\n- une meilleure conscience de leurs besoins et limites ;\n- une capacité accrue à repérer les situations à risque ;\n- des stratégies de régulation plus élaborées ;\n- une réflexion plus approfondie sur leurs priorités professionnelles ;\n- une manière plus soutenable d'organiser leur travail.\n\nCes apprentissages ne sont ni automatiques ni universels.\n\nPijpker et al. décrivent notamment un processus continu d'apprentissage : repérer les situations susceptibles de déclencher à nouveau des symptômes et développer la confiance dans sa capacité à prévenir une récidive. Salminen et al. décrivent également une meilleure reconnaissance des besoins et limites au cours de la réhabilitation.\n\nLe quiz évite donc deux récits opposés :\n- **\"après un burn-out, on reste fragile\"** ;\n- **\"le burn-out rend forcément plus fort\".**",
+      "sources": [
+        "Sterkens P., Baert S., Rooman C., Derous E., \"As if it weren't hard enough already: Breaking down hiring discrimination following burnout\", Economics & Human Biology, 43, 2021, 101050. Expérience par vignettes auprès de 425 recruteurs réels.",
+        "Pijpker R., Vaandrager L., Veen E.J., Koelen M.A., \"Seizing and realizing the opportunity: A salutogenic perspective on rehabilitation after burnout\", Work, 68(3), 2021, 551-561.",
+        "Salminen S., Mäkikangas A., Hätinen M., Kinnunen U., Pekkonen M., \"My Well-Being in My Own Hands: Experiences of Beneficial Recovery During Burnout Rehabilitation\", Journal of Occupational Rehabilitation, 25(4), 2015, 733-741."
+      ],
+      "accessibilityMarkdown": null,
+      "blockId": "Q3-E"
+    }
+  ]
+}

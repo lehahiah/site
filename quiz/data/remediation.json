@@ -1,0 +1,199 @@
+{
+  "_note": "Axes de remédiation repris verbatim des masters éditoriaux (quiz1 §6, quiz2 §5, quiz3 §4). Deux axes affichés au maximum. Aucun profil, aucun niveau de risque. minMissed = nombre minimal de réponses attendues non trouvées dans l'axe pour qu'il soit proposé.",
+  "maxAxes": 2,
+  "quizzes": {
+    "Q1": [
+      {
+        "id": "Q1-axe-A",
+        "label": "Déjouer les stéréotypes sur les personnes",
+        "items": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "minMissed": 2,
+        "message": "Plusieurs réponses reposent sur l'idée qu'un métier, un statut, un salaire ou une « solidité personnelle » suffiraient à expliquer ou prévenir le burn-out. Les sources montrent plutôt des profils d'exposition différents selon les situations de travail.",
+        "resources": [
+          "INRS, burnout",
+          "DARES, expositions aux RPS",
+          "HAS, fiche mémo burnout"
+        ],
+        "_trigger": "Master Quiz 1 §6 : au moins deux erreurs dans l'axe."
+      },
+      {
+        "id": "Q1-axe-B",
+        "label": "Élargir l'analyse des causes",
+        "items": [
+          5,
+          6
+        ],
+        "minMissed": 2,
+        "message": "L'analyse ne peut pas se limiter à la charge de travail ni aux caractéristiques personnelles. Les facteurs de RPS se répartissent dans plusieurs familles et la prévention collective porte sur ce que l'organisation peut transformer.",
+        "resources": [
+          "Rapport Gollac",
+          "INRS, facteurs de RPS",
+          "HAS"
+        ],
+        "mode": "all",
+        "minSubErrors": {
+          "6": 2
+        },
+        "_trigger": "Master Quiz 1 §6 : erreur à l'item 5 ET plusieurs facteurs manqués à l'item 6."
+      },
+      {
+        "id": "Q1-axe-C",
+        "label": "Qualifier sans auto-diagnostiquer",
+        "items": [
+          7,
+          8,
+          9
+        ],
+        "minMissed": 2,
+        "message": "Les réponses montrent surtout des confusions entre critère simplifié, classification et démarche clinique. Une forte fatigue ou une plainte au travail ne suffisent pas à qualifier un burn-out ; les congés ne constituent pas un test ; l'OMS ne classe pas le burn-out comme une maladie mentale ; une dépression n'est pas automatiquement exclue.",
+        "resources": [
+          "OMS",
+          "HAS",
+          "INRS"
+        ],
+        "_trigger": "Master Quiz 1 §6 : au moins deux erreurs dans l'axe."
+      },
+      {
+        "id": "Q1-axe-D",
+        "label": "Comprendre les effets sans surinterpréter",
+        "items": [
+          10,
+          11
+        ],
+        "minMissed": 2,
+        "message": "Les facteurs psychosociaux ne concernent pas uniquement la santé mentale. Des associations avec des effets physiques sont documentées, mais elles ne doivent pas être transformées en causalité individuelle.",
+        "resources": [
+          "INRS, Références en santé au travail n° 180, décembre 2024"
+        ],
+        "mode": "all",
+        "minSubErrors": {
+          "11": 2
+        },
+        "_trigger": "Master Quiz 1 §6 : erreur à l'item 10 ET plusieurs erreurs de classement à l'item 11."
+      },
+      {
+        "id": "Q1-axe-E",
+        "label": "Agir au bon niveau",
+        "items": [
+          12,
+          13,
+          14
+        ],
+        "minMissed": 2,
+        "message": "Prévenir suppose d'agir sur les facteurs de risque, de les intégrer au DUERP et de mobiliser le bon acteur selon la question posée. Les actions individuelles peuvent être utiles sans remplacer la prévention collective.",
+        "resources": [
+          "Code du travail",
+          "INRS",
+          "ANACT"
+        ],
+        "_trigger": "Master Quiz 1 §6 : au moins deux erreurs dans l'axe."
+      }
+    ],
+    "Q2": [
+      {
+        "id": "Q2-axe-A",
+        "label": "Ne pas juger la situation à ce qui est visible",
+        "items": [
+          1,
+          2
+        ],
+        "minMissed": 1,
+        "message": "Une activité ponctuelle ne permet pas d'évaluer une capacité de travail. L'arrêt ne garantit pas non plus la disparition rapide de toutes les difficultés, et certaines manifestations peuvent relever d'un trouble associé.",
+        "resources": [],
+        "_trigger": "Les masters ne fixent pas de seuil pour cette série : un axe est proposé dès qu'une réponse attendue n'a pas été trouvée (cahier des charges §8, « les thèmes ayant suscité des erreurs »)."
+      },
+      {
+        "id": "Q2-axe-B",
+        "label": "Replacer la situation dans le travail et dans le droit",
+        "items": [
+          3,
+          4,
+          5
+        ],
+        "minMissed": 1,
+        "message": "Les effectifs et la continuité de l'activité relèvent de l'organisation. Les voies accident du travail et maladie professionnelle répondent par ailleurs à des conditions juridiques distinctes et ne se déduisent pas automatiquement du mot « burn-out ».",
+        "resources": [],
+        "_trigger": "Les masters ne fixent pas de seuil pour cette série : un axe est proposé dès qu'une réponse attendue n'a pas été trouvée (cahier des charges §8, « les thèmes ayant suscité des erreurs »)."
+      },
+      {
+        "id": "Q2-axe-C",
+        "label": "Préparer la reprise",
+        "items": [
+          6,
+          7,
+          8
+        ],
+        "minMissed": 1,
+        "message": "La reprise ne se limite pas à la fin de l'arrêt. Le poste, les conditions de travail, les facteurs ayant contribué aux difficultés et les adaptations éventuelles peuvent devoir être examinés.",
+        "resources": [],
+        "_trigger": "Les masters ne fixent pas de seuil pour cette série : un axe est proposé dès qu'une réponse attendue n'a pas été trouvée (cahier des charges §8, « les thèmes ayant suscité des erreurs »)."
+      }
+    ],
+    "Q3": [
+      {
+        "id": "Q3-axe-A",
+        "label": "Observer sans diagnostiquer",
+        "items": [
+          1,
+          2
+        ],
+        "minMissed": 1,
+        "message": "Ce que l'on voit peut conduire à s'inquiéter ou à proposer une aide, mais pas à conclure sur un diagnostic.",
+        "resources": [],
+        "_trigger": "Les masters ne fixent pas de seuil pour cette série : un axe est proposé dès qu'une réponse attendue n'a pas été trouvée (cahier des charges §8, « les thèmes ayant suscité des erreurs »)."
+      },
+      {
+        "id": "Q3-axe-B",
+        "label": "Soutenir sans prendre la place",
+        "items": [
+          3,
+          4
+        ],
+        "minMissed": 1,
+        "message": "Écouter, être disponible et orienter sont différents de prescrire une conduite ou d'obtenir une confidence.",
+        "resources": [],
+        "_trigger": "Les masters ne fixent pas de seuil pour cette série : un axe est proposé dès qu'une réponse attendue n'a pas été trouvée (cahier des charges §8, « les thèmes ayant suscité des erreurs »)."
+      },
+      {
+        "id": "Q3-axe-C",
+        "label": "Être présent sans imposer",
+        "items": [
+          5,
+          6
+        ],
+        "minMissed": 1,
+        "message": "Il n'existe pas une fréquence universelle de contact. Le lien peut être proposé sans pression et doit tenir compte des limites et souhaits exprimés.",
+        "resources": [],
+        "_trigger": "Les masters ne fixent pas de seuil pour cette série : un axe est proposé dès qu'une réponse attendue n'a pas été trouvée (cahier des charges §8, « les thèmes ayant suscité des erreurs »)."
+      },
+      {
+        "id": "Q3-axe-D",
+        "label": "Préparer le retour sans stigmatiser",
+        "items": [
+          7,
+          8
+        ],
+        "minMissed": 1,
+        "message": "Le collectif peut organiser le travail et intégrer des adaptations utiles sans surveillance excessive ni accès au diagnostic.",
+        "resources": [],
+        "_trigger": "Les masters ne fixent pas de seuil pour cette série : un axe est proposé dès qu'une réponse attendue n'a pas été trouvée (cahier des charges §8, « les thèmes ayant suscité des erreurs »)."
+      },
+      {
+        "id": "Q3-axe-E",
+        "label": "Ne pas réduire une personne à son burn-out passé",
+        "items": [
+          9
+        ],
+        "minMissed": 1,
+        "message": "Un antécédent de burn-out ne permet pas, à lui seul, de prédire les capacités professionnelles futures. Les apprentissages décrits au cours de certaines réhabilitations sont possibles, mais non universels.",
+        "resources": [],
+        "_trigger": "Les masters ne fixent pas de seuil pour cette série : un axe est proposé dès qu'une réponse attendue n'a pas été trouvée (cahier des charges §8, « les thèmes ayant suscité des erreurs »)."
+      }
+    ]
+  }
+}
