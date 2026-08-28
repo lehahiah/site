@@ -94,15 +94,31 @@
         "position": 1,
         "item": {
           "@type": "MusicEvent",
-          "name": "Lehahiah aux Caves de Chartreuse",
-          "description": "Concert du groupe Lehahiah (pop bohème, compositions originales en français) aux Caves de Chartreuse à Voiron, le jeudi 3 septembre 2026 à 18h30. Entrée libre.",
+          "name": "Lehahiah aux Caves de la Chartreuse – Jeudis culturels",
+          "description": "Concert du groupe Lehahiah (pop bohème, compositions originales en français) aux Caves de la Chartreuse à Voiron, le jeudi 3 septembre 2026 de 18h30 à 20h30, dans le cadre des Jeudis culturels. Entrée libre.",
           "startDate": "2026-09-03T18:30",
+          "endDate": "2026-09-03T20:30",
+          "superEvent": {
+            "@type": "EventSeries",
+            "name": "Jeudis culturels des Caves de la Chartreuse",
+            "location": {
+              "@type": "Place",
+              "name": "Caves de la Chartreuse",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Voiron",
+                "postalCode": "38500",
+                "addressRegion": "Isère",
+                "addressCountry": "FR"
+              }
+            }
+          },
           "eventStatus": "https://schema.org/EventScheduled",
           "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
           "url": "https://lehahiah.fr/concerts.html#agenda",
           "location": {
             "@type": "Place",
-            "name": "Caves de Chartreuse",
+            "name": "Caves de la Chartreuse",
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Voiron",
@@ -250,8 +266,9 @@
             <p style="font-size: 0.75rem; color: var(--text-muted);">2026</p>
           </div>
           <div style="flex: 1; min-width: 180px;">
-            <p style="font-weight: 700; color: var(--text);">Concert Lehahiah aux Caves de Chartreuse</p>
-            <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.2rem;"><time datetime="2026-09-03T18:30">Jeudi 3 septembre 2026 · 18h30</time> · Voiron, Isère</p>
+            <p style="font-weight: 700; color: var(--text);">Concert Lehahiah aux Caves de la Chartreuse</p>
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.2rem;"><time datetime="2026-09-03T18:30">Jeudi 3 septembre 2026 · 18h30 – 20h30</time> · Voiron, Isère</p>
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.2rem;">Dans le cadre des <strong style="color: var(--text);">Jeudis culturels</strong> des Caves de la Chartreuse</p>
           </div>
           <span style="font-size: 0.8rem; color: var(--text-muted); background: var(--bg-alt); padding: 0.3em 0.75em; border-radius: 99px;">Entrée libre</span>
         </div>
