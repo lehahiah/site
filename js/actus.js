@@ -36,7 +36,7 @@ var ACTUS = [
     categorie: 'agenda',
     titre: 'Lehahiah aux Jeudis culturels des Caves de la Chartreuse',
     resume: 'Une soirée en extérieur à Voiron, dans le cadre des Jeudis culturels. Entrée libre.',
-    lien: 'concerts.html#agenda',
+    lien: 'scenographie.html',
     image: 'images/concert-live-bar.jpg'
   },
 
@@ -199,7 +199,7 @@ var ACTUS = [
     return el('p', 'actu-empty', message);
   }
 
-  // ----- Bloc page d'accueil : 1 actu en avant + 3 en liste -----
+  // ----- Bloc page d'accueil : 1 actu en avant + 4 en liste -----
   function rendreAccueil(hote) {
     var liste = triees();
     hote.textContent = '';
