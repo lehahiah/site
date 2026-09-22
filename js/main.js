@@ -117,6 +117,48 @@
   });
 })();
 
+// ===== AGENDA : MASQUAGE AUTOMATIQUE DES DATES PASSÉES =====
+// Chaque bloc .concert-date est masqué le lendemain du concert, d'après son
+// <time datetime="AAAA-MM-JJ">. Le HTML n'est pas modifié : la date reste dans
+// concerts.html, simplement invisible. Un bloc sans <time datetime> lisible est
+// conservé par précaution (mieux vaut afficher en trop que faire disparaître
+// une date par erreur).
+(function () {
+  var agenda = document.getElementById('agenda');
+  if (!agenda) return;
+
+  var blocs = agenda.querySelectorAll('.concert-date');
+  if (!blocs.length) return;
+
+  // Minuit aujourd'hui : un concert reste affiché toute la journée où il a lieu.
+  var aujourdhui = new Date();
+  aujourdhui.setHours(0, 0, 0, 0);
+
+  var aVenir = 0;
+
+  Array.prototype.forEach.call(blocs, function (bloc) {
+    var t = bloc.querySelector('time[datetime]');
+    var brut = t ? t.getAttribute('datetime') : '';
+    var p = String(brut).split('T')[0].split('-');
+
+    // Date illisible ou absente : on garde le bloc visible.
+    if (p.length < 3) { aVenir++; return; }
+
+    var d = new Date(+p[0], (+p[1] || 1) - 1, +p[2] || 1);
+    if (isNaN(d.getTime())) { aVenir++; return; }
+
+    if (d < aujourdhui) {
+      bloc.style.display = 'none';
+      bloc.setAttribute('aria-hidden', 'true');
+    } else {
+      aVenir++;
+    }
+  });
+
+  var vide = document.getElementById('agenda-vide');
+  if (vide && aVenir === 0) vide.style.display = 'block';
+})();
+
 // ===== LECTEUR AUDIO SOUNDCLOUD =====
 (function () {
   var bar = document.getElementById('sc-bar');
