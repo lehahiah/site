@@ -67,6 +67,7 @@
         <a href="concerts.html" class="nav__link" role="menuitem">Concerts</a>
         <a href="musique.html" class="nav__link" role="menuitem">Musique</a>
         <a href="videos.html" class="nav__link" role="menuitem">Vidéos</a>
+        <a href="actualites.html" class="nav__link" role="menuitem">Actus</a>
         <a href="contact.html" class="nav__link" role="menuitem">Contact</a>
         <a href="concerts.html#demande" class="nav__cta" role="menuitem">Programmer une date</a>
       </div>
@@ -136,8 +137,32 @@
     </div>
   </section>
 
+  <!-- ACTUALITÉS -->
+  <section class="bg-alt" id="actualites">
+    <div class="container">
+      <div class="section-header fade-up" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin-bottom: 2.5rem;">
+        <div>
+          <span class="eyebrow">Le fil Lehahiah</span>
+          <h2>Les dernières nouvelles</h2>
+          <p class="desc" style="margin-bottom: 0;">Nouvelles dates, clips, sorties et coulisses – ce qui bouge en ce moment autour du projet.</p>
+        </div>
+        <a href="actualites.html" class="btn btn--outline" style="font-size: 0.875rem; white-space: nowrap;">Toutes les actualités →</a>
+      </div>
+
+      <div class="fade-up" data-actus="accueil">
+        <!-- Rempli depuis js/actus.js -->
+        <noscript>
+          <p class="actu-empty">
+            Retrouvez les dernières nouvelles sur
+            <a href="actualites.html" style="color: var(--accent); text-decoration: underline;">la page Actualités</a>.
+          </p>
+        </noscript>
+      </div>
+    </div>
+  </section>
+
   <!-- FORMATS -->
-  <section class="bg-alt">
+  <section class="bg-white">
     <div class="container">
       <div class="section-header centered fade-up">
         <span class="eyebrow">Formats de concert</span>
@@ -311,6 +336,7 @@
             <a href="scenographie.html">Scénographie</a>
             <a href="musique.html">Musique</a>
             <a href="videos.html">Vidéos</a>
+            <a href="actualites.html">Actualités</a>
             <a href="contact.html">Contact</a>
           </nav>
         </div>
@@ -333,7 +359,7 @@
       </div>
 
       <div class="footer__bottom">
-        <p>© 2025 Lehahiah musique · Association LEHAHIAH EN MUSIQUE · SIRET 923 820 625 00013</p>
+        <p>© 2026 Lehahiah musique · Association LEHAHIAH EN MUSIQUE · SIRET 923 820 625 00013</p>
         <div class="footer__legal">
           <a href="mentions-legales.html">Mentions légales</a>
           <a href="mentions-legales.html#confidentialite">Confidentialité</a>
@@ -383,6 +409,7 @@
   </div>
 
   <script src="https://w.soundcloud.com/player/api.js"></script>
+  <script src="js/actus.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
