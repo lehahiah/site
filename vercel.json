@@ -2,5 +2,9 @@
   "version": 2,
   "buildCommand": null,
   "outputDirectory": ".",
-  "framework": null
+  "framework": null,
+  "rewrites": [
+    { "source": "/loto/cartons", "destination": "/loto/cartons-loto.html" },
+    { "source": "/loto/tirage", "destination": "/loto/tirage-loto.html" }
+  ]
 }

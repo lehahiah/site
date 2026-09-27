@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Tirage du loto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #E9EEF4;
+    --panel: #FFFFFF;
+    --ink: #1B2A4A;
+    --muted: #5B6883;
+    --line: #CBD4E1;
+    --ball: #F2C230;
+    --ball-shade: #D9A514;
+    --drawn: #1B2A4A;
+    --drawn-ink: #FFFFFF;
+    --last: #E0452B;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111A2E; --panel: #1A2640; --ink: #EEF2F8; --muted: #9AA7C0;
+      --line: #2E3D5C; --drawn: #F2C230; --drawn-ink: #1B2A4A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111A2E; --panel: #1A2640; --ink: #EEF2F8; --muted: #9AA7C0;
+    --line: #2E3D5C; --drawn: #F2C230; --drawn-ink: #1B2A4A;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    min-height: 100vh;
+  }
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 16px 32px;
+    display: grid;
+    grid-template-columns: minmax(280px, 380px) 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  header {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px 16px;
+  }
+  h1 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.01em; }
+  .game-no { color: var(--muted); font-size: 1rem; }
+
+  /* Zone de tirage */
+  .draw {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    position: sticky;
+    top: calc(12px + env(safe-area-inset-top, 0px));
+  }
+  .ball {
+    width: min(240px, 60vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 28%, #FFF3C4 0 12%, var(--ball) 45%, var(--ball-shade) 100%);
+    display: grid;
+    place-items: center;
+    box-shadow: inset -10px -14px 24px rgba(0,0,0,.12);
+  }
+  .ball-inner {
+    width: 62%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #FFFFFF;
+    display: grid;
+    place-items: center;
+    color: #1B2A4A;
+    font-weight: 800;
+    font-size: clamp(3.4rem, 14vw, 6rem);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .ball-inner.empty { font-size: 1rem; font-weight: 600; color: #5B6883; text-align: center; padding: 10px; }
+  .ball.pop { animation: pop .35s ease-out; }
+  @keyframes pop { 0% { transform: scale(.92); } 60% { transform: scale(1.04); } 100% { transform: scale(1); } }
+
+  .count { font-size: 1.05rem; color: var(--muted); text-align: center; }
+  .count strong { color: var(--ink); font-size: 1.3rem; }
+
+  .btn {
+    font: inherit;
+    font-weight: 600;
+    border-radius: 999px;
+    border: 2px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    padding: 10px 18px;
+    cursor: pointer;
+    min-height: 44px;
+  }
+  .btn:focus-visible { outline: 3px solid var(--last); outline-offset: 3px; }
+  .btn:disabled { opacity: .4; cursor: not-allowed; }
+  .btn-main {
+    width: 100%;
+    background: var(--ink);
+    color: var(--bg);
+    font-size: 1.3rem;
+    font-weight: 800;
+    padding: 16px 20px;
+  }
+  .hint { font-size: .85rem; color: var(--muted); margin: -8px 0 0; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+
+  .recent { width: 100%; }
+  .recent h2, .board h2 { font-size: 1rem; font-weight: 600; margin: 0 0 10px; color: var(--muted); }
+  .recent ol {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .recent li {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: grid; place-items: center;
+    border: 2px solid var(--line);
+    font-weight: 600; font-variant-numeric: tabular-nums;
+  }
+  .recent li:first-child { border-color: var(--last); color: var(--last); font-weight: 800; }
+  .recent .none { color: var(--muted); font-size: .95rem; }
+
+  /* Grille */
+  .board {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 20px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 6px;
+  }
+  .cell {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 600;
+    font-size: clamp(.8rem, 2.2vw, 1.35rem);
+    font-variant-numeric: tabular-nums;
+    border: 2px solid var(--line);
+    color: var(--muted);
+    transition: background-color .25s, color .25s, border-color .25s;
+  }
+  .cell.void { border: none; }
+  .cell.on { background: var(--drawn); border-color: var(--drawn); color: var(--drawn-ink); font-weight: 800; }
+  .cell.latest { background: var(--last); border-color: var(--last); color: #FFFFFF; }
+
+  .order { margin-top: 20px; }
+  .order p { margin: 0; line-height: 1.8; font-variant-numeric: tabular-nums; word-spacing: 4px; }
+
+  /* Boîte de confirmation */
+  dialog {
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--panel);
+    color: var(--ink);
+    padding: 20px;
+    max-width: 360px;
+  }
+  dialog::backdrop { background: rgba(10, 16, 30, .55); }
+  dialog p { margin: 0 0 16px; line-height: 1.5; }
+  dialog .actions { justify-content: flex-end; }
+
+
+
+  /* Cartons et vérification */
+  .verify { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 18px; }
+  .verify-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .verify-row input {
+    flex: 1 1 180px; min-height: 44px; font: inherit; font-size: 1.1rem; letter-spacing: .08em;
+    border: 2px solid var(--line); border-radius: 12px; padding: 8px 12px;
+    background: var(--bg); color: var(--ink); text-transform: uppercase;
+  }
+  .verify-row input:focus-visible { outline: 3px solid var(--last); outline-offset: 2px; }
+  .verify-out { margin-top: 14px; }
+  .verdict { font-size: 1.4rem; font-weight: 800; margin: 0 0 4px; }
+  .verdict.win { color: var(--last); }
+  .missing { margin: 0 0 12px; color: var(--muted); line-height: 1.6; }
+  .error { color: var(--last); margin: 0; }
+  .card-box { container-type: inline-size; max-width: 640px; }
+  .card {
+    display: grid; grid-template-columns: repeat(9, 1fr);
+    border: 2px solid #1B2A4A; background: #FFFFFF;
+  }
+  .card .c {
+    aspect-ratio: 1 / 1.05; display: grid; place-items: center; position: relative;
+    border-right: 1px solid #1B2A4A; border-bottom: 1px solid #1B2A4A;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif; font-weight: 700;
+    font-size: 6.5cqi; color: #1B2A4A; font-variant-numeric: tabular-nums;
+  }
+  .card .c:nth-child(9n) { border-right: none; }
+  .card .c:nth-last-child(-n+9) { border-bottom: none; }
+  .card .c.blank { background: repeating-linear-gradient(45deg, #D5DBE5 0 3px, #EEF1F6 3px 6px); }
+  .card .c.miss { color: #A3AEC2; font-weight: 500; }
+  .card .c.hit::after {
+    content: ''; position: absolute; inset: 8%; border-radius: 50%;
+    border: 0.9cqi solid #E0452B;
+  }
+  .card-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+
+  .proj-check {
+    position: fixed; inset: 0; background: rgba(8, 12, 24, .88);
+    display: none; flex-direction: column; align-items: center; justify-content: center; gap: 3vh;
+    padding: 4vh 4vw;
+  }
+  .proj-check.show { display: flex; }
+  .proj-check .verdict { font-size: min(6vw, 9vh); color: #FFFFFF; text-align: center; }
+  .proj-check .verdict.win { color: #F2C230; }
+  .proj-check .code { font-size: min(2.4vw, 4vh); color: #AEB8CC; margin: 0; }
+  .proj-check .card-box { width: min(86vw, 150vh); max-width: none; }
+
+  /* Mode projection */
+  .proj { display: none; }
+  body.projection .wrap { display: none; }
+  body.projection { background: #0E1628; color: #F4F6FA; }
+  body.projection .proj {
+    display: grid;
+    grid-template-columns: minmax(220px, 30vw) 1fr;
+    gap: 3vw;
+    height: 100vh;
+    padding: 3vh 3vw;
+    align-items: center;
+  }
+  .proj-side { display: flex; flex-direction: column; align-items: center; gap: 3vh; }
+  .proj-title { margin: 0; font-size: clamp(1rem, 2vw, 1.8rem); font-weight: 600; color: #AEB8CC; }
+  .proj-ball {
+    width: min(26vw, 50vh);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 28%, #FFF3C4 0 12%, #F2C230 45%, #D9A514 100%);
+    display: grid; place-items: center;
+  }
+  .proj-ball span {
+    width: 64%; aspect-ratio: 1; border-radius: 50%; background: #FFFFFF;
+    display: grid; place-items: center; color: #1B2A4A;
+    font-weight: 800; font-size: min(10vw, 19vh); line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .proj-ball span.empty { font-size: min(2vw, 3.5vh); font-weight: 600; color: #5B6883; }
+  .proj-count { font-size: clamp(1.1rem, 2.4vw, 2.2rem); color: #AEB8CC; text-align: center; }
+  .proj-count strong { color: #FFFFFF; }
+  .proj-recent { display: flex; gap: 1vw; justify-content: center; flex-wrap: wrap; }
+  .proj-recent span {
+    width: min(4.6vw, 8vh); aspect-ratio: 1; border-radius: 50%;
+    display: grid; place-items: center; border: 3px solid #3A4A6B;
+    font-weight: 700; font-size: min(2vw, 3.6vh); font-variant-numeric: tabular-nums;
+  }
+  .proj-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 1vh;
+    height: 94vh;
+    max-width: 100%;
+    aspect-ratio: 1;
+    justify-self: center;
+  }
+  .pcell {
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-weight: 600;
+    font-size: min(3vw, 4.6vh);
+    font-variant-numeric: tabular-nums;
+    color: #4B5874;
+    border: 2px solid #26324C;
+  }
+  .pcell.void { border: none; }
+  .pcell.on {
+    background: #F2C230; color: #1B2A4A; border: 4px solid #FFFFFF; font-weight: 800;
+  }
+  .pcell.latest { background: #E0452B; color: #FFFFFF; border-color: #FFFFFF; }
+  .proj-exit {
+    position: fixed; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    font: inherit; font-size: .85rem; color: #AEB8CC; background: transparent;
+    border: 1px solid #3A4A6B; border-radius: 999px; padding: 8px 14px; cursor: pointer;
+    opacity: .5;
+  }
+  .proj-exit:hover, .proj-exit:focus-visible { opacity: 1; }
+  body.proj-window .proj-exit { display: none; }
+  @media (max-width: 760px) {
+    body.projection .proj { grid-template-columns: 1fr; height: auto; }
+    .proj-grid { height: auto; width: 100%; }
+    .pcell { font-size: 3.6vw; }
+  }
+
+  @media (max-width: 760px) {
+    .wrap { grid-template-columns: 1fr; }
+    .draw { position: static; }
+    .grid { gap: 4px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ball.pop { animation: none; }
+    .cell { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Tirage du loto</h1>
+    <span class="game-no" id="gameNo">Partie 1</span>
+  </header>
+
+  <section class="draw" aria-label="Tirage">
+    <div class="ball" id="ball">
+      <div class="ball-inner empty" id="current" aria-live="assertive">Prêt pour le premier tirage</div>
+    </div>
+    <div class="count" id="count"><strong>0</strong> numéro tiré sur 90</div>
+    <button class="btn btn-main" id="drawBtn">Tirer un numéro</button>
+    <p class="hint">Barre d'espace : tirer. Touche P : projeter la grille.</p>
+    <div class="actions">
+      <button class="btn" id="undoBtn">Annuler le dernier</button>
+      <button class="btn" id="newBtn">Nouvelle partie</button>
+      <button class="btn" id="projBtn">Projeter la grille</button>
+      <button class="btn" id="winBtn">Ouvrir sur un 2e écran</button>
+    </div>
+    <div class="recent">
+      <h2>Derniers numéros</h2>
+      <ol id="recent"></ol>
+    </div>
+  </section>
+
+  <section class="board" aria-label="Numéros tirés">
+    <h2>Tableau des numéros</h2>
+    <div class="grid" id="grid"></div>
+    <div class="order">
+      <h2>Ordre de sortie</h2>
+      <p id="order"></p>
+    </div>
+    <div class="verify">
+      <h2>Vérifier un carton</h2>
+      <div class="verify-row">
+        <input id="codeIn" placeholder="Code du carton, ex. HEK-SGJ" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Code du carton">
+        <button class="btn" id="checkBtn">Vérifier</button>
+      </div>
+      <div class="verify-out" id="verifyOut" aria-live="polite"></div>
+    </div>
+  </section>
+</div>
+
+
+<section class="proj" aria-label="Écran de projection">
+  <div class="proj-side">
+    <p class="proj-title" id="pGame">Partie 1</p>
+    <div class="proj-ball"><span id="pCurrent" class="empty">En attente</span></div>
+    <div class="proj-count" id="pCount"></div>
+    <div class="proj-recent" id="pRecent"></div>
+  </div>
+  <div class="proj-grid" id="pGrid"></div>
+  <div class="proj-check" id="pCheck"></div>
+  <button class="proj-exit" id="exitBtn">Quitter la projection (Échap)</button>
+</section>
+
+<dialog id="confirm">
+  <p id="confirmText"></p>
+  <div class="actions">
+    <button class="btn" id="cancelBtn">Continuer la partie</button>
+    <button class="btn btn-main" id="okBtn" style="width:auto;font-size:1rem;padding:10px 18px">Démarrer</button>
+  </div>
+</dialog>
+
+<script>
+/* Moteur commun : codes et génération déterministe des cartons (1-90, 3 x 9, 15 numéros) */
+const LotoCore = (() => {
+  const ALPHA = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  const checksum = (s) => { let t = 0; for (let i = 0; i < s.length; i++) t += (i + 1) * ALPHA.indexOf(s[i]); return ALPHA[t % 32]; };
+  function newCode() {
+    const a = new Uint32Array(5); crypto.getRandomValues(a);
+    let s = ''; for (const x of a) s += ALPHA[x % 32];
+    return s + checksum(s);
+  }
+  const normalize = (input) => String(input || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+  function isValid(code) {
+    if (code.length !== 6) return false;
+    for (const ch of code) if (ALPHA.indexOf(ch) < 0) return false;
+    return checksum(code.slice(0, 5)) === code[5];
+  }
+  const format = (code) => code.slice(0, 3) + '-' + code.slice(3);
+  function seedFrom(str) {
+    let h = 1779033703 ^ str.length;
+    for (let i = 0; i < str.length; i++) { h = Math.imul(h ^ str.charCodeAt(i), 3432918353); h = (h << 13) | (h >>> 19); }
+    h = Math.imul(h ^ (h >>> 16), 2246822507); h = Math.imul(h ^ (h >>> 13), 3266489909);
+    return (h ^= h >>> 16) >>> 0;
+  }
+  function rng(a) {
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function card(code) {
+    const rnd = rng(seedFrom('loto90-v1:' + code));
+    const ri = (n) => Math.floor(rnd() * n);
+    const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = ri(i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+    const range = (c) => (c === 0 ? [1, 9] : c === 8 ? [80, 90] : [c * 10, c * 10 + 9]);
+    for (let attempt = 0; attempt < 500; attempt++) {
+      const counts = Array(9).fill(1);
+      let extra = 6;
+      while (extra > 0) { const c = ri(9); if (counts[c] < 3) { counts[c]++; extra--; } }
+      const grid = [0, 1, 2].map(() => Array(9).fill(false));
+      const left = [5, 5, 5];
+      let ok = true;
+      const order = shuffle([0, 1, 2, 3, 4, 5, 6, 7, 8]).sort((a, b) => counts[b] - counts[a]);
+      for (const c of order) {
+        const rows = shuffle([0, 1, 2]).sort((a, b) => left[b] - left[a]).slice(0, counts[c]);
+        if (rows.some((r) => left[r] <= 0)) { ok = false; break; }
+        rows.forEach((r) => { grid[r][c] = true; left[r]--; });
+      }
+      if (!ok || left.some((x) => x !== 0)) continue;
+      const cells = [0, 1, 2].map(() => Array(9).fill(null));
+      for (let c = 0; c < 9; c++) {
+        const [lo, hi] = range(c); const pool = [];
+        for (let n = lo; n <= hi; n++) pool.push(n);
+        const nums = shuffle(pool).slice(0, counts[c]).sort((a, b) => a - b);
+        let k = 0;
+        for (let r = 0; r < 3; r++) if (grid[r][c]) cells[r][c] = nums[k++];
+      }
+      return cells;
+    }
+    return null;
+  }
+  function evaluate(cells, drawnSet) {
+    const missing = cells.map((row) => row.filter((v) => v != null && !drawnSet.has(v)));
+    return { full: missing.filter((m) => !m.length).length, missing };
+  }
+  const LABELS = ['Aucune ligne complète', 'Quine', 'Double quine', 'Carton plein'];
+  return { newCode, normalize, isValid, format, card, evaluate, LABELS };
+})();
+
+(function () {
+  const MAX = 90;
+  const KEY = 'loto-1-90-state';
+  let state = { game: 1, drawn: [], check: null };
+
+  const $ = (id) => document.getElementById(id);
+  const gridEl = $('grid'), currentEl = $('current'), ballEl = $('ball');
+  let busy = false;
+
+  // Chargement de la partie en cours (reprise après rechargement)
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY));
+    if (saved && Array.isArray(saved.drawn) && Number.isInteger(saved.game) && saved.drawn.every((n) => n >= 1 && n <= MAX)) state = saved;
+  } catch (e) {}
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  }
+
+  // Grille par dizaines : 1-9, 10-19 ... 90-99
+  const cells = {};
+  for (let n = 0; n <= MAX; n++) {
+    const c = document.createElement('div');
+    if (n === 0) { c.className = 'cell void'; c.setAttribute('aria-hidden', 'true'); }
+    else { c.className = 'cell'; c.textContent = n; cells[n] = c; }
+    gridEl.appendChild(c);
+  }
+
+  // Grille de projection
+  const pGridEl = $('pGrid');
+  const pcells = {};
+  for (let n = 0; n <= MAX; n++) {
+    const c = document.createElement('div');
+    if (n === 0) { c.className = 'pcell void'; c.setAttribute('aria-hidden', 'true'); }
+    else { c.className = 'pcell'; c.textContent = n; pcells[n] = c; }
+    pGridEl.appendChild(c);
+  }
+
+  // Fenêtre dédiée au 2e écran : affichage seul, synchronisé
+  const isProjWindow = location.hash === '#projection';
+  if (isProjWindow) document.body.classList.add('projection', 'proj-window');
+
+  // Vérification d'un carton
+  let verifyCode = null;
+  function cardEl(cells, set) {
+    const box = document.createElement('div'); box.className = 'card-box';
+    const el = document.createElement('div'); el.className = 'card';
+    for (let r = 0; r < 3; r++) for (let c = 0; c < 9; c++) {
+      const v = cells[r][c]; const d = document.createElement('div');
+      if (v == null) d.className = 'c blank';
+      else { d.className = 'c ' + (set.has(v) ? 'hit' : 'miss'); d.textContent = v; }
+      el.appendChild(d);
+    }
+    box.appendChild(el);
+    return box;
+  }
+  function verdictOf(code) {
+    const cells = LotoCore.card(code);
+    const set = new Set(state.drawn);
+    const res = LotoCore.evaluate(cells, set);
+    return { cells, set, res };
+  }
+  function renderVerify() {
+    const out = $('verifyOut');
+    out.innerHTML = '';
+    if (!verifyCode) return;
+    const { cells, set, res } = verdictOf(verifyCode);
+    const h = document.createElement('p');
+    h.className = 'verdict' + (res.full ? ' win' : '');
+    h.textContent = LotoCore.LABELS[res.full] + ' (carton ' + LotoCore.format(verifyCode) + ')';
+    out.appendChild(h);
+    const m = document.createElement('p'); m.className = 'missing';
+    m.innerHTML = res.missing.map((mm, i) => 'Ligne ' + (i + 1) + ' : ' + (mm.length ? 'manque ' + mm.join(', ') : 'complète')).join('<br>');
+    out.appendChild(m);
+    out.appendChild(cardEl(cells, set));
+    const act = document.createElement('div'); act.className = 'card-actions';
+    const showB = document.createElement('button'); showB.className = 'btn';
+    const shown = state.check === verifyCode;
+    showB.textContent = shown ? 'Retirer de la projection' : 'Afficher sur la projection';
+    showB.onclick = () => { state.check = shown ? null : verifyCode; save(); render(); };
+    const closeB = document.createElement('button'); closeB.className = 'btn'; closeB.textContent = 'Fermer';
+    closeB.onclick = () => { verifyCode = null; if (state.check) state.check = null; save(); render(); };
+    act.appendChild(showB); act.appendChild(closeB);
+    out.appendChild(act);
+  }
+  function renderProjCheck() {
+    const box = $('pCheck');
+    box.innerHTML = '';
+    if (!state.check || !LotoCore.isValid(state.check)) { box.classList.remove('show'); return; }
+    const { cells, set, res } = verdictOf(state.check);
+    const h = document.createElement('p'); h.className = 'verdict' + (res.full ? ' win' : '');
+    h.textContent = LotoCore.LABELS[res.full];
+    const c = document.createElement('p'); c.className = 'code'; c.textContent = 'Carton ' + LotoCore.format(state.check);
+    box.appendChild(h); box.appendChild(cardEl(cells, set)); box.appendChild(c);
+    box.classList.add('show');
+  }
+  function checkCode() {
+    const code = LotoCore.normalize($('codeIn').value);
+    const out = $('verifyOut');
+    if (!LotoCore.isValid(code)) {
+      verifyCode = null;
+      out.innerHTML = '<p class="error">Code invalide. Vérifiez les 6 caractères (sans 0, O, 1 ni I).</p>';
+      return;
+    }
+    verifyCode = code;
+    renderVerify();
+  }
+  $('checkBtn').addEventListener('click', checkCode);
+  $('codeIn').addEventListener('keydown', (e) => { if (e.key === 'Enter') checkCode(); });
+
+  function randomIndex(max) {
+    // Tirage uniforme via le générateur cryptographique du navigateur
+    const arr = new Uint32Array(1);
+    const limit = Math.floor(0x100000000 / max) * max;
+    let x;
+    do { crypto.getRandomValues(arr); x = arr[0]; } while (x >= limit);
+    return x % max;
+  }
+
+  function remaining() {
+    const set = new Set(state.drawn);
+    const r = [];
+    for (let n = 1; n <= MAX; n++) if (!set.has(n)) r.push(n);
+    return r;
+  }
+
+  function render() {
+    const d = state.drawn;
+    const last = d[d.length - 1];
+    $('gameNo').textContent = 'Partie ' + state.game;
+
+    if (last) {
+      currentEl.textContent = last;
+      currentEl.classList.remove('empty');
+    } else {
+      currentEl.textContent = 'Prêt pour le premier tirage';
+      currentEl.classList.add('empty');
+    }
+
+    const k = d.length;
+    $('count').innerHTML = '<strong>' + k + '</strong> ' + (k > 1 ? 'numéros tirés' : 'numéro tiré') + ' sur ' + MAX
+      + (k === MAX ? '<br>Tous les numéros sont sortis' : '');
+
+    for (let n = 1; n <= MAX; n++) cells[n].className = 'cell';
+    d.forEach((n) => cells[n].classList.add('on'));
+    if (last) cells[last].classList.add('latest');
+
+    const recent = $('recent');
+    recent.innerHTML = '';
+    if (!k) recent.innerHTML = '<li class="none" style="border:none;width:auto">Aucun numéro pour l\'instant</li>';
+    d.slice(-8).reverse().forEach((n) => {
+      const li = document.createElement('li');
+      li.textContent = n;
+      recent.appendChild(li);
+    });
+
+    $('order').textContent = k ? d.join('  ') : 'Les numéros apparaîtront ici dans leur ordre de sortie.';
+    // Vue projection
+    $('pGame').textContent = 'Partie ' + state.game;
+    const pc = $('pCurrent');
+    if (last && !busy) { pc.textContent = last; pc.classList.remove('empty'); }
+    else if (!last) { pc.textContent = 'En attente'; pc.classList.add('empty'); }
+    $('pCount').innerHTML = '<strong>' + k + '</strong> / ' + MAX + (k > 1 ? ' numéros sortis' : ' numéro sorti');
+    for (let n = 1; n <= MAX; n++) pcells[n].className = 'pcell';
+    d.forEach((n) => pcells[n].classList.add('on'));
+    if (last) pcells[last].classList.add('latest');
+    const pr = $('pRecent');
+    pr.innerHTML = '';
+    d.slice(-6, -1).reverse().forEach((n) => {
+      const sp = document.createElement('span');
+      sp.textContent = n;
+      pr.appendChild(sp);
+    });
+
+    renderVerify();
+    renderProjCheck();
+
+    $('drawBtn').disabled = k === MAX || busy;
+    $('undoBtn').disabled = !k || busy;
+  }
+
+  function draw() {
+    if (busy) return;
+    const pool = remaining();
+    if (!pool.length) return;
+    const pick = pool[randomIndex(pool.length)];
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const finish = () => {
+      state.drawn.push(pick);
+      save();
+      busy = false;
+      render();
+      ballEl.classList.remove('pop');
+      void ballEl.offsetWidth;
+      ballEl.classList.add('pop');
+    };
+
+    if (reduce) { finish(); return; }
+
+    // Court brassage visuel parmi les numéros restants
+    busy = true;
+    render();
+    currentEl.classList.remove('empty');
+    let ticks = 0;
+    const t = setInterval(() => {
+      const v = pool[randomIndex(pool.length)];
+      currentEl.textContent = v;
+      $('pCurrent').textContent = v;
+      $('pCurrent').classList.remove('empty');
+      if (++ticks >= 12) { clearInterval(t); finish(); }
+    }, 55);
+  }
+
+  function undo() {
+    if (!state.drawn.length || busy) return;
+    askConfirm('Retirer le numéro ' + state.drawn[state.drawn.length - 1] + ' du tirage ? Il pourra ressortir.', 'Retirer', () => {
+      state.drawn.pop();
+      save();
+      render();
+    });
+  }
+
+  function newGame() {
+    if (busy) return;
+    const go = () => { state = { game: state.game + 1, drawn: [], check: null }; save(); render(); };
+    if (!state.drawn.length) { go(); return; }
+    askConfirm('Démarrer une nouvelle partie ? Les ' + state.drawn.length + ' numéros tirés seront effacés et les 90 numéros redeviendront disponibles.', 'Démarrer', go);
+  }
+
+  let onOk = null;
+  function askConfirm(text, okLabel, cb) {
+    const dlg = $('confirm');
+    $('confirmText').textContent = text;
+    $('okBtn').textContent = okLabel;
+    onOk = cb;
+    if (typeof dlg.showModal === 'function') dlg.showModal();
+    else if (window.confirm(text)) cb();
+  }
+  $('okBtn').addEventListener('click', () => { $('confirm').close(); if (onOk) onOk(); onOk = null; });
+  $('cancelBtn').addEventListener('click', () => { $('confirm').close(); onOk = null; });
+
+  $('drawBtn').addEventListener('click', draw);
+  $('undoBtn').addEventListener('click', undo);
+  $('newBtn').addEventListener('click', newGame);
+  function enterProjection() {
+    document.body.classList.add('projection');
+    try { if (!document.fullscreenElement) document.documentElement.requestFullscreen(); } catch (e) {}
+  }
+  function exitProjection() {
+    document.body.classList.remove('projection');
+    try { if (document.fullscreenElement) document.exitFullscreen(); } catch (e) {}
+  }
+  $('projBtn').addEventListener('click', enterProjection);
+  $('exitBtn').addEventListener('click', exitProjection);
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement && !isProjWindow) document.body.classList.remove('projection');
+  });
+
+  $('winBtn').addEventListener('click', () => {
+    const url = location.href.split('#')[0] + '#projection';
+    const w = window.open(url, 'loto-projection');
+    if (!w) askConfirm("La fenêtre n'a pas pu s'ouvrir : le navigateur bloque probablement les fenêtres surgissantes. Autorisez-les pour cette page, ou utilisez le bouton Projeter la grille.", 'Compris', () => {});
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if ($('confirm').open) return;
+    if (isProjWindow) {
+      if (e.key === 'f' || e.key === 'F') { try { document.documentElement.requestFullscreen(); } catch (err) {} }
+      return;
+    }
+    if (e.target.closest('button, input')) return;
+    if (e.code === 'Space') { e.preventDefault(); draw(); }
+    else if (e.key === 'p' || e.key === 'P') {
+      document.body.classList.contains('projection') ? exitProjection() : enterProjection();
+    } else if (e.key === 'Escape') exitProjection();
+  });
+
+  // Synchronisation avec la fenêtre de projection
+  function reload() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(KEY));
+      if (saved && Array.isArray(saved.drawn) && JSON.stringify(saved) !== JSON.stringify(state)) {
+        state = saved; render();
+      }
+    } catch (e) {}
+  }
+  window.addEventListener('storage', (e) => { if (e.key === KEY) reload(); });
+  if (isProjWindow) {
+    setInterval(reload, 600);
+    document.addEventListener('dblclick', () => { try { document.documentElement.requestFullscreen(); } catch (e) {} });
+  }
+
+  render();
+})();
+</script>
+</body>
+</html>
