@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Loto entre amis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #E9EEF4; --panel: #FFFFFF; --ink: #1B2A4A; --muted: #5B6883; --line: #CBD4E1;
+    --accent: #E0452B; --ball: #F2C230; --ball-shade: #D9A514;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg: #111A2E; --panel: #1A2640; --ink: #EEF2F8; --muted: #9AA7C0; --line: #2E3D5C; }
+  }
+  :root[data-theme="dark"] { --bg: #111A2E; --panel: #1A2640; --ink: #EEF2F8; --muted: #9AA7C0; --line: #2E3D5C; }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    min-height: 100vh;
+    padding: env(safe-area-inset-top, 0px) 0 env(safe-area-inset-bottom, 0px);
+  }
+  main { max-width: 820px; margin: 0 auto; padding: 40px 16px 48px; }
+
+  .hero { display: flex; align-items: center; gap: 22px; margin-bottom: 28px; }
+  .balls { display: flex; flex-shrink: 0; }
+  .ball {
+    width: 64px; aspect-ratio: 1; border-radius: 50%;
+    background: radial-gradient(circle at 32% 28%, #FFF3C4 0 12%, var(--ball) 45%, var(--ball-shade) 100%);
+    display: grid; place-items: center; box-shadow: inset -5px -7px 12px rgba(0,0,0,.12);
+  }
+  .ball + .ball { margin-left: -8px; }
+  .ball.red { background: radial-gradient(circle at 32% 28%, #FFB9A8 0 12%, #E0452B 45%, #B8321C 100%); }
+  .ball span {
+    width: 62%; aspect-ratio: 1; border-radius: 50%; background: #FFFFFF; color: #1B2A4A;
+    display: grid; place-items: center; font-weight: 800; font-size: 1.2rem; font-variant-numeric: tabular-nums;
+  }
+  h1 { margin: 0 0 6px; font-size: clamp(1.9rem, 6vw, 2.8rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.01em; }
+  .lead { margin: 0; color: var(--muted); line-height: 1.5; font-size: 1.05rem; }
+
+  .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+  .choice {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 20px;
+    padding: 22px 20px; display: flex; flex-direction: column; gap: 10px;
+  }
+  .tag { font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin: 0; }
+  .choice h2 { margin: 0; font-size: 1.35rem; font-weight: 800; }
+  .choice .desc { margin: 0; color: var(--muted); line-height: 1.5; flex: 1; }
+  .btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 56px; margin-top: 8px; padding: 14px 20px; border-radius: 999px;
+    font: inherit; font-weight: 800; font-size: 1.15rem; text-decoration: none;
+    background: var(--ink); color: var(--bg); border: 2px solid var(--ink);
+    transition: transform .15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .btn.alt { background: transparent; color: var(--ink); }
+  .btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+  .steps { background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 22px 20px; }
+  .steps h2 { margin: 0 0 14px; font-size: 1.05rem; font-weight: 600; }
+  .steps ol { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 12px; }
+  .steps li { counter-increment: s; display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; line-height: 1.5; }
+  .steps li::before {
+    content: counter(s); width: 34px; height: 34px; border-radius: 50%;
+    border: 2px solid var(--line); display: grid; place-items: center; font-weight: 800;
+  }
+  .steps strong { color: var(--ink); }
+  .steps span { color: var(--muted); }
+  footer { margin-top: 20px; text-align: center; color: var(--muted); font-size: .9rem; }
+
+  @media (max-width: 640px) {
+    main { padding-top: 24px; }
+    .hero { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .ball { width: 52px; }
+    .choices { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none; } .btn:hover { transform: none; } }
+</style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <div class="balls" aria-hidden="true">
+      <div class="ball"><span>7</span></div>
+      <div class="ball red"><span>42</span></div>
+      <div class="ball"><span>90</span></div>
+    </div>
+    <div>
+      <h1>Loto entre amis</h1>
+      <p class="lead">Numéros de 1 à 90, cartons sur téléphone ou imprimés, tirage projeté sur grand écran. Tout se passe dans le navigateur, sans inscription.</p>
+    </div>
+  </header>
+
+  <section class="choices" aria-label="Choisir son rôle">
+    <article class="choice">
+      <p class="tag">Joueurs</p>
+      <h2>Mes cartons</h2>
+      <p class="desc">Choisissez le nombre de cartons, jouez directement sur votre téléphone ou imprimez-les. Chaque carton a un code à transmettre à l'organisateur.</p>
+      <a class="btn" href="/loto/cartons-loto.html">
+        Obtenir mes cartons
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </article>
+    <article class="choice">
+      <p class="tag">Organisateur</p>
+      <h2>Le tirage</h2>
+      <p class="desc">Tirez les numéros, projetez la grille sur un second écran et vérifiez un carton gagnant à partir de son code.</p>
+      <a class="btn alt" href="/loto/tirage-loto.html">
+        Lancer le tirage
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </article>
+  </section>
+
+  <section class="steps">
+    <h2>Comment ça marche</h2>
+    <ol>
+      <li><div><strong>Chaque joueur génère ses cartons</strong> <span>et envoie ses codes à l'organisateur avant la première boule.</span></div></li>
+      <li><div><strong>L'organisateur lance le tirage</strong> <span>et peut afficher la grille sur une télé ou un vidéoprojecteur.</span></div></li>
+      <li><div><strong>Les joueurs marquent leurs numéros</strong> <span>en touchant les cases de leurs cartons.</span></div></li>
+      <li><div><strong>Quine, double quine ou carton plein ?</strong> <span>L'organisateur saisit le code du carton pour vérifier.</span></div></li>
+    </ol>
+  </section>
+
+  <footer>Bonne partie !</footer>
+</main>
+</body>
+</html>
