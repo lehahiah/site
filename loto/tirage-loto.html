@@ -235,6 +235,49 @@
   .proj-check .code { font-size: min(2.4vw, 4vh); color: #AEB8CC; margin: 0; }
   .proj-check .card-box { width: min(86vw, 150vh); max-width: none; }
 
+  /* Boulier */
+  .machine { display: flex; align-items: center; justify-content: center; gap: 16px; width: 100%; }
+  .machine .ball { width: min(190px, 44vw); flex-shrink: 1; min-width: 0; }
+  .machine .ball-inner { font-size: clamp(2.6rem, 11vw, 4.6rem); }
+  .machine .ball-inner.empty { font-size: .85rem; }
+  .cage-box { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+  .cage {
+    position: relative; width: min(130px, 28vw); aspect-ratio: 1; border-radius: 50%;
+    container-type: inline-size;
+    background: radial-gradient(circle at 34% 28%, rgba(255,255,255,.7) 0 8%, rgba(255,255,255,.18) 35%, rgba(160,176,200,.22) 100%);
+    border: 3px solid var(--line);
+    box-shadow: inset -6px -10px 18px rgba(27,42,74,.12);
+  }
+  .cage-ring {
+    position: absolute; inset: 6%; border-radius: 50%;
+    border: 2px dashed var(--muted); opacity: .45; pointer-events: none;
+  }
+  .cage-mouth {
+    position: absolute; left: 50%; bottom: -3px; width: 30%; height: 9%;
+    transform: translateX(-50%); border-radius: 0 0 50% 50% / 0 0 100% 100%;
+    background: var(--ink); opacity: .75;
+  }
+  .cage-stand { width: 26%; height: 14px; background: var(--muted); opacity: .5; clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%); }
+  .cage .mb {
+    position: absolute; width: 20%; aspect-ratio: 1; border-radius: 50%;
+    background: radial-gradient(circle at 32% 28%, #FFF3C4 0 14%, #F2C230 50%, #D9A514 100%);
+    display: grid; place-items: center; color: #1B2A4A; font-weight: 800; font-size: 7cqi;
+    font-variant-numeric: tabular-nums;
+  }
+  .cage .mb span { width: 64%; aspect-ratio: 1; border-radius: 50%; background: #FFFFFF; display: grid; place-items: center; }
+  .flyball {
+    position: fixed; z-index: 50; border-radius: 50%; pointer-events: none;
+    background: radial-gradient(circle at 32% 28%, #FFF3C4 0 14%, #F2C230 50%, #D9A514 100%);
+    display: grid; place-items: center; color: #1B2A4A; font-weight: 800; font-variant-numeric: tabular-nums;
+    box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  }
+  .flyball span { width: 62%; aspect-ratio: 1; border-radius: 50%; background: #FFFFFF; display: grid; place-items: center; }
+  .speed { display: flex; align-items: center; gap: 8px; font-size: .9rem; color: var(--muted); }
+  .speed select { font: inherit; color: var(--ink); background: var(--panel); border: 2px solid var(--line); border-radius: 10px; padding: 4px 8px; min-height: 36px; }
+  .proj-cage { width: min(13vw, 22vh); }
+  .proj-cage .cage { width: 100%; border-color: #3A4A6B; }
+  .proj-cage .cage-stand { background: #3A4A6B; opacity: 1; }
+
   /* Mode projection */
   .proj { display: none; }
   body.projection .wrap { display: none; }
@@ -250,7 +293,7 @@
   .proj-side { display: flex; flex-direction: column; align-items: center; gap: 3vh; }
   .proj-title { margin: 0; font-size: clamp(1rem, 2vw, 1.8rem); font-weight: 600; color: #AEB8CC; }
   .proj-ball {
-    width: min(26vw, 50vh);
+    width: min(24vw, 42vh);
     aspect-ratio: 1;
     border-radius: 50%;
     background: radial-gradient(circle at 32% 28%, #FFF3C4 0 12%, #F2C230 45%, #D9A514 100%);
@@ -259,7 +302,7 @@
   .proj-ball span {
     width: 64%; aspect-ratio: 1; border-radius: 50%; background: #FFFFFF;
     display: grid; place-items: center; color: #1B2A4A;
-    font-weight: 800; font-size: min(10vw, 19vh); line-height: 1;
+    font-weight: 800; font-size: min(9vw, 16vh); line-height: 1;
     font-variant-numeric: tabular-nums;
   }
   .proj-ball span.empty { font-size: min(2vw, 3.5vh); font-weight: 600; color: #5B6883; }
@@ -313,6 +356,9 @@
     .draw { position: static; }
     .grid { gap: 4px; }
   }
+  @media (max-width: 760px) {
+    .proj-cage { width: 34vw; }
+  }
   @media (prefers-reduced-motion: reduce) {
     .ball.pop { animation: none; }
     .cell { transition: none; }
@@ -327,12 +373,25 @@
   </header>
 
   <section class="draw" aria-label="Tirage">
-    <div class="ball" id="ball">
-      <div class="ball-inner empty" id="current" aria-live="assertive">Prêt pour le premier tirage</div>
+    <div class="machine">
+      <div class="cage-box" aria-hidden="true">
+        <div class="cage" id="cage"><div class="cage-ring"></div><div class="cage-mouth"></div></div>
+        <div class="cage-stand"></div>
+      </div>
+      <div class="ball" id="ball">
+        <div class="ball-inner empty" id="current" aria-live="assertive">Prêt pour le premier tirage</div>
+      </div>
     </div>
     <div class="count" id="count"><strong>0</strong> numéro tiré sur 90</div>
     <button class="btn btn-main" id="drawBtn">Tirer un numéro</button>
     <p class="hint">Barre d'espace : tirer. Touche P : projeter la grille.</p>
+    <label class="speed">Animation
+      <select id="speedSel">
+        <option value="0.5">courte</option>
+        <option value="1" selected>normale</option>
+        <option value="1.7">longue</option>
+      </select>
+    </label>
     <div class="actions">
       <button class="btn" id="undoBtn">Annuler le dernier</button>
       <button class="btn" id="newBtn">Nouvelle partie</button>
@@ -367,6 +426,10 @@
 <section class="proj" aria-label="Écran de projection">
   <div class="proj-side">
     <p class="proj-title" id="pGame">Partie 1</p>
+    <div class="cage-box proj-cage" aria-hidden="true">
+      <div class="cage" id="pCage"><div class="cage-ring"></div><div class="cage-mouth"></div></div>
+      <div class="cage-stand"></div>
+    </div>
     <div class="proj-ball"><span id="pCurrent" class="empty">En attente</span></div>
     <div class="proj-count" id="pCount"></div>
     <div class="proj-recent" id="pRecent"></div>
@@ -564,6 +627,95 @@ const LotoCore = (() => {
   $('checkBtn').addEventListener('click', checkCode);
   $('codeIn').addEventListener('keydown', (e) => { if (e.key === 'Enter') checkCode(); });
 
+  // Boulier : petites boules qui s'agitent dans une sphère (vue normale et projection)
+  const Cage = (() => {
+    const hosts = [$('cage'), $('pCage')];
+    const B = 0.2;           // rayon d'une boule, en rayons de sphère
+    const N = 12;
+    let balls = [], els = [], agitate = false, spin = 0, angle = 0, running = false, calm = 0, last = 0;
+    function build(nums) {
+      hosts.forEach((h) => h.querySelectorAll('.mb').forEach((e) => e.remove()));
+      els = []; balls = [];
+      nums.slice(0, N).forEach((n, i) => {
+        const a = Math.PI * (0.15 + 0.7 * Math.random()), r = 0.5 + 0.25 * Math.random();
+        balls.push({ x: Math.cos(a) * r * (i % 2 ? 1 : -1), y: Math.sin(a) * r, vx: 0, vy: 0 });
+        els.push(hosts.map((h) => {
+          const e = document.createElement('div'); e.className = 'mb';
+          const sp = document.createElement('span'); sp.textContent = n; e.appendChild(sp);
+          h.appendChild(e); return e;
+        }));
+      });
+      paint(); start();
+    }
+    function paint() {
+      balls.forEach((b, i) => {
+        const l = (50 + (b.x - B) * 50) + '%', t = (50 + (b.y - B) * 50) + '%';
+        els[i].forEach((e) => { e.style.left = l; e.style.top = t; });
+      });
+      hosts.forEach((h) => { h.firstChild.style.transform = 'rotate(' + angle + 'rad)'; });
+    }
+    function step(dt) {
+      spin += ((agitate ? 9 : 0) - spin) * Math.min(1, dt * (agitate ? 3 : 1.5));
+      angle += spin * dt;
+      for (const b of balls) {
+        b.vy += 4 * dt;                                                   // gravité
+        b.vx += -b.y * spin * 0.9 * dt; b.vy += b.x * spin * 0.9 * dt;    // entraînement par la rotation
+        if (agitate) {
+          b.vx += (Math.random() - 0.5) * 30 * dt;
+          if (b.y > 0.2) b.vy -= Math.random() * 40 * dt;                 // souffle depuis le bas
+        }
+        b.vx *= 1 - 0.9 * dt; b.vy *= 1 - 0.9 * dt;
+        b.x += b.vx * dt; b.y += b.vy * dt;
+        const d = Math.hypot(b.x, b.y), lim = 0.94 - B;
+        if (d > lim) {
+          const nx = b.x / d, ny = b.y / d; b.x = nx * lim; b.y = ny * lim;
+          const vn = b.vx * nx + b.vy * ny;
+          if (vn > 0) { b.vx -= 1.7 * vn * nx; b.vy -= 1.7 * vn * ny; }
+        }
+      }
+      for (let i = 0; i < balls.length; i++) for (let j = i + 1; j < balls.length; j++) {
+        const a = balls[i], c = balls[j], dx = c.x - a.x, dy = c.y - a.y, d = Math.hypot(dx, dy) || 1e-6;
+        if (d < 2 * B) {
+          const nx = dx / d, ny = dy / d, o = (2 * B - d) / 2;
+          a.x -= nx * o; a.y -= ny * o; c.x += nx * o; c.y += ny * o;
+          const rv = (c.vx - a.vx) * nx + (c.vy - a.vy) * ny;
+          if (rv < 0) { const k = 0.85 * rv; a.vx += k * nx; a.vy += k * ny; c.vx -= k * nx; c.vy -= k * ny; }
+        }
+      }
+    }
+    function loop(t) {
+      const dt = Math.min(0.033, (t - last) / 1000 || 0.016); last = t;
+      step(dt); paint();
+      const moving = agitate || Math.abs(spin) > 0.05 || balls.some((b) => Math.hypot(b.vx, b.vy) > 0.03);
+      calm = moving ? 0 : calm + dt;
+      if (calm < 0.4) requestAnimationFrame(loop); else running = false;
+    }
+    function start() { if (!running) { running = true; calm = 0; last = performance.now(); requestAnimationFrame(loop); } }
+    return {
+      build,
+      shake(on) { agitate = on; if (on) start(); },
+      mouthRect() {
+        const h = document.body.classList.contains('projection') ? hosts[1] : hosts[0];
+        const r = h.getBoundingClientRect(), sz = r.width * 2 * B;
+        return { x: r.left + r.width / 2 - sz / 2, y: r.bottom - sz * 0.7, size: sz };
+      },
+    };
+  })();
+  const pickSome = (pool, n) => {
+    const a = pool.slice();
+    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+    return a.slice(0, n);
+  };
+
+  // Durée de l'animation (mémorisée sur cet appareil)
+  let speed = 1;
+  try { const v = parseFloat(localStorage.getItem('loto-anim-speed')); if ([0.5, 1, 1.7].includes(v)) speed = v; } catch (e) {}
+  $('speedSel').value = String(speed);
+  $('speedSel').addEventListener('change', (e) => {
+    speed = parseFloat(e.target.value);
+    try { localStorage.setItem('loto-anim-speed', String(speed)); } catch (err) {}
+  });
+
   function randomIndex(max) {
     // Tirage uniforme via le générateur cryptographique du navigateur
     const arr = new Uint32Array(1);
@@ -639,7 +791,7 @@ const LotoCore = (() => {
     if (busy) return;
     const pool = remaining();
     if (!pool.length) return;
-    const pick = pool[randomIndex(pool.length)];
+    const pick = pool[randomIndex(pool.length)];   // le numéro est tiré ici : l'animation ne fait que le montrer
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const finish = () => {
@@ -647,6 +799,7 @@ const LotoCore = (() => {
       save();
       busy = false;
       render();
+      Cage.build(pickSome(remaining(), 12));
       ballEl.classList.remove('pop');
       void ballEl.offsetWidth;
       ballEl.classList.add('pop');
@@ -654,18 +807,48 @@ const LotoCore = (() => {
 
     if (reduce) { finish(); return; }
 
-    // Court brassage visuel parmi les numéros restants
     busy = true;
     render();
-    currentEl.classList.remove('empty');
-    let ticks = 0;
-    const t = setInterval(() => {
-      const v = pool[randomIndex(pool.length)];
-      currentEl.textContent = v;
-      $('pCurrent').textContent = v;
-      $('pCurrent').classList.remove('empty');
-      if (++ticks >= 12) { clearInterval(t); finish(); }
-    }, 55);
+    const show = (v, empty) => {
+      [currentEl, $('pCurrent')].forEach((el) => { el.textContent = v; el.classList.toggle('empty', !!empty); });
+    };
+    Cage.build(pickSome(pool, 12));
+    Cage.shake(true);
+
+    // Brassage : le défilement des numéros ralentit peu à peu
+    const delays = [50, 50, 55, 60, 70, 80, 95, 110, 130, 155, 185, 220, 260].map((d) => d * speed);
+    let i = 0;
+    const tick = () => {
+      if (i < delays.length) {
+        show(pool[randomIndex(pool.length)]);
+        setTimeout(tick, delays[i++]);
+        return;
+      }
+      // La boule sort du boulier et roule jusqu'à l'affichage
+      Cage.shake(false);
+      show('…', true);
+      const from = Cage.mouthRect();
+      const target = (document.body.classList.contains('projection') ? $('pCurrent') : currentEl).getBoundingClientRect();
+      const fly = document.createElement('div');
+      fly.className = 'flyball';
+      fly.style.cssText = 'left:' + from.x + 'px;top:' + from.y + 'px;width:' + from.size + 'px;height:' + from.size + 'px;font-size:' + (from.size * 0.36) + 'px';
+      const sp = document.createElement('span'); sp.textContent = pick; fly.appendChild(sp);
+      document.body.appendChild(fly);
+      const dx = target.left + target.width / 2 - (from.x + from.size / 2);
+      const dy = target.top + target.height / 2 - (from.y + from.size / 2);
+      const sc = target.width / from.size;
+      let done = false;
+      const end = () => { if (done) return; done = true; fly.remove(); finish(); };
+      if (typeof fly.animate !== 'function') { end(); return; }
+      const anim = fly.animate([
+        { transform: 'translate(0,0) scale(1)' },
+        { transform: 'translate(0,' + (from.size * 0.9) + 'px) scale(1.05)', offset: 0.25 },
+        { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + sc + ')' },
+      ], { duration: 750 * speed, easing: 'cubic-bezier(.3,.7,.4,1)' });
+      anim.onfinish = end;
+      setTimeout(end, 750 * speed + 400);   // filet de sécurité si l'onglet est en arrière-plan
+    };
+    tick();
   }
 
   function undo() {
@@ -748,6 +931,7 @@ const LotoCore = (() => {
   }
 
   render();
+  Cage.build(pickSome(remaining(), 12));
 })();
 </script>
 </body>
